@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko" data-color-scheme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables — Pocket UI</title>
+    <link rel="stylesheet" href="../lib/fonts/remixicon/remixicon.css">
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="../components/css/typography.css">
+    <link rel="stylesheet" href="../components/css/buttons.css">
+    <link rel="stylesheet" href="../components/css/forms.css">
+    <link rel="stylesheet" href="../components/css/tables.css">
+    <link rel="stylesheet" href="../components/css/alerts.css">
+    <link rel="stylesheet" href="../components/css/layout.css">
+    <style>
+        body { padding: var(--spacing); max-width: var(--lgWrapperWidth); margin: 0 auto; }
+        .demo-section { margin-bottom: var(--spacing); }
+        .demo-section h3 { margin-bottom: var(--smSpacing); font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--surfaceTxtHintColor); border-bottom: 1px solid var(--surfaceAlt2Color); padding-bottom: 8px; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--surfaceTxtHintColor); font-size: var(--smFontSize); text-decoration: none; margin-bottom: var(--smSpacing); }
+        .back-link:hover { color: var(--surfaceTxtColor); }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link">
+        <i class="ri-arrow-left-line"></i> Back to Components
+    </a>
+    <h2>Tables</h2>
+
+    <div class="demo-section">
+        <h3>Records Table</h3>
+        <div style="border: 1px solid var(--surfaceAlt2Color); border-radius: var(--lgBorderRadius); overflow: hidden;">
+            <table class="records-table">
+                <thead>
+                    <tr>
+                        <th class="col-bulk-select">
+                            <div class="field">
+                                <input type="checkbox" id="master-chk" data-bulk-master="demo-table">
+                                <label for="master-chk"></label>
+                            </div>
+                        </th>
+                        <th class="sort-handle desc">
+                            <div class="inline-flex gap-5">
+                                <i class="ri-key-line" aria-hidden="true"></i>
+                                <span>id</span>
+                            </div>
+                        </th>
+                        <th class="sort-handle">
+                            <div class="inline-flex gap-5">
+                                <i class="ri-text" aria-hidden="true"></i>
+                                <span>title</span>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="inline-flex gap-5">
+                                <i class="ri-toggle-line" aria-hidden="true"></i>
+                                <span>active</span>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="inline-flex gap-5">
+                                <i class="ri-list-check" aria-hidden="true"></i>
+                                <span>options</span>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="inline-flex gap-5">
+                                <i class="ri-calendar-check-line" aria-hidden="true"></i>
+                                <span>created</span>
+                            </div>
+                        </th>
+                        <th class="col-meta"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr tabindex="0">
+                        <td class="col-bulk-select">
+                            <div class="field">
+                                <input type="checkbox" id="row1" data-bulk-item="demo-table">
+                                <label for="row1"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="record-field-view">
+                                <span class="label">
+                                    <button type="button" class="copy-to-clipboard" data-copy="WyAw4bDrvws6gGl" title="Copy">
+                                        <i class="copy-icon ri-file-copy-line" aria-hidden="true"></i>
+                                    </button>
+                                    <span class="txt-ellipsis">WyAw4bDrvws6gGl</span>
+                                </span>
+                            </div>
+                        </td>
+                        <td><span class="txt txt-ellipsis">Another example</span></td>
+                        <td><span class="label">False</span></td>
+                        <td><span class="missing-value"></span></td>
+                        <td>
+                            <div class="formatted-date short">
+                                <span class="primary-date">2022-07-02</span>
+                                <span class="secondary-date">08:30:44.289Z</span>
+                            </div>
+                        </td>
+                        <td class="col-meta"><i class="ri-arrow-right-line" aria-hidden="true"></i></td>
+                    </tr>
+                    <tr tabindex="0">
+                        <td class="col-bulk-select">
+                            <div class="field">
+                                <input type="checkbox" id="row2" data-bulk-item="demo-table">
+                                <label for="row2"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="record-field-view">
+                                <span class="label">
+                                    <button type="button" class="copy-to-clipboard" data-copy="FtHAW9feB5rze7D" title="Copy">
+                                        <i class="copy-icon ri-file-copy-line" aria-hidden="true"></i>
+                                    </button>
+                                    <span class="txt-ellipsis">FtHAW9feB5rze7D</span>
+                                </span>
+                            </div>
+                        </td>
+                        <td><span class="txt txt-ellipsis">Example title</span></td>
+                        <td><span class="label">False</span></td>
+                        <td>
+                            <div class="inline-flex gap-5">
+                                <span class="label">optionA</span>
+                                <span class="label">optionC</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="formatted-date short">
+                                <span class="primary-date">2022-07-02</span>
+                                <span class="secondary-date">07:47:48.669Z</span>
+                            </div>
+                        </td>
+                        <td class="col-meta"><i class="ri-arrow-right-line" aria-hidden="true"></i></td>
+                    </tr>
+                    <tr tabindex="0">
+                        <td class="col-bulk-select">
+                            <div class="field">
+                                <input type="checkbox" id="row3" data-bulk-item="demo-table">
+                                <label for="row3"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="record-field-view">
+                                <span class="label">
+                                    <button type="button" class="copy-to-clipboard" data-copy="UP06yiygImYTMCI" title="Copy">
+                                        <i class="copy-icon ri-file-copy-line" aria-hidden="true"></i>
+                                    </button>
+                                    <span class="txt-ellipsis">UP06yiygImYTMCI</span>
+                                </span>
+                            </div>
+                        </td>
+                        <td><span class="txt txt-ellipsis">Lorem ipsum</span></td>
+                        <td><span class="label success">True</span></td>
+                        <td>
+                            <div class="inline-flex gap-5">
+                                <span class="label">optionB</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="formatted-date short">
+                                <span class="primary-date">2022-07-02</span>
+                                <span class="secondary-date">07:46:16.478Z</span>
+                            </div>
+                        </td>
+                        <td class="col-meta"><i class="ri-arrow-right-line" aria-hidden="true"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="bulkbar-wrapper">
+                <div class="bulkbar" id="demo-bulkbar" data-bulkbar="demo-table" hidden>
+                    <span class="txt">Selected <strong data-bulk-count>0</strong> records</span>
+                    <button type="button" class="btn sm secondary pill m-r-auto" data-bulk-reset="demo-table">
+                        <span>Reset</span>
+                    </button>
+                    <button type="button" class="btn sm pill outline danger">
+                        <i class="ri-delete-bin-7-line" aria-hidden="true"></i>
+                        <span>Delete</span>
+                    </button>
+                    <button type="button" class="btn sm pill">
+                        <i class="ri-download-line" aria-hidden="true"></i>
+                        <span>JSON</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Thumbnail Preview</h3>
+        <div class="inline-flex gap-5">
+            <div class="thumb sm" style="background: var(--surfaceAlt3Color);">
+                <i class="ri-image-line" style="font-size:18px; color:var(--surfaceTxtHintColor);"></i>
+            </div>
+            <div class="thumb sm" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+            <div class="thumb sm" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+            <div class="thumb" style="background: var(--surfaceAccentColor);">
+                <i class="ri-folder-2-line" style="font-size:22px; color:var(--accentColor);"></i>
+            </div>
+        </div>
+    </div>
+<script src="../components/js/theme.js"></script>
+<script src="../components/js/utils.js"></script>
+<script src="../components/js/toast.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko" data-color-scheme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buttons — Pocket UI</title>
+    <link rel="stylesheet" href="../lib/fonts/remixicon/remixicon.css">
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="../components/css/typography.css">
+    <link rel="stylesheet" href="../components/css/buttons.css">
+    <link rel="stylesheet" href="../components/css/alerts.css">
+    <link rel="stylesheet" href="../components/css/navigation.css">
+    <link rel="stylesheet" href="../components/css/layout.css">
+    <style>
+        body { padding: 0; }
+        .demo-layout { display: flex; }
+        .demo-body { flex: 1; padding: var(--spacing); overflow: auto; }
+        .demo-section { margin-bottom: var(--spacing); }
+        .demo-section h3 { margin-bottom: var(--smSpacing); font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--surfaceTxtHintColor); }
+        .demo-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 12px; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--surfaceTxtHintColor); font-size: var(--smFontSize); text-decoration: none; margin-bottom: var(--smSpacing); }
+        .back-link:hover { color: var(--surfaceTxtColor); }
+    </style>
+</head>
+<body>
+<div class="demo-layout">
+    <div class="demo-body">
+        <a href="../index.html" class="back-link">
+            <i class="ri-arrow-left-line"></i> Back to Components
+        </a>
+        <h2>Buttons</h2>
+
+        <div class="demo-section">
+            <h3>Default Variants</h3>
+            <div class="demo-row">
+                <button class="btn">Primary</button>
+                <button class="btn secondary">Secondary</button>
+                <button class="btn accent">Accent</button>
+                <button class="btn success">Success</button>
+                <button class="btn danger">Danger</button>
+                <button class="btn warning">Warning</button>
+                <button class="btn info">Info</button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h3>Outline Variants</h3>
+            <div class="demo-row">
+                <button class="btn outline">Outline</button>
+                <button class="btn outline accent">Accent</button>
+                <button class="btn outline success">Success</button>
+                <button class="btn outline danger">Danger</button>
+                <button class="btn outline warning">Warning</button>
+                <button class="btn outline info">Info</button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h3>Transparent Variants</h3>
+            <div class="demo-row">
+                <button class="btn transparent">Transparent</button>
+                <button class="btn transparent secondary">Secondary</button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h3>Sizes</h3>
+            <div class="demo-row">
+                <button class="btn sm">Small</button>
+                <button class="btn">Default</button>
+                <button class="btn lg">Large</button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h3>Shapes</h3>
+            <div class="demo-row">
+                <button class="btn">Normal</button>
+                <button class="btn pill">Pill</button>
+                <button class="btn sm pill">Pill Small</button>
+                <button class="btn outline pill">Pill Outline</button>
+                <button class="btn circle"><i class="ri-add-line"></i></button>
+                <button class="btn circle sm secondary"><i class="ri-close-line"></i></button>
+                <button class="btn circle lg accent"><i class="ri-save-line"></i></button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h3>With Icons</h3>
+            <div class="demo-row">
+                <button class="btn accent">
+                    <i class="ri-add-line" aria-hidden="true"></i>
+                    <span>New Record</span>
+                </button>
+                <button class="btn outline">
+                    <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+                    <span>API Preview</span>
+                </button>
+                <button class="btn secondary">
+                    <i class="ri-download-line" aria-hidden="true"></i>
+                    <span>Export</span>
+                </button>
+                <button class="btn sm pill outline danger">
+                    <i class="ri-delete-bin-7-line" aria-hidden="true"></i>
+                    <span>Delete</span>
+                </button>
+                <button class="btn transparent secondary circle rotate-btn" aria-label="Refresh">
+                    <i class="ri-refresh-line" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h3>Full Width</h3>
+            <div style="max-width: 320px;">
+                <button class="btn outline block" style="margin-bottom: 10px;">
+                    <i class="ri-add-line" aria-hidden="true"></i>
+                    <span>New collection</span>
+                </button>
+                <button class="btn accent block">
+                    <span>Submit</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h3>Disabled State</h3>
+            <div class="demo-row">
+                <button class="btn" disabled>Disabled Primary</button>
+                <button class="btn secondary" disabled>Disabled Secondary</button>
+                <button class="btn accent" disabled>Disabled Accent</button>
+                <button class="btn outline" disabled>Disabled Outline</button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h3>Next / Arrow</h3>
+            <div class="demo-row">
+                <button class="btn next">
+                    <span>Continue</span>
+                    <i class="ri-arrow-right-line"></i>
+                </button>
+                <button class="btn accent next">
+                    <span>Next Step</span>
+                    <i class="ri-arrow-right-line"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../components/js/theme.js"></script>
+<script src="../components/js/utils.js"></script>
+</body>
+</html>

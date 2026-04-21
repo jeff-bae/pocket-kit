@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko" data-color-scheme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerts & Toasts — Pocket UI</title>
+    <link rel="stylesheet" href="../lib/fonts/remixicon/remixicon.css">
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="../components/css/typography.css">
+    <link rel="stylesheet" href="../components/css/buttons.css">
+    <link rel="stylesheet" href="../components/css/alerts.css">
+    <link rel="stylesheet" href="../components/css/loader.css">
+    <link rel="stylesheet" href="../components/css/layout.css">
+    <style>
+        body { padding: var(--spacing); max-width: var(--wrapperWidth); margin: 0 auto; }
+        .demo-section { margin-bottom: var(--spacing); }
+        .demo-section h3 { margin-bottom: var(--smSpacing); font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--surfaceTxtHintColor); border-bottom: 1px solid var(--surfaceAlt2Color); padding-bottom: 8px; }
+        .demo-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--surfaceTxtHintColor); font-size: var(--smFontSize); text-decoration: none; margin-bottom: var(--smSpacing); }
+        .back-link:hover { color: var(--surfaceTxtColor); }
+        .alert + .alert { margin-top: 8px; }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link">
+        <i class="ri-arrow-left-line"></i> Back to Components
+    </a>
+    <h2>Alerts, Toasts & Loaders</h2>
+
+    <div class="demo-section">
+        <h3>Alerts</h3>
+        <div class="alert success">
+            <i class="ri-checkbox-circle-line"></i>
+            <div><strong>Success!</strong> Your changes have been saved successfully.</div>
+        </div>
+        <div class="alert danger">
+            <i class="ri-error-warning-line"></i>
+            <div><strong>Error!</strong> Something went wrong. Please try again later.</div>
+        </div>
+        <div class="alert warning">
+            <i class="ri-alert-line"></i>
+            <div><strong>Warning!</strong> This action cannot be undone.</div>
+        </div>
+        <div class="alert info">
+            <i class="ri-information-line"></i>
+            <div><strong>Info:</strong> Your session will expire in 15 minutes.</div>
+        </div>
+        <div class="alert accent">
+            <i class="ri-rocket-line"></i>
+            <div><strong>New feature!</strong> Check out the new API preview panel.</div>
+        </div>
+        <div class="alert">
+            <i class="ri-notification-3-line"></i>
+            <div>This is a default neutral alert message.</div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Toast Notifications</h3>
+        <div class="demo-row">
+            <button class="btn success" onclick="PocketUI.toast.success('Operation completed successfully!')">
+                <i class="ri-checkbox-circle-line"></i> Success Toast
+            </button>
+            <button class="btn danger" onclick="PocketUI.toast.danger('An error occurred. Please try again.')">
+                <i class="ri-error-warning-line"></i> Error Toast
+            </button>
+            <button class="btn warning" onclick="PocketUI.toast.warning('Please review your input carefully.')">
+                <i class="ri-alert-line"></i> Warning Toast
+            </button>
+            <button class="btn info" onclick="PocketUI.toast.info('New records have been imported.')">
+                <i class="ri-information-line"></i> Info Toast
+            </button>
+            <button class="btn secondary" onclick="PocketUI.toast.show('This is a default notification.', 'default', 3000)">
+                Default Toast
+            </button>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Labels / Badges</h3>
+        <div class="demo-row">
+            <span class="label">Default</span>
+            <span class="label success">Success</span>
+            <span class="label danger">Danger</span>
+            <span class="label warning">Warning</span>
+            <span class="label info">Info</span>
+            <span class="label accent">Accent</span>
+            <span class="label primary">Primary</span>
+        </div>
+        <div class="demo-row m-t-10">
+            <span class="label">True</span>
+            <span class="label success">True</span>
+            <span class="label">False</span>
+            <span class="label">optionA</span>
+            <span class="label">optionB</span>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Text Colors</h3>
+        <div class="demo-row">
+            <span class="txt-accent">Accent text</span>
+            <span class="txt-success">Success text</span>
+            <span class="txt-danger">Danger text</span>
+            <span class="txt-warning">Warning text</span>
+            <span class="txt-info">Info text</span>
+            <span class="txt-hint">Hint text</span>
+            <span class="txt-disabled">Disabled text</span>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Loaders</h3>
+        <div class="demo-row" style="align-items:center;">
+            <span class="loader sm"></span>
+            <span class="loader"></span>
+            <span class="loader lg"></span>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Skeleton Loaders</h3>
+        <div style="max-width: 400px; display: flex; flex-direction: column; gap: 8px;">
+            <div class="skeleton skeleton-text lg" style="width: 40%;"></div>
+            <div class="skeleton skeleton-text" style="width: 100%;"></div>
+            <div class="skeleton skeleton-text" style="width: 85%;"></div>
+            <div class="skeleton skeleton-text sm" style="width: 60%;"></div>
+            <div class="skeleton skeleton-rect" style="width: 100%; height: 120px; margin-top: 8px;"></div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Tooltip</h3>
+        <div class="demo-row">
+            <button class="btn secondary" style="position:relative;">
+                Hover for tooltip
+                <span class="tooltip tooltip-bottom">This is a tooltip!</span>
+            </button>
+        </div>
+        <style>
+            .btn:not(:hover) .tooltip { display: none; }
+        </style>
+    </div>
+
+    <div class="demo-section">
+        <h3>Demo Alert Banner</h3>
+        <div class="demo-alert">
+            This is a <a href="#" class="txt-bold">live demo</a> environment.
+            To login use: <strong>test@example.com</strong> <strong>(123456)</strong>
+        </div>
+    </div>
+
+    <div class="toasts-container"></div>
+<script src="../components/js/theme.js"></script>
+<script src="../components/js/toast.js"></script>
+</body>
+</html>

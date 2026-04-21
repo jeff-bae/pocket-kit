@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko" data-color-scheme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout & Cards — Pocket UI</title>
+    <link rel="stylesheet" href="../lib/fonts/remixicon/remixicon.css">
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="../components/css/typography.css">
+    <link rel="stylesheet" href="../components/css/buttons.css">
+    <link rel="stylesheet" href="../components/css/forms.css">
+    <link rel="stylesheet" href="../components/css/layout.css">
+    <link rel="stylesheet" href="../components/css/alerts.css">
+    <style>
+        body { padding: var(--spacing); max-width: var(--lgWrapperWidth); margin: 0 auto; }
+        .demo-section { margin-bottom: var(--spacing); }
+        .demo-section > h3 { margin-bottom: var(--smSpacing); font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--surfaceTxtHintColor); border-bottom: 1px solid var(--surfaceAlt2Color); padding-bottom: 8px; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--surfaceTxtHintColor); font-size: var(--smFontSize); text-decoration: none; margin-bottom: var(--smSpacing); }
+        .back-link:hover { color: var(--surfaceTxtColor); }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link">
+        <i class="ri-arrow-left-line"></i> Back to Components
+    </a>
+    <h2>Layout & Cards</h2>
+
+    <div class="demo-section">
+        <h3>Cards</h3>
+        <div class="grid-3 grid">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Basic Card</span>
+                </div>
+                <div class="card-content">
+                    <p>This is a standard card with header and content area. Cards use <code class="txt-code">--lgBorderRadius</code> and subtle box shadow.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">With Footer</span>
+                    <button class="btn sm circle transparent secondary"><i class="ri-more-2-line"></i></button>
+                </div>
+                <div class="card-content">
+                    <p>Card content with an action footer at the bottom.</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn sm secondary">Cancel</button>
+                    <button class="btn sm accent">Save</button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" style="background: var(--surfaceAccentColor);">
+                    <i class="ri-database-2-line" style="color:var(--accentColor);"></i>
+                    <span class="card-title txt-accent">Colored Header</span>
+                </div>
+                <div class="card-content">
+                    <p>Card with colored header using the accent surface color variant.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Grid System</h3>
+        <p class="txt-hint txt-sm m-b-sm">Responsive grid with <code class="txt-code">--gridGap</code> spacing</p>
+        <div class="grid grid-4" style="margin-bottom: var(--smSpacing);">
+            <div style="background:var(--surfaceAccentColor); padding: 16px; border-radius:var(--borderRadius); text-align:center; font-size:var(--smFontSize); color:var(--accentColor); font-weight:600;">1/4</div>
+            <div style="background:var(--surfaceAccentColor); padding: 16px; border-radius:var(--borderRadius); text-align:center; font-size:var(--smFontSize); color:var(--accentColor); font-weight:600;">2/4</div>
+            <div style="background:var(--surfaceAccentColor); padding: 16px; border-radius:var(--borderRadius); text-align:center; font-size:var(--smFontSize); color:var(--accentColor); font-weight:600;">3/4</div>
+            <div style="background:var(--surfaceAccentColor); padding: 16px; border-radius:var(--borderRadius); text-align:center; font-size:var(--smFontSize); color:var(--accentColor); font-weight:600;">4/4</div>
+        </div>
+        <div class="grid grid-3" style="margin-bottom: var(--smSpacing);">
+            <div style="background:var(--surfaceSuccessColor); padding: 16px; border-radius:var(--borderRadius); text-align:center; font-size:var(--smFontSize); color:var(--successColor); font-weight:600;">1/3</div>
+            <div style="background:var(--surfaceSuccessColor); padding: 16px; border-radius:var(--borderRadius); text-align:center; font-size:var(--smFontSize); color:var(--successColor); font-weight:600;">2/3</div>
+            <div style="background:var(--surfaceSuccessColor); padding: 16px; border-radius:var(--borderRadius); text-align:center; font-size:var(--smFontSize); color:var(--successColor); font-weight:600;">3/3</div>
+        </div>
+        <div class="grid grid-2">
+            <div style="background:var(--surfaceWarningColor); padding: 16px; border-radius:var(--borderRadius); text-align:center; font-size:var(--smFontSize); color:var(--warningColor); font-weight:600;">1/2</div>
+            <div style="background:var(--surfaceWarningColor); padding: 16px; border-radius:var(--borderRadius); text-align:center; font-size:var(--smFontSize); color:var(--warningColor); font-weight:600;">2/2</div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Accordion</h3>
+        <div class="accordion" style="max-width: 600px;">
+            <details class="accordion-item" open>
+                <summary class="accordion-header">
+                    <i class="ri-settings-3-line" style="color:var(--accentColor);"></i>
+                    General Settings
+                </summary>
+                <div class="accordion-content">
+                    <p>General settings and configuration options for your application.</p>
+                    <div class="fields fields-col" style="max-width:400px;">
+                        <div class="field">
+                            <label>App Name</label>
+                            <input type="text" value="My Application">
+                        </div>
+                    </div>
+                </div>
+            </details>
+            <details class="accordion-item">
+                <summary class="accordion-header">
+                    <i class="ri-mail-settings-line" style="color:var(--infoColor);"></i>
+                    Email Configuration
+                </summary>
+                <div class="accordion-content">
+                    <p>Configure your email provider settings for notifications and authentication.</p>
+                </div>
+            </details>
+            <details class="accordion-item">
+                <summary class="accordion-header">
+                    <i class="ri-shield-check-line" style="color:var(--successColor);"></i>
+                    Security
+                </summary>
+                <div class="accordion-content">
+                    <p>Manage authentication rules, rate limiting, and access control settings.</p>
+                </div>
+            </details>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Empty States</h3>
+        <div style="max-width: 500px; border: 1px solid var(--surfaceAlt2Color); border-radius: var(--lgBorderRadius); overflow: hidden;">
+            <div class="empty-state">
+                <i class="ri-database-2-line"></i>
+                <h5>No records found</h5>
+                <p>Create your first record or adjust your search filters to see results here.</p>
+                <button class="btn accent">
+                    <i class="ri-add-line"></i>
+                    New Record
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Sections</h3>
+        <div style="max-width: 600px; border: 1px solid var(--surfaceAlt2Color); border-radius: var(--lgBorderRadius); padding: 0 var(--smSpacing);">
+            <div class="section">
+                <div class="section-title">Section Title</div>
+                <div class="section-hint">This is a section description or hint text providing context.</div>
+                <p>Section content goes here.</p>
+            </div>
+            <div class="section">
+                <div class="section-title">Another Section</div>
+                <p>Multiple sections are separated by a border line.</p>
+            </div>
+        </div>
+    </div>
+
+<script src="../components/js/theme.js"></script>
+</body>
+</html>

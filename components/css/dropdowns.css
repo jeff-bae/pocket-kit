@@ -1,0 +1,155 @@
+/* =========================================================
+   Pocket UI — dropdowns.css
+   ========================================================= */
+
+/* --- Dropdown Container --- */
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    min-width: 160px;
+    padding: 5px;
+    background: var(--surfaceColor);
+    border: 1px solid var(--surfaceAlt3Color);
+    border-radius: var(--lgBorderRadius);
+    box-shadow: 0 4px 24px rgba(34,36,42,0.12);
+    z-index: 500;
+    overflow: hidden;
+    gap: 1px;
+}
+
+/* Native Popover styling */
+.dropdown[popover] {
+    border: none;
+    margin: 0;
+    inset: unset;
+    overflow: visible;
+}
+
+.dropdown[popover]::backdrop {
+    background: transparent;
+}
+
+/* --- Size --- */
+.dropdown.sm {
+    min-width: 130px;
+    border-radius: var(--lgBorderRadius);
+}
+
+/* --- Position Variants --- */
+.dropdown.left {
+    left: auto;
+    right: 0;
+}
+
+/* --- No wrap --- */
+.dropdown.nowrap .dropdown-item {
+    white-space: nowrap;
+}
+
+/* --- Dropdown Item --- */
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: var(--borderRadius);
+    background: transparent;
+    color: var(--surfaceTxtColor);
+    font-family: var(--fontFamily);
+    font-size: var(--smFontSize);
+    font-weight: 400;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: left;
+    width: 100%;
+    transition: background var(--animationSpeed), color var(--animationSpeed);
+    white-space: nowrap;
+}
+
+.dropdown-item i {
+    flex-shrink: 0;
+    font-size: 16px;
+    color: var(--surfaceTxtHintColor);
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus-visible {
+    background: var(--surfaceAlt1Color);
+    text-decoration: none;
+    outline: none;
+}
+
+.dropdown-item.active {
+    background: var(--surfaceAlt2Color);
+    font-weight: 600;
+}
+
+/* --- Light variant (subtle) --- */
+.dropdown-item-light {
+    font-size: var(--smFontSize);
+    padding: 7px 10px;
+}
+
+/* --- Manage action --- */
+.dropdown-item-manage {
+    color: var(--surfaceTxtColor);
+}
+
+/* --- Logout / Danger --- */
+.dropdown-item-logout,
+.dropdown-item.txt-danger {
+    color: var(--dangerColor) !important;
+}
+
+.dropdown-item-logout:hover,
+.dropdown-item.txt-danger:hover {
+    background: var(--surfaceDangerColor);
+}
+
+/* --- Dropdown Search --- */
+.dropdown-search {
+    padding: 5px;
+    border-bottom: 1px solid var(--surfaceAlt2Color);
+    margin-bottom: 3px;
+}
+
+.dropdown-search input {
+    width: 100%;
+    height: 30px;
+    padding: 0 10px;
+    border: 1px solid var(--inputBorderColor);
+    border-radius: var(--borderRadius);
+    background: var(--inputColor);
+    color: var(--surfaceTxtColor);
+    font-family: var(--fontFamily);
+    font-size: var(--smFontSize);
+    outline: none;
+}
+
+/* --- Popover trigger --- */
+[popovertarget] {
+    position: relative;
+}
+
+/* Fake dropdown for demo (non-popover fallback) */
+.dropdown-wrapper {
+    position: relative;
+    display: inline-flex;
+}
+
+.dropdown-wrapper .dropdown {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    display: none;
+}
+
+.dropdown-wrapper.open .dropdown {
+    display: flex;
+}
+
+.dropdown-wrapper.left .dropdown {
+    left: auto;
+    right: 0;
+}

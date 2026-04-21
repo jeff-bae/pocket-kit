@@ -1,0 +1,341 @@
+/* =========================================================
+   Pocket UI — navigation.css
+   ========================================================= */
+
+/* --- App Header --- */
+.app-header {
+    display: flex;
+    align-items: center;
+    gap: var(--siblingSpacing);
+    height: 55px;
+    padding: 0 var(--smSpacing);
+    background: var(--surfaceColor);
+    box-shadow: var(--boxShadow);
+    position: relative;
+    z-index: 100;
+    flex-shrink: 0;
+}
+
+.app-header.accent-surface {
+    background: var(--accentColor);
+}
+
+/* --- Logo --- */
+.logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin-right: var(--siblingSpacing);
+    text-decoration: none;
+}
+
+.logo img {
+    height: 28px;
+    width: auto;
+}
+
+/* --- Main Nav --- */
+.app-main-nav {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex: 1;
+}
+
+/* --- Header Links --- */
+.header-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 36px;
+    padding: 0 12px;
+    border-radius: var(--borderRadius);
+    border: none;
+    background: transparent;
+    color: var(--surfaceTxtHintColor);
+    font-family: var(--fontFamily);
+    font-size: var(--fontSize);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition:
+        background var(--animationSpeed),
+        color var(--animationSpeed);
+    white-space: nowrap;
+    user-select: none;
+}
+
+.header-link:hover,
+.header-link:focus-visible {
+    background: var(--surfaceAlt1Color);
+    color: var(--surfaceTxtColor);
+    text-decoration: none;
+    outline: none;
+}
+
+.header-link.active {
+    background: var(--surfaceAlt2Color);
+    color: var(--surfaceTxtColor);
+}
+
+.app-header.accent-surface .header-link {
+    color: var(--surfaceTxtHintColor);
+}
+
+.app-header.accent-surface .header-link:hover,
+.app-header.accent-surface .header-link.active {
+    background: var(--surfaceAlt2Color);
+    color: var(--surfaceTxtColor);
+}
+
+/* --- Separator --- */
+.app-header-separator {
+    flex: 1;
+}
+
+/* --- Sidebar --- */
+.page-sidebar {
+    width: var(--pageSidebarWidth);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--surfaceAlt1Color);
+    border-right: 1px solid var(--surfaceAlt2Color);
+    overflow: hidden;
+    position: relative;
+    transition: width var(--slideAnimationSpeed);
+}
+
+.sidebar-content {
+    padding: var(--sidebarSpacing);
+    flex: 1;
+    overflow: auto;
+}
+
+.sidebar-search {
+    padding: var(--sidebarSpacing);
+    border-bottom: 1px solid var(--surfaceAlt2Color);
+    flex-shrink: 0;
+}
+
+.sidebar-search .fields {
+    flex-wrap: nowrap;
+}
+
+.sidebar-search input {
+    --inputPadding: var(--sidebarSpacing);
+    background: var(--surfaceColor);
+    border-color: var(--surfaceAlt3Color);
+    height: var(--smBtnHeight);
+    font-size: var(--smFontSize);
+}
+
+/* --- Nav Groups --- */
+.nav-group {
+    margin-bottom: var(--siblingSpacing);
+}
+
+.nav-group summary {
+    list-style: none;
+    padding: 4px var(--sidebarSpacing);
+    font-size: var(--smFontSize);
+    font-weight: 600;
+    color: var(--surfaceTxtHintColor);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    user-select: none;
+    border-radius: var(--borderRadius);
+    transition: color var(--animationSpeed);
+}
+
+.nav-group summary::-webkit-details-marker { display: none; }
+
+.nav-group summary:hover {
+    color: var(--surfaceTxtColor);
+}
+
+/* --- Nav Items --- */
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 7px var(--sidebarSpacing);
+    border: none;
+    border-radius: var(--borderRadius);
+    background: transparent;
+    color: var(--surfaceTxtColor);
+    font-family: var(--fontFamily);
+    font-size: var(--smFontSize);
+    font-weight: 400;
+    cursor: pointer;
+    text-align: left;
+    text-decoration: none;
+    transition:
+        background var(--animationSpeed),
+        color var(--animationSpeed);
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+}
+
+.nav-item i {
+    flex-shrink: 0;
+    color: var(--surfaceTxtHintColor);
+    font-size: 16px;
+}
+
+.nav-item .txt {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav-item:hover {
+    background: var(--surfaceAlt2Color);
+}
+
+.nav-item.active {
+    background: var(--surfaceAlt3Color);
+    font-weight: 600;
+}
+
+.nav-item.active i {
+    color: var(--accentColor);
+}
+
+/* --- Pin Button --- */
+.nav-item .pin {
+    opacity: 0;
+    flex-shrink: 0;
+    color: var(--surfaceTxtHintColor);
+    font-size: 14px;
+    padding: 2px;
+    border-radius: 3px;
+    transition: opacity var(--animationSpeed), color var(--animationSpeed);
+}
+
+.nav-item:hover .pin {
+    opacity: 1;
+}
+
+.nav-item .pin:hover {
+    color: var(--surfaceTxtColor);
+}
+
+/* --- New Collection Button --- */
+.sidebar-content.new-collection {
+    flex: 0;
+    padding: var(--sidebarSpacing);
+    border-top: 1px solid var(--surfaceAlt2Color);
+}
+
+/* --- Page Header --- */
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: var(--siblingSpacing);
+    padding: var(--smSpacing) var(--spacing);
+    border-bottom: 1px solid var(--surfaceAlt2Color);
+    flex-shrink: 0;
+}
+
+.page-header.compact {
+    padding: var(--tableSpacing) var(--smSpacing);
+}
+
+.page-header-primary-btns {
+    display: flex;
+    align-items: center;
+    gap: var(--siblingSpacing);
+    margin-left: auto;
+}
+
+.page-header-secondary-btns {
+    display: flex;
+    align-items: center;
+    gap: var(--siblingSpacing);
+}
+
+/* --- Breadcrumbs --- */
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+    font-size: var(--smFontSize);
+    color: var(--surfaceTxtHintColor);
+}
+
+.breadcrumbs > div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.breadcrumbs > div:not(:first-child)::before {
+    content: '/';
+    margin-right: 4px;
+    opacity: 0.5;
+}
+
+.breadcrumbs > div:last-child {
+    color: var(--surfaceTxtColor);
+    font-weight: 600;
+}
+
+/* --- Page Footer --- */
+.page-footer {
+    display: flex;
+    align-items: center;
+    gap: var(--smSpacing);
+    padding: var(--tableSpacing) var(--smSpacing);
+    border-top: 1px solid var(--surfaceAlt2Color);
+    font-size: var(--smFontSize);
+    color: var(--surfaceTxtHintColor);
+    flex-shrink: 0;
+}
+
+.total-count {
+    flex: 1;
+}
+
+.credits {
+    display: flex;
+    align-items: center;
+    gap: var(--siblingSpacing);
+}
+
+.credit-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--surfaceTxtHintColor);
+    font-size: var(--smFontSize);
+    text-decoration: none;
+    transition: color var(--animationSpeed);
+}
+
+.credit-item:hover {
+    color: var(--surfaceTxtColor);
+    text-decoration: none;
+}
+
+/* --- Drag Handle --- */
+.dragline {
+    position: absolute;
+    right: -3px;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    cursor: col-resize;
+    z-index: 10;
+}
+
+.dragline:hover,
+.dragline:active {
+    background: var(--accentColor);
+    opacity: 0.4;
+}

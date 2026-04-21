@@ -1,0 +1,167 @@
+/* =========================================================
+   Pocket UI — layout.css
+   Card, Section, Grid layout components
+   ========================================================= */
+
+/* --- Card --- */
+.card {
+    background: var(--surfaceColor);
+    border: 1px solid var(--surfaceAlt2Color);
+    border-radius: var(--lgBorderRadius);
+    box-shadow: var(--boxShadow);
+    overflow: hidden;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--siblingSpacing);
+    padding: var(--smSpacing);
+    border-bottom: 1px solid var(--surfaceAlt2Color);
+}
+
+.card-title {
+    flex: 1;
+    font-weight: 600;
+    font-size: var(--lgFontSize);
+}
+
+.card-content {
+    padding: var(--smSpacing);
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--siblingSpacing);
+    padding: var(--smSpacing);
+    border-top: 1px solid var(--surfaceAlt2Color);
+    background: var(--surfaceAlt1Color);
+}
+
+/* --- Section --- */
+.section {
+    padding: var(--spacing) 0;
+}
+
+.section + .section {
+    border-top: 1px solid var(--surfaceAlt2Color);
+}
+
+.section-title {
+    font-size: var(--lgFontSize);
+    font-weight: 600;
+    color: var(--surfaceTxtColor);
+    margin-bottom: var(--tableSpacing);
+}
+
+.section-hint {
+    font-size: var(--smFontSize);
+    color: var(--surfaceTxtHintColor);
+    margin-bottom: var(--smSpacing);
+}
+
+/* --- Grid --- */
+.grid {
+    display: grid;
+    gap: var(--gridGap);
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 768px) {
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Divider --- */
+.divider {
+    border: none;
+    border-top: 1px solid var(--surfaceAlt2Color);
+    margin: var(--smSpacing) 0;
+}
+
+/* --- Empty State --- */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing) var(--smSpacing);
+    text-align: center;
+    color: var(--surfaceTxtHintColor);
+    gap: var(--siblingSpacing);
+}
+
+.empty-state i {
+    font-size: 48px;
+    opacity: 0.4;
+}
+
+.empty-state h5, .empty-state h6 {
+    color: var(--surfaceTxtColor);
+    margin: 0;
+}
+
+.empty-state p {
+    font-size: var(--smFontSize);
+    margin: 0;
+    max-width: 320px;
+}
+
+/* --- Accordion --- */
+.accordion {
+    border: 1px solid var(--surfaceAlt2Color);
+    border-radius: var(--borderRadius);
+    overflow: hidden;
+}
+
+.accordion-item {
+    border-bottom: 1px solid var(--surfaceAlt2Color);
+}
+
+.accordion-item:last-child {
+    border-bottom: none;
+}
+
+.accordion-header {
+    display: flex;
+    align-items: center;
+    gap: var(--siblingSpacing);
+    padding: var(--tableSpacing) var(--smSpacing);
+    cursor: pointer;
+    user-select: none;
+    font-weight: 600;
+    font-size: var(--smFontSize);
+    background: var(--surfaceAlt1Color);
+    transition: background var(--animationSpeed);
+    list-style: none;
+}
+
+.accordion-header:hover {
+    background: var(--surfaceAlt2Color);
+}
+
+.accordion-header::-webkit-details-marker { display: none; }
+
+.accordion-header::after {
+    content: '\ea4e'; /* ri-arrow-down-s-line */
+    font-family: 'remixicon';
+    margin-left: auto;
+    transition: transform var(--animationSpeed);
+    font-weight: 400;
+}
+
+details[open] .accordion-header::after {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    padding: var(--smSpacing);
+}

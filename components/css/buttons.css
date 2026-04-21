@@ -1,0 +1,193 @@
+/* =========================================================
+   Pocket UI — buttons.css
+   ========================================================= */
+
+.btn {
+    --btnColor: var(--primaryColor);
+    --btnTxtColor: var(--primaryTxtColor);
+    --btnHoverColor: color-mix(in srgb, var(--btnColor), white 10%);
+    --btnActiveColor: color-mix(in srgb, var(--btnColor), black 8%);
+    --circleSize: var(--btnHeight);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    height: var(--btnHeight);
+    padding: 0 var(--smSpacing);
+    border: 2px solid transparent;
+    border-radius: var(--borderRadius);
+    font-family: var(--fontFamily);
+    font-size: var(--fontSize);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.1px;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+    transition:
+        background var(--animationSpeed),
+        border-color var(--animationSpeed),
+        color var(--animationSpeed),
+        opacity var(--animationSpeed);
+    background: var(--btnColor);
+    color: var(--btnTxtColor);
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.btn:hover,
+.btn:focus-visible {
+    background: var(--btnHoverColor);
+    text-decoration: none;
+    outline: none;
+}
+
+.btn:active {
+    background: var(--btnActiveColor);
+    transition-duration: var(--activeAnimationSpeed);
+}
+
+.btn:disabled,
+.btn[disabled] {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* --- Sizes --- */
+.btn.sm {
+    --circleSize: var(--smBtnHeight);
+    height: var(--smBtnHeight);
+    padding: 0 var(--siblingSpacing);
+    font-size: var(--smFontSize);
+    gap: 5px;
+}
+
+.btn.lg {
+    --circleSize: var(--lgBtnHeight);
+    height: var(--lgBtnHeight);
+    padding: 0 var(--spacing);
+    font-size: var(--lgFontSize);
+    gap: 9px;
+}
+
+/* --- Shapes --- */
+.btn.circle {
+    width: var(--circleSize);
+    height: var(--circleSize);
+    padding: 0;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.btn.pill {
+    border-radius: 30px;
+}
+
+.btn.block {
+    width: 100%;
+}
+
+/* --- Variants --- */
+.btn.secondary {
+    --btnColor: var(--secondaryColor);
+    --btnTxtColor: var(--secondaryTxtColor);
+    --btnHoverColor: color-mix(in srgb, var(--btnColor), black 5%);
+    --btnActiveColor: color-mix(in srgb, var(--btnColor), black 10%);
+}
+
+.btn.accent {
+    --btnColor: var(--accentColor);
+    --btnTxtColor: var(--accentTxtColor);
+    --btnHoverColor: var(--accentAlt1Color);
+    --btnActiveColor: color-mix(in srgb, var(--accentColor), black 10%);
+}
+
+.btn.success {
+    --btnColor: var(--successColor);
+    --btnTxtColor: var(--successTxtColor);
+    --btnHoverColor: color-mix(in srgb, var(--btnColor), white 10%);
+    --btnActiveColor: color-mix(in srgb, var(--btnColor), black 8%);
+}
+
+.btn.danger {
+    --btnColor: var(--dangerColor);
+    --btnTxtColor: var(--dangerTxtColor);
+    --btnHoverColor: color-mix(in srgb, var(--btnColor), white 10%);
+    --btnActiveColor: color-mix(in srgb, var(--btnColor), black 8%);
+}
+
+.btn.warning {
+    --btnColor: var(--warningColor);
+    --btnTxtColor: var(--warningTxtColor);
+    --btnHoverColor: color-mix(in srgb, var(--btnColor), white 10%);
+    --btnActiveColor: color-mix(in srgb, var(--btnColor), black 8%);
+}
+
+.btn.info {
+    --btnColor: var(--infoColor);
+    --btnTxtColor: var(--infoTxtColor);
+    --btnHoverColor: color-mix(in srgb, var(--btnColor), white 10%);
+    --btnActiveColor: color-mix(in srgb, var(--btnColor), black 8%);
+}
+
+/* --- Outline --- */
+.btn.outline {
+    background: transparent;
+    border-color: currentColor;
+    color: var(--surfaceTxtColor);
+}
+.btn.outline:hover,
+.btn.outline:focus-visible {
+    background: var(--surfaceAlt1Color);
+}
+.btn.outline:active {
+    background: var(--surfaceAlt2Color);
+}
+.btn.outline.accent  { color: var(--accentColor); }
+.btn.outline.success { color: var(--successColor); }
+.btn.outline.danger  { color: var(--dangerColor); }
+.btn.outline.warning { color: var(--warningColor); }
+.btn.outline.info    { color: var(--infoColor); }
+.btn.outline.primary { color: var(--primaryColor); }
+
+/* --- Transparent --- */
+.btn.transparent {
+    background: transparent;
+    color: var(--surfaceTxtColor);
+}
+.btn.transparent:hover,
+.btn.transparent:focus-visible {
+    background: var(--surfaceAlt1Color);
+}
+.btn.transparent:active {
+    background: var(--surfaceAlt2Color);
+}
+.btn.transparent.secondary {
+    color: var(--surfaceTxtHintColor);
+}
+.btn.transparent.secondary:hover,
+.btn.transparent.secondary:focus-visible {
+    color: var(--surfaceTxtColor);
+    background: var(--surfaceAlt1Color);
+}
+
+/* --- Rotate animation (refresh button) --- */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+.btn.rotate-btn.loading i,
+.rotate-btn.loading i {
+    animation: rotate var(--loaderAnimationSpeed) linear infinite;
+}
+
+/* --- Next / Arrow button --- */
+.btn.next i {
+    will-change: transform;
+    transition: transform var(--animationSpeed);
+}
+.btn.next:hover i {
+    transform: translateX(3px);
+}

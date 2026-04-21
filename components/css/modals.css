@@ -1,0 +1,263 @@
+/* =========================================================
+   Pocket UI — modals.css
+   ========================================================= */
+
+/* --- Overlay --- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--modalOverlayColor);
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing);
+    animation: overlayIn var(--modalAnimationSpeed) ease;
+}
+
+.modal-overlay.hidden {
+    display: none;
+}
+
+@keyframes overlayIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* --- Modal --- */
+.modal {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: var(--smWrapperWidth);
+    max-height: calc(100vh - var(--spacing) * 2);
+    background: var(--surfaceColor);
+    border-radius: var(--lgBorderRadius);
+    box-shadow: 0 8px 40px rgba(34,36,42,0.18);
+    animation: modalIn var(--modalAnimationSpeed) ease;
+    overflow: hidden;
+}
+
+.modal.lg {
+    max-width: var(--wrapperWidth);
+}
+
+.modal.xl {
+    max-width: var(--lgWrapperWidth);
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: scale(0.96) translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* --- Modal Header --- */
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: var(--siblingSpacing);
+    padding: var(--smSpacing);
+    border-bottom: 1px solid var(--surfaceAlt2Color);
+    flex-shrink: 0;
+}
+
+.modal-title {
+    flex: 1;
+    font-size: var(--lgFontSize);
+    font-weight: 600;
+    color: var(--surfaceTxtColor);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.modal-close-btn {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--smBtnHeight);
+    height: var(--smBtnHeight);
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--surfaceTxtHintColor);
+    cursor: pointer;
+    font-size: 20px;
+    transition: background var(--animationSpeed), color var(--animationSpeed);
+    padding: 0;
+}
+
+.modal-close-btn:hover {
+    background: var(--surfaceAlt2Color);
+    color: var(--surfaceTxtColor);
+}
+
+/* --- Modal Content --- */
+.modal-content {
+    flex: 1;
+    overflow: auto;
+    padding: var(--smSpacing);
+}
+
+/* --- Modal Footer --- */
+.modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--siblingSpacing);
+    padding: var(--smSpacing);
+    border-top: 1px solid var(--surfaceAlt2Color);
+    flex-shrink: 0;
+}
+
+/* --- Slide Panel (drawer) --- */
+.slide-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 480px;
+    max-width: 100%;
+    background: var(--surfaceColor);
+    box-shadow: var(--leftBoxShadow);
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn var(--slideAnimationSpeed) ease;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to   { transform: translateX(0); }
+}
+
+/* --- API Preview Modal --- */
+.api-preview-modal {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+}
+
+.api-preview-sidebar {
+    width: 210px;
+    flex-shrink: 0;
+    background: var(--surfaceAlt1Color);
+    border-right: 1px solid var(--surfaceAlt2Color);
+    padding: 8px 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.api-preview-sidebar-title {
+    padding: 6px 14px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--surfaceTxtHintColor);
+    user-select: none;
+}
+
+/* Nav item in API sidebar */
+.api-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 7px 14px;
+    border: none;
+    background: transparent;
+    color: var(--surfaceTxtColor);
+    font-size: var(--smFontSize);
+    font-family: var(--fontFamily);
+    text-align: left;
+    cursor: pointer;
+    transition: background var(--animationSpeed);
+}
+
+.api-nav-item:hover {
+    background: var(--surfaceAlt2Color);
+}
+
+.api-nav-item.active {
+    background: var(--surfaceAlt2Color);
+}
+
+.api-nav-item.active .api-nav-label {
+    font-weight: 600;
+    color: var(--surfaceTxtColor);
+}
+
+/* HTTP method badge */
+.http-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 46px;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: var(--monoFontFamily);
+    letter-spacing: 0.3px;
+    flex-shrink: 0;
+}
+
+.http-badge.get    { background: var(--surfaceInfoColor);    color: var(--infoColor);    }
+.http-badge.post   { background: var(--surfaceSuccessColor); color: var(--successColor); }
+.http-badge.patch  { background: var(--surfaceWarningColor); color: var(--warningColor); }
+.http-badge.put    { background: var(--surfaceInfoColor);    color: var(--infoColor);    }
+.http-badge.delete { background: var(--surfaceDangerColor);  color: var(--dangerColor);  }
+
+/* Content area */
+.api-preview-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-width: 0;
+}
+
+/* Individual endpoint panel */
+.api-panel {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+}
+
+.api-panel[hidden] {
+    display: none;
+}
+
+/* Content header row (method + path) */
+.api-preview-content-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px var(--smSpacing);
+    border-bottom: 1px solid var(--surfaceAlt2Color);
+    font-size: var(--smFontSize);
+    font-weight: 600;
+    font-family: var(--monoFontFamily);
+    flex-shrink: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Code block inside panel */
+.api-preview-code {
+    flex: 1;
+    overflow: auto;
+    margin: 0;
+    border-radius: 0;
+}

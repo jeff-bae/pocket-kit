@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko" data-color-scheme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modals — Pocket UI</title>
+    <link rel="stylesheet" href="../lib/fonts/remixicon/remixicon.css">
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="../components/css/typography.css">
+    <link rel="stylesheet" href="../components/css/buttons.css">
+    <link rel="stylesheet" href="../components/css/forms.css">
+    <link rel="stylesheet" href="../components/css/modals.css">
+    <link rel="stylesheet" href="../components/css/alerts.css">
+    <link rel="stylesheet" href="../components/css/layout.css">
+    <link rel="stylesheet" href="../components/css/prism-theme.css">
+    <style>
+        body { padding: var(--spacing); }
+        .demo-section { margin-bottom: var(--spacing); }
+        .demo-section h3 { margin-bottom: var(--smSpacing); font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--surfaceTxtHintColor); border-bottom: 1px solid var(--surfaceAlt2Color); padding-bottom: 8px; }
+        .demo-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--surfaceTxtHintColor); font-size: var(--smFontSize); text-decoration: none; margin-bottom: var(--smSpacing); }
+        .back-link:hover { color: var(--surfaceTxtColor); }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link">
+        <i class="ri-arrow-left-line"></i> Back to Components
+    </a>
+    <h2>Modals & Overlays</h2>
+
+    <div class="demo-section">
+        <h3>Modal Sizes</h3>
+        <div class="demo-row">
+            <button class="btn outline" data-modal-open="modal-sm">Small Modal</button>
+            <button class="btn outline" data-modal-open="modal-default">Default Modal</button>
+            <button class="btn outline" data-modal-open="modal-lg">Large Modal</button>
+            <button class="btn outline danger" data-modal-open="modal-confirm">Confirm Dialog</button>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Slide Panel (Drawer)</h3>
+        <div class="demo-row">
+            <button class="btn outline" data-modal-open="panel-right">Open Right Panel</button>
+        </div>
+    </div>
+
+    <!-- Small Modal -->
+    <div class="modal-overlay hidden" data-modal="modal-sm">
+        <div class="modal" style="max-width: 360px;">
+            <div class="modal-header">
+                <h5 class="modal-title">Small Modal</h5>
+                <button type="button" class="modal-close-btn" data-modal-close="modal-sm">
+                    <i class="ri-close-line" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <p>This is a small modal dialog. Use it for quick confirmations or brief content.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn secondary" data-modal-close="modal-sm">Cancel</button>
+                <button type="button" class="btn accent" data-modal-close="modal-sm">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Default Modal -->
+    <div class="modal-overlay hidden" data-modal="modal-default">
+        <div class="modal">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Record</h5>
+                <button type="button" class="modal-close-btn" data-modal-close="modal-default">
+                    <i class="ri-close-line" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <div class="fields fields-col">
+                    <div class="field">
+                        <label for="m-title">Title</label>
+                        <input type="text" id="m-title" value="Lorem ipsum">
+                    </div>
+                    <div class="field">
+                        <label for="m-desc">Description</label>
+                        <textarea id="m-desc" placeholder="Enter description..."></textarea>
+                    </div>
+                    <div class="field" style="flex-direction:row; align-items:center; gap:10px;">
+                        <input type="checkbox" id="m-active" class="switch" checked>
+                        <label for="m-active" style="margin:0;">Active</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn secondary" data-modal-close="modal-default">Cancel</button>
+                <button type="button" class="btn accent" data-modal-close="modal-default">
+                    <i class="ri-save-line" aria-hidden="true"></i>
+                    Save
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Large Modal -->
+    <div class="modal-overlay hidden" data-modal="modal-lg">
+        <div class="modal lg">
+            <div class="modal-header">
+                <h5 class="modal-title">API Preview</h5>
+                <button type="button" class="modal-close-btn" data-modal-close="modal-lg">
+                    <i class="ri-close-line" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-content" style="padding:0; overflow:hidden;">
+                <div class="api-preview-modal" style="height:420px; border-top:1px solid var(--surfaceAlt2Color);">
+                    <div class="api-preview-sidebar">
+                        <div class="api-preview-sidebar-title">Endpoints</div>
+                        <button class="api-nav-item active" data-endpoint="list">
+                            <span class="http-badge get">GET</span>
+                            <span class="api-nav-label">List records</span>
+                        </button>
+                        <button class="api-nav-item" data-endpoint="view">
+                            <span class="http-badge get">GET</span>
+                            <span class="api-nav-label">View record</span>
+                        </button>
+                        <button class="api-nav-item" data-endpoint="create">
+                            <span class="http-badge post">POST</span>
+                            <span class="api-nav-label">Create record</span>
+                        </button>
+                        <button class="api-nav-item" data-endpoint="update">
+                            <span class="http-badge patch">PATCH</span>
+                            <span class="api-nav-label">Update record</span>
+                        </button>
+                        <button class="api-nav-item" data-endpoint="delete">
+                            <span class="http-badge delete">DELETE</span>
+                            <span class="api-nav-label">Delete record</span>
+                        </button>
+                    </div>
+                    <div class="api-preview-content">
+                        <!-- List Records -->
+                        <div class="api-panel" data-panel="list">
+                            <div class="api-preview-content-header">
+                                <span class="http-badge get">GET</span>
+                                /api/collections/posts/records
+                            </div>
+                            <pre class="api-preview-code"><code class="language-json">{
+  "page": 1,
+  "perPage": 30,
+  "totalItems": 2,
+  "totalPages": 1,
+  "items": [
+    {
+      "id": "ae40239d2pvute7",
+      "collectionId": "a98f514eb05f454",
+      "collectionName": "posts",
+      "created": "2022-06-25 11:03:45.876",
+      "updated": "2022-06-25 11:03:45.876",
+      "title": "Hello World",
+      "active": true
+    },
+    {
+      "id": "d08dfc4f4d84419",
+      "collectionId": "a98f514eb05f454",
+      "collectionName": "posts",
+      "created": "2022-06-26 09:12:31.003",
+      "updated": "2022-06-27 14:50:22.117",
+      "title": "Second Post",
+      "active": false
+    }
+  ]
+}</code></pre>
+                        </div>
+                        <!-- View Record -->
+                        <div class="api-panel" data-panel="view" hidden>
+                            <div class="api-preview-content-header">
+                                <span class="http-badge get">GET</span>
+                                /api/collections/posts/records/:id
+                            </div>
+                            <pre class="api-preview-code"><code class="language-json">{
+  "id": "ae40239d2pvute7",
+  "collectionId": "a98f514eb05f454",
+  "collectionName": "posts",
+  "created": "2022-06-25 11:03:45.876",
+  "updated": "2022-06-25 11:03:45.876",
+  "title": "Hello World",
+  "active": true
+}</code></pre>
+                        </div>
+                        <!-- Create Record -->
+                        <div class="api-panel" data-panel="create" hidden>
+                            <div class="api-preview-content-header">
+                                <span class="http-badge post">POST</span>
+                                /api/collections/posts/records
+                            </div>
+                            <pre class="api-preview-code"><code class="language-json">{
+  "id": "e22ybynvwrhrn6z",
+  "collectionId": "a98f514eb05f454",
+  "collectionName": "posts",
+  "created": "2022-06-25 11:03:45.876",
+  "updated": "2022-06-25 11:03:45.876",
+  "title": "New Post",
+  "active": true
+}</code></pre>
+                        </div>
+                        <!-- Update Record -->
+                        <div class="api-panel" data-panel="update" hidden>
+                            <div class="api-preview-content-header">
+                                <span class="http-badge patch">PATCH</span>
+                                /api/collections/posts/records/:id
+                            </div>
+                            <pre class="api-preview-code"><code class="language-json">{
+  "id": "ae40239d2pvute7",
+  "collectionId": "a98f514eb05f454",
+  "collectionName": "posts",
+  "created": "2022-06-25 11:03:45.876",
+  "updated": "2022-06-27 16:44:28.190",
+  "title": "Updated Title",
+  "active": false
+}</code></pre>
+                        </div>
+                        <!-- Delete Record -->
+                        <div class="api-panel" data-panel="delete" hidden>
+                            <div class="api-preview-content-header">
+                                <span class="http-badge delete">DELETE</span>
+                                /api/collections/posts/records/:id
+                            </div>
+                            <pre class="api-preview-code"><code class="language-json">// HTTP 204 No Content
+// The record was successfully deleted.
+// No response body is returned.</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn secondary" data-modal-close="modal-lg">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirm Modal -->
+    <div class="modal-overlay hidden" data-modal="modal-confirm">
+        <div class="modal" style="max-width: 380px;">
+            <div class="modal-header">
+                <h5 class="modal-title txt-danger">
+                    <i class="ri-delete-bin-7-line" aria-hidden="true"></i>
+                    Delete records
+                </h5>
+                <button type="button" class="modal-close-btn" data-modal-close="modal-confirm">
+                    <i class="ri-close-line" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <p>Are you sure you want to delete the selected <strong>3 records</strong>?</p>
+                <p class="txt-hint txt-sm">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn secondary" data-modal-close="modal-confirm">Cancel</button>
+                <button type="button" class="btn danger" data-modal-close="modal-confirm">
+                    <i class="ri-delete-bin-7-line" aria-hidden="true"></i>
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Slide Panel -->
+    <div class="modal-overlay hidden" data-modal="panel-right" style="justify-content:flex-end; padding:0;">
+        <div class="slide-panel">
+            <div class="modal-header">
+                <h5 class="modal-title">Record Details</h5>
+                <button type="button" class="modal-close-btn" data-modal-close="panel-right">
+                    <i class="ri-close-line" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <div class="fields fields-col">
+                    <div class="field">
+                        <label>ID</label>
+                        <div style="display:flex; align-items:center; gap:5px;">
+                            <span class="label txt-code">UP06yiygImYTMCI</span>
+                            <button class="copy-to-clipboard" data-copy="UP06yiygImYTMCI"><i class="ri-file-copy-line"></i></button>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Title</label>
+                        <input type="text" value="Lorem ipsum">
+                    </div>
+                    <div class="field">
+                        <label>Active</label>
+                        <div class="field" style="flex-direction:row; align-items:center; gap:10px;">
+                            <input type="checkbox" id="panel-active" class="switch" checked>
+                            <label for="panel-active" style="margin:0; font-weight:400;">Enabled</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Options</label>
+                        <div class="inline-flex gap-5">
+                            <span class="label">optionB</span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Created</label>
+                        <span class="txt-sm txt-hint">2022-07-02 07:46:16.478Z</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn sm outline danger m-r-auto">
+                    <i class="ri-delete-bin-7-line"></i> Delete
+                </button>
+                <button type="button" class="btn sm secondary" data-modal-close="panel-right">Cancel</button>
+                <button type="button" class="btn sm accent">Save</button>
+            </div>
+        </div>
+    </div>
+
+<script src="../lib/prism/prism.min.js"></script>
+<script src="../lib/prism/prism-json.min.js"></script>
+<script src="../components/js/theme.js"></script>
+<script src="../components/js/modal.js"></script>
+<script src="../components/js/utils.js"></script>
+<script src="../components/js/toast.js"></script>
+<script src="../components/js/api-preview.js"></script>
+</body>
+</html>

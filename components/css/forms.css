@@ -1,0 +1,389 @@
+/* =========================================================
+   Pocket UI — forms.css
+   ========================================================= */
+
+/* --- Field Wrapper --- */
+.fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--siblingSpacing);
+    align-items: flex-start;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+}
+
+/* Vertical form layout — fields stack full-width */
+.fields-col {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+}
+
+.field label {
+    font-size: var(--smFontSize);
+    line-height: var(--smLineHeight);
+    font-weight: 600;
+    color: var(--surfaceTxtColor);
+    cursor: pointer;
+    user-select: none;
+}
+
+/* --- Base Input / Textarea / Select --- */
+.field input:not([type="checkbox"]):not([type="radio"]),
+.field textarea,
+.field select,
+.input {
+    display: block;
+    width: 100%;
+    height: var(--btnHeight);
+    padding: 0 var(--inputPadding);
+    border: 1px solid var(--inputBorderColor);
+    border-radius: var(--inputBorderRadius);
+    background: var(--inputColor);
+    color: var(--surfaceTxtColor);
+    font-family: var(--fontFamily);
+    font-size: var(--fontSize);
+    line-height: var(--lineHeight);
+    outline: none;
+    transition:
+        background var(--animationSpeed),
+        border-color var(--animationSpeed);
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.field textarea {
+    height: auto;
+    min-height: 100px;
+    padding: var(--tableSpacing) var(--inputPadding);
+    resize: vertical;
+}
+
+.field input:not([type="checkbox"]):not([type="radio"]):hover,
+.field textarea:hover,
+.field select:hover {
+    background: var(--inputFocusColor);
+}
+
+.field input:not([type="checkbox"]):not([type="radio"]):focus,
+.field textarea:focus,
+.field select:focus {
+    background: var(--inputFocusColor);
+    border-color: var(--accentColor);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: var(--surfaceTxtHintColor);
+}
+
+.field input:disabled,
+.field textarea:disabled,
+.field select:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* --- Addon Field (fused prefix/suffix + input in same container) --- */
+/*
+ * Usage: <div class="field addon">
+ *            <span class="input-addon">prefix</span>
+ *            <input type="text">
+ *            <button class="input-addon">suffix</button>
+ *        </div>
+ *
+ * Border lives on the CONTAINER — all children are borderless inside.
+ * :has(input:focus) drives hover/focus state for the whole row.
+ */
+.field.addon {
+    flex-direction: row;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    gap: 0;
+    border: 1px solid var(--inputBorderColor);
+    border-radius: var(--inputBorderRadius);
+    background: var(--inputColor);
+    overflow: hidden;
+    transition: border-color var(--animationSpeed), background var(--animationSpeed);
+}
+
+/* hover */
+.field.addon:hover {
+    background: var(--inputFocusColor);
+}
+
+/* focus — triggered when any input/textarea inside is focused */
+.field.addon:has(input:focus),
+.field.addon:has(textarea:focus) {
+    border-color: var(--accentColor);
+    background: var(--inputFocusColor);
+}
+
+/* input/textarea inside: no own border, transparent bg — container handles it */
+.field.addon input:not([type="checkbox"]):not([type="radio"]),
+.field.addon textarea,
+.field.addon .input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+    /* height comes from base style (var(--btnHeight)) — do not override with 100% */
+}
+
+/* separator line between addon and input */
+.input-addon + input,
+.input-addon + textarea,
+.input-addon + .input,
+input + .input-addon,
+textarea + .input-addon,
+.input + .input-addon {
+    border-left: 1px solid var(--inputBorderColor);
+    transition: border-color var(--animationSpeed);
+}
+
+.field.addon:has(input:focus) .input-addon + input,
+.field.addon:has(input:focus) input + .input-addon,
+.field.addon:has(textarea:focus) .input-addon + textarea,
+.field.addon:has(textarea:focus) textarea + .input-addon {
+    border-color: color-mix(in srgb, var(--accentColor), transparent 60%);
+}
+
+/* static prefix/suffix slot */
+.input-addon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--inputPadding);
+    background: var(--surfaceAlt2Color);
+    color: var(--surfaceTxtHintColor);
+    font-size: var(--smFontSize);
+    white-space: nowrap;
+    flex-shrink: 0;
+    user-select: none;
+    transition: background var(--animationSpeed), color var(--animationSpeed);
+    cursor: default;
+}
+
+/* clickable addon (button) */
+button.input-addon {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+button.input-addon:hover {
+    background: var(--surfaceAlt3Color);
+    color: var(--surfaceTxtColor);
+}
+
+/* --- Select Arrow --- */
+.field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='%236b747b'%3E%3Cpath d='M12 15l-6-6h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 32px;
+    cursor: pointer;
+}
+
+/* --- Checkbox & Radio --- */
+.field input[type="checkbox"]:not(.switch),
+.field input[type="radio"] {
+    width: var(--checkboxSize);
+    height: var(--checkboxSize);
+    border: 2px solid var(--inputBorderColor);
+    border-radius: 4px;
+    background: var(--inputColor);
+    cursor: pointer;
+    flex-shrink: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--animationSpeed), border-color var(--animationSpeed);
+    position: relative;
+}
+
+.field input[type="radio"] {
+    border-radius: 50%;
+}
+
+.field input[type="checkbox"]:not(.switch):checked,
+.field input[type="radio"]:checked {
+    background: var(--accentColor);
+    border-color: var(--accentColor);
+}
+
+.field input[type="checkbox"]:not(.switch):checked::after {
+    content: '';
+    display: block;
+    width: 5px;
+    height: 9px;
+    border: 2px solid #fff;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg) translateY(-1px);
+}
+
+.field input[type="radio"]:checked::after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #fff;
+}
+
+/* Checkbox/radio label alignment */
+.field:has(input[type="checkbox"]:not(.switch)),
+.field:has(input[type="radio"]) {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+/* --- Switch / Toggle --- */
+input[type="checkbox"].switch {
+    --switchW: 38px;
+    --switchH: 22px;
+    --thumbSize: 16px;
+    width: var(--switchW);
+    height: var(--switchH);
+    border-radius: var(--switchH);
+    border: none;
+    background: var(--surfaceAlt3Color);
+    cursor: pointer;
+    position: relative;
+    transition: background var(--animationSpeed);
+    flex-shrink: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    display: inline-block;
+    vertical-align: middle;
+    outline: none;
+    overflow: hidden;
+}
+
+input[type="checkbox"].switch::after {
+    content: '';
+    display: block;
+    width: var(--thumbSize);
+    height: var(--thumbSize);
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    transform: translateY(-50%);
+    transition: left var(--animationSpeed);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    border: none;
+}
+
+input[type="checkbox"].switch:checked {
+    background: var(--accentColor);
+}
+
+input[type="checkbox"].switch:checked::after {
+    left: calc(var(--switchW) - var(--thumbSize) - 3px);
+    transform: translateY(-50%);
+    border: none;
+    width: var(--thumbSize);
+    height: var(--thumbSize);
+    background: #fff;
+    border-radius: 50%;
+}
+
+input[type="checkbox"].switch.sm {
+    --switchW: 30px;
+    --switchH: 18px;
+    --thumbSize: 12px;
+}
+
+/* --- Field Error / Help Text --- */
+.field-error {
+    font-size: var(--smFontSize);
+    color: var(--dangerColor);
+    margin-top: 2px;
+}
+
+.field-hint {
+    font-size: var(--smFontSize);
+    color: var(--surfaceTxtHintColor);
+    margin-top: 2px;
+}
+
+/* --- Input with icon/addon --- */
+.input-icon {
+    position: relative;
+}
+.input-icon i {
+    position: absolute;
+    top: 50%;
+    left: var(--inputPadding);
+    transform: translateY(-50%);
+    color: var(--surfaceTxtHintColor);
+    pointer-events: none;
+}
+.input-icon input {
+    padding-left: calc(var(--inputPadding) + 22px);
+}
+
+/* --- Searchbar --- */
+/* Full-width bar variant (page header / inline filter) */
+.searchbar {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: var(--siblingSpacing);
+    background: var(--surfaceColor);
+    border-bottom: 1px solid var(--surfaceAlt2Color);
+    padding: var(--tableSpacing) var(--smSpacing);
+}
+
+.searchbar .searchbar-input {
+    flex: 1;
+    min-width: 0;
+    height: var(--smBtnHeight);
+    padding: 0 var(--inputPadding);
+    border: 1px solid var(--inputBorderColor);
+    border-radius: 30px;
+    background: var(--inputColor);
+    color: var(--surfaceTxtColor);
+    font-family: var(--fontFamily);
+    font-size: var(--fontSize);
+    outline: none;
+    transition: border-color var(--animationSpeed), background var(--animationSpeed);
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.searchbar .searchbar-input:hover {
+    background: var(--inputFocusColor);
+}
+
+.searchbar .searchbar-input:focus {
+    border-color: var(--accentColor);
+    background: var(--inputFocusColor);
+}
+
+/* --- Form Group (label + fields) --- */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--siblingSpacing);
+    margin-bottom: var(--smSpacing);
+}
+
+.form-group + .form-group {
+    padding-top: var(--smSpacing);
+    border-top: 1px solid var(--surfaceAlt2Color);
+}

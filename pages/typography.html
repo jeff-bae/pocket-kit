@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko" data-color-scheme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typography — Pocket UI</title>
+    <link rel="stylesheet" href="../lib/fonts/remixicon/remixicon.css">
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="../components/css/typography.css">
+    <link rel="stylesheet" href="../components/css/layout.css">
+    <style>
+        body { padding: var(--spacing); max-width: var(--wrapperWidth); margin: 0 auto; }
+        .demo-section { margin-bottom: var(--spacing); }
+        .demo-section h3 { margin-bottom: var(--smSpacing); font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--surfaceTxtHintColor); border-bottom: 1px solid var(--surfaceAlt2Color); padding-bottom: 8px; }
+        .demo-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--surfaceTxtHintColor); font-size: var(--smFontSize); text-decoration: none; margin-bottom: var(--smSpacing); }
+        .back-link:hover { color: var(--surfaceTxtColor); }
+        .color-swatch { display: flex; align-items: center; gap: 10px; padding: 10px; border-radius: var(--borderRadius); border: 1px solid var(--surfaceAlt2Color); }
+        .swatch-box { width: 40px; height: 40px; border-radius: var(--borderRadius); border: 1px solid rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link">
+        <i class="ri-arrow-left-line"></i> Back to Components
+    </a>
+    <h2>Typography & Colors</h2>
+
+    <div class="demo-section">
+        <h3>Headings</h3>
+        <h1>Heading 1 — IBM Plex Sans 28px</h1>
+        <h2>Heading 2 — IBM Plex Sans 24px</h2>
+        <h3 style="margin-bottom:0;">Heading 3 — IBM Plex Sans 20px</h3>
+        <h4 style="margin-bottom:0;">Heading 4 — IBM Plex Sans 18px</h4>
+        <h5 style="margin-bottom:0;">Heading 5 — IBM Plex Sans 16px</h5>
+        <h6 style="margin-bottom:0;">Heading 6 — IBM Plex Sans 15px</h6>
+    </div>
+
+    <div class="demo-section">
+        <h3>Body Text</h3>
+        <p>Default body text uses IBM Plex Sans at 14px with 22px line height and 0.1px letter spacing. The typeface provides excellent readability for dense data-driven interfaces.</p>
+        <p class="txt-sm">Small text (13px / 16px) used for secondary information, hints, and table data.</p>
+        <p class="txt-lg">Large text (15px / 24px) used for emphasizing key information or introductory paragraphs.</p>
+        <p><strong class="txt-bold">Bold text (font-weight: 600)</strong> is used for labels, headings, and key values.</p>
+        <p><em>Italic text is supported via IBM Plex Sans italic variant.</em></p>
+    </div>
+
+    <div class="demo-section">
+        <h3>Monospace / Code</h3>
+        <p>Inline code uses <code class="txt-code">IBM Plex Mono</code> at 13px. Used for IDs, API endpoints, and code snippets.</p>
+        <div style="background: var(--surfaceAlt1Color); padding: var(--smSpacing); border-radius: var(--borderRadius); font-family: var(--monoFontFamily); font-size: var(--smFontSize);">
+            GET /api/collections/posts/records?page=1&perPage=30
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Text Utilities</h3>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+            <div class="txt-bold">Bold text (.txt-bold)</div>
+            <div class="txt-normal">Normal weight text (.txt-normal)</div>
+            <div class="txt-ellipsis" style="max-width:200px; border:1px dashed var(--surfaceAlt3Color); padding:4px 8px;">Very long text that gets truncated with ellipsis (.txt-ellipsis)</div>
+            <div class="txt-nowrap">Text that never wraps (.txt-nowrap)</div>
+            <div class="txt-strikethrough">Strikethrough text (.txt-strikethrough)</div>
+            <div class="txt-upper">uppercase text (.txt-upper)</div>
+            <div class="txt-center" style="border:1px dashed var(--surfaceAlt3Color); padding:4px;">Centered text (.txt-center)</div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Color Palette — Semantic</h3>
+        <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap:10px;">
+            <div class="color-swatch">
+                <div class="swatch-box" style="background:#1055c9;"></div>
+                <div><div class="txt-sm txt-bold">Accent</div><div class="txt-sm txt-hint">#1055c9</div></div>
+            </div>
+            <div class="color-swatch">
+                <div class="swatch-box" style="background:#25272d;"></div>
+                <div><div class="txt-sm txt-bold">Primary</div><div class="txt-sm txt-hint">#25272d</div></div>
+            </div>
+            <div class="color-swatch">
+                <div class="swatch-box" style="background:#e8eaee;"></div>
+                <div><div class="txt-sm txt-bold">Secondary</div><div class="txt-sm txt-hint">#e8eaee</div></div>
+            </div>
+            <div class="color-swatch">
+                <div class="swatch-box" style="background:#22a96d;"></div>
+                <div><div class="txt-sm txt-bold">Success</div><div class="txt-sm txt-hint">#22a96d</div></div>
+            </div>
+            <div class="color-swatch">
+                <div class="swatch-box" style="background:#c33751;"></div>
+                <div><div class="txt-sm txt-bold">Danger</div><div class="txt-sm txt-hint">#c33751</div></div>
+            </div>
+            <div class="color-swatch">
+                <div class="swatch-box" style="background:#e57534;"></div>
+                <div><div class="txt-sm txt-bold">Warning</div><div class="txt-sm txt-hint">#e57534</div></div>
+            </div>
+            <div class="color-swatch">
+                <div class="swatch-box" style="background:#3376e5;"></div>
+                <div><div class="txt-sm txt-bold">Info</div><div class="txt-sm txt-hint">#3376e5</div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Color Palette — Surface (Light)</h3>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <div style="text-align:center;">
+                <div style="width:60px;height:60px;border-radius:var(--borderRadius);background:var(--surfaceColor);border:1px solid var(--surfaceAlt3Color);"></div>
+                <div class="txt-sm txt-hint m-t-5">Surface</div>
+            </div>
+            <div style="text-align:center;">
+                <div style="width:60px;height:60px;border-radius:var(--borderRadius);background:var(--surfaceAlt1Color);border:1px solid var(--surfaceAlt3Color);"></div>
+                <div class="txt-sm txt-hint m-t-5">Alt1</div>
+            </div>
+            <div style="text-align:center;">
+                <div style="width:60px;height:60px;border-radius:var(--borderRadius);background:var(--surfaceAlt2Color);border:1px solid var(--surfaceAlt3Color);"></div>
+                <div class="txt-sm txt-hint m-t-5">Alt2</div>
+            </div>
+            <div style="text-align:center;">
+                <div style="width:60px;height:60px;border-radius:var(--borderRadius);background:var(--surfaceAlt3Color);"></div>
+                <div class="txt-sm txt-hint m-t-5">Alt3</div>
+            </div>
+            <div style="text-align:center;">
+                <div style="width:60px;height:60px;border-radius:var(--borderRadius);background:var(--surfaceAlt4Color);"></div>
+                <div class="txt-sm txt-hint m-t-5">Alt4</div>
+            </div>
+            <div style="text-align:center;">
+                <div style="width:60px;height:60px;border-radius:var(--borderRadius);background:var(--surfaceAlt5Color);"></div>
+                <div class="txt-sm txt-hint m-t-5">Alt5</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Remixicon Examples</h3>
+        <div class="demo-row" style="font-size: 24px; color: var(--surfaceTxtColor); gap: 16px; flex-wrap: wrap;">
+            <i class="ri-database-2-line" title="ri-database-2-line"></i>
+            <i class="ri-settings-3-line" title="ri-settings-3-line"></i>
+            <i class="ri-bar-chart-box-line" title="ri-bar-chart-box-line"></i>
+            <i class="ri-add-circle-line" title="ri-add-circle-line"></i>
+            <i class="ri-delete-bin-7-line" title="ri-delete-bin-7-line"></i>
+            <i class="ri-edit-2-line" title="ri-edit-2-line"></i>
+            <i class="ri-search-line" title="ri-search-line"></i>
+            <i class="ri-filter-line" title="ri-filter-line"></i>
+            <i class="ri-download-line" title="ri-download-line"></i>
+            <i class="ri-upload-line" title="ri-upload-line"></i>
+            <i class="ri-refresh-line" title="ri-refresh-line"></i>
+            <i class="ri-key-line" title="ri-key-line"></i>
+            <i class="ri-lock-line" title="ri-lock-line"></i>
+            <i class="ri-user-line" title="ri-user-line"></i>
+            <i class="ri-group-line" title="ri-group-line"></i>
+            <i class="ri-folder-2-line" title="ri-folder-2-line"></i>
+            <i class="ri-file-copy-line" title="ri-file-copy-line"></i>
+            <i class="ri-image-line" title="ri-image-line"></i>
+            <i class="ri-toggle-line" title="ri-toggle-line"></i>
+            <i class="ri-list-check" title="ri-list-check"></i>
+            <i class="ri-code-s-slash-line" title="ri-code-s-slash-line"></i>
+            <i class="ri-pushpin-line" title="ri-pushpin-line"></i>
+            <i class="ri-arrow-right-line" title="ri-arrow-right-line"></i>
+            <i class="ri-arrow-left-line" title="ri-arrow-left-line"></i>
+        </div>
+    </div>
+
+<script src="../components/js/theme.js"></script>
+</body>
+</html>

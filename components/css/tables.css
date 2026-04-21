@@ -1,0 +1,238 @@
+/* =========================================================
+   Pocket UI — tables.css
+   ========================================================= */
+
+/* --- Table Wrapper --- */
+.page-table-wrapper {
+    flex: 1;
+    overflow: auto;
+    position: relative;
+}
+
+/* --- Records Table --- */
+.records-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--fontSize);
+    table-layout: auto;
+}
+
+.records-table thead {
+    background: var(--surfaceAlt1Color);
+}
+
+.records-table thead.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: var(--bottomScrollShadow);
+}
+
+.records-table th,
+.records-table td {
+    padding: var(--tableSpacing) var(--smSpacing);
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--surfaceAlt2Color);
+    white-space: nowrap;
+}
+
+.records-table th {
+    font-weight: 600;
+    font-size: var(--smFontSize);
+    color: var(--surfaceTxtHintColor);
+    user-select: none;
+}
+
+/* --- Sort Handle --- */
+.sort-handle {
+    cursor: pointer;
+}
+
+.sort-handle:hover {
+    color: var(--surfaceTxtColor);
+}
+
+.sort-handle.asc::after,
+.sort-handle.desc::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.sort-handle.asc::after {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 5px solid var(--accentColor);
+}
+
+.sort-handle.desc::after {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid var(--accentColor);
+}
+
+/* --- Table Body Rows --- */
+.records-table tbody tr {
+    cursor: pointer;
+    transition: background var(--animationSpeed);
+}
+
+.records-table tbody tr:hover,
+.records-table tbody tr:focus {
+    background: var(--surfaceAlt1Color);
+    outline: none;
+}
+
+.records-table tbody tr.selected {
+    background: var(--surfaceAccentColor);
+}
+
+/* --- Bulk Select Column --- */
+.col-bulk-select {
+    width: 42px;
+    padding-right: 0 !important;
+    flex-shrink: 0;
+}
+
+/* --- Meta Column --- */
+.col-meta {
+    width: 50px;
+    text-align: right;
+    color: var(--surfaceTxtHintColor);
+}
+
+/* --- Record Field Views --- */
+.record-field-view {
+    display: inline-flex;
+    align-items: center;
+    max-width: 280px;
+    overflow: hidden;
+}
+
+.record-field-view .txt {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* --- Bulk Action Bar --- */
+.bulkbar-wrapper {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+}
+
+.bulkbar {
+    display: flex;
+    align-items: center;
+    gap: var(--siblingSpacing);
+    padding: var(--tableSpacing) var(--smSpacing);
+    background: var(--surfaceColor);
+    border-top: 1px solid var(--surfaceAlt2Color);
+    box-shadow: var(--topScrollShadow);
+    pointer-events: all;
+    font-size: var(--smFontSize);
+}
+
+/* --- Responsive Table --- */
+@media (max-width: 768px) {
+    .responsive-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* --- Table Utility --- */
+.load-more-btn {
+    width: 100%;
+    border-radius: 0;
+    border-top: 1px solid var(--surfaceAlt2Color);
+    height: var(--smBtnHeight);
+}
+
+/* --- Formatted Date --- */
+.formatted-date {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: var(--smFontSize);
+}
+
+.formatted-date .primary-date {
+    font-weight: 600;
+    color: var(--surfaceTxtColor);
+}
+
+.formatted-date .secondary-date {
+    color: var(--surfaceTxtHintColor);
+    font-size: 12px;
+}
+
+.formatted-date.short .secondary-date {
+    display: none;
+}
+
+.formatted-date.short:hover .secondary-date {
+    display: block;
+}
+
+/* --- Thumbnail --- */
+.thumb {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    --thumbSize: var(--btnHeight);
+    width: var(--thumbSize);
+    height: var(--thumbSize);
+    border-radius: var(--borderRadius);
+    overflow: hidden;
+    background: var(--surfaceAlt2Color);
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: opacity var(--animationSpeed);
+}
+
+.thumb.sm {
+    --thumbSize: var(--smBtnHeight);
+}
+
+.thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumb:hover {
+    opacity: 0.8;
+}
+
+/* --- Copy to Clipboard --- */
+.copy-to-clipboard {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: transparent;
+    color: var(--surfaceTxtHintColor);
+    cursor: pointer;
+    border-radius: 3px;
+    flex-shrink: 0;
+    transition: color var(--animationSpeed), background var(--animationSpeed);
+    padding: 0;
+    font-size: 14px;
+}
+
+.copy-to-clipboard:hover {
+    color: var(--surfaceTxtColor);
+    background: var(--surfaceAlt2Color);
+}

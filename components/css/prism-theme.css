@@ -1,0 +1,95 @@
+/* =========================================================
+   Pocket UI — prism-theme.css
+   ========================================================= */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    font-family: var(--monoFontFamily);
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--prismTxtColor);
+    background: none;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    tab-size: 2;
+    hyphens: none;
+    direction: ltr;
+}
+
+pre[class*="language-"] {
+    padding: var(--smSpacing);
+    margin: 0;
+    overflow: auto;
+    background: var(--prismBg);
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: var(--prismCommentColor);
+    font-style: italic;
+}
+
+.token.punctuation {
+    color: var(--prismPunctuationColor);
+}
+
+.token.property,
+.token.tag,
+.token.deleted {
+    color: var(--prismPropertyColor);
+}
+
+.token.boolean {
+    color: var(--prismBooleanColor);
+}
+
+.token.number {
+    color: var(--prismNumberColor);
+}
+
+.token.string,
+.token.char,
+.token.inserted {
+    color: var(--prismStringColor);
+}
+
+.token.keyword,
+.token.atrule,
+.token.attr-value {
+    color: var(--prismKeywordColor);
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.token.variable {
+    color: var(--prismFunctionColor);
+}
+
+.token.function,
+.token.class-name,
+.token.selector,
+.token.attr-name,
+.token.builtin {
+    color: var(--prismFunctionColor);
+}
+
+.token.regex,
+.token.important,
+.token.symbol,
+.token.constant {
+    color: var(--prismNumberColor);
+}
+
+.token.important,
+.token.bold {
+    font-weight: 600;
+}
+
+.token.italic {
+    font-style: italic;
+}

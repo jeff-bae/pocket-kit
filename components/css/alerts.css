@@ -1,0 +1,173 @@
+/* =========================================================
+   Pocket UI — alerts.css
+   ========================================================= */
+
+/* --- Alert --- */
+.alert {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--siblingSpacing);
+    padding: var(--tableSpacing) var(--smSpacing);
+    border-radius: var(--borderRadius);
+    border-left: 3px solid currentColor;
+    background: var(--surfaceAlt1Color);
+    color: var(--surfaceTxtColor);
+    font-size: var(--smFontSize);
+    line-height: var(--lineHeight);
+}
+
+.alert i {
+    flex-shrink: 0;
+    font-size: 18px;
+    margin-top: 1px;
+}
+
+.alert.success {
+    background: var(--surfaceSuccessColor);
+    color: var(--successColor);
+}
+.alert.danger {
+    background: var(--surfaceDangerColor);
+    color: var(--dangerColor);
+}
+.alert.warning {
+    background: var(--surfaceWarningColor);
+    color: var(--warningColor);
+}
+.alert.info {
+    background: var(--surfaceInfoColor);
+    color: var(--infoColor);
+}
+.alert.accent {
+    background: var(--surfaceAccentColor);
+    color: var(--accentColor);
+}
+
+/* --- Toast Notifications --- */
+.toasts-container {
+    position: fixed;
+    bottom: var(--smSpacing);
+    right: var(--smSpacing);
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: var(--siblingSpacing);
+    max-width: 380px;
+    width: 100%;
+    pointer-events: none;
+}
+
+.toast {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px var(--smSpacing);
+    background: var(--surfaceColor);
+    border: 1px solid var(--surfaceAlt3Color);
+    border-radius: var(--lgBorderRadius);
+    box-shadow: 0 4px 20px rgba(34,36,42,0.14);
+    pointer-events: all;
+    animation: toastIn var(--slideAnimationSpeed) ease;
+    position: relative;
+}
+
+@keyframes toastIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.toast-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.toast.success .toast-icon { color: var(--successColor); }
+.toast.danger  .toast-icon { color: var(--dangerColor); }
+.toast.warning .toast-icon { color: var(--warningColor); }
+.toast.info    .toast-icon { color: var(--infoColor); }
+
+.toast-content {
+    flex: 1;
+    font-size: var(--smFontSize);
+    line-height: var(--lineHeight);
+    color: var(--surfaceTxtColor);
+    padding-right: 24px;
+}
+
+.toast-remove {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 3px;
+    background: transparent;
+    color: var(--surfaceTxtHintColor);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    transition: background var(--animationSpeed), color var(--animationSpeed);
+}
+
+.toast-remove:hover {
+    background: var(--surfaceAlt2Color);
+    color: var(--surfaceTxtColor);
+}
+
+/* --- Demo Alert Banner --- */
+.demo-alert {
+    text-align: center;
+    font-size: var(--smFontSize);
+    line-height: var(--smLineHeight);
+    padding: 7px var(--smSpacing);
+    border-bottom: 1px solid var(--surfaceAlt2Color);
+    background: rgba(0, 0, 0, 0.06);
+}
+
+/* --- Tooltip --- */
+.tooltip,
+.pb-tooltip {
+    position: absolute;
+    padding: 5px 10px;
+    background: var(--tooltipSurfaceColor);
+    color: var(--tooltipTxtColor);
+    border-radius: var(--borderRadius);
+    font-size: var(--smFontSize);
+    line-height: var(--smLineHeight);
+    pointer-events: none;
+    z-index: 9999;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(34,36,42,0.18);
+    animation: tooltipIn var(--animationSpeed) ease;
+}
+
+@keyframes tooltipIn {
+    from { opacity: 0; transform: translateY(2px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.tooltip-bottom {
+    top: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+[title]:hover .tooltip,
+.has-tooltip:hover .tooltip {
+    display: block;
+}

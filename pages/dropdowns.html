@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko" data-color-scheme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdowns — Pocket UI</title>
+    <link rel="stylesheet" href="../lib/fonts/remixicon/remixicon.css">
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="../components/css/typography.css">
+    <link rel="stylesheet" href="../components/css/buttons.css">
+    <link rel="stylesheet" href="../components/css/dropdowns.css">
+    <link rel="stylesheet" href="../components/css/forms.css">
+    <link rel="stylesheet" href="../components/css/layout.css">
+    <style>
+        body { padding: var(--spacing); }
+        .demo-section { margin-bottom: var(--spacing); }
+        .demo-section h3 { margin-bottom: var(--smSpacing); font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--surfaceTxtHintColor); border-bottom: 1px solid var(--surfaceAlt2Color); padding-bottom: 8px; }
+        .demo-row { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--surfaceTxtHintColor); font-size: var(--smFontSize); text-decoration: none; margin-bottom: var(--smSpacing); }
+        .back-link:hover { color: var(--surfaceTxtColor); }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link">
+        <i class="ri-arrow-left-line"></i> Back to Components
+    </a>
+    <h2>Dropdowns</h2>
+
+    <div class="demo-section">
+        <h3>Basic Dropdown</h3>
+        <div class="demo-row">
+            <div class="dropdown-wrapper">
+                <button class="btn secondary" data-dropdown-trigger aria-expanded="false">
+                    Options <i class="ri-arrow-drop-down-line"></i>
+                </button>
+                <div class="dropdown">
+                    <button class="dropdown-item">
+                        <i class="ri-edit-2-line"></i> Edit
+                    </button>
+                    <button class="dropdown-item">
+                        <i class="ri-file-copy-line"></i> Duplicate
+                    </button>
+                    <hr>
+                    <button class="dropdown-item txt-danger">
+                        <i class="ri-delete-bin-7-line"></i> Delete
+                    </button>
+                </div>
+            </div>
+
+            <div class="dropdown-wrapper left">
+                <button class="btn secondary" data-dropdown-trigger aria-expanded="false">
+                    Right-Aligned <i class="ri-arrow-drop-down-line"></i>
+                </button>
+                <div class="dropdown nowrap">
+                    <button class="dropdown-item">View record</button>
+                    <button class="dropdown-item active">Edit record</button>
+                    <button class="dropdown-item">Export as JSON</button>
+                    <hr>
+                    <button class="dropdown-item txt-danger">Delete record</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Color Scheme Dropdown</h3>
+        <div class="demo-row">
+            <div class="dropdown-wrapper">
+                <button class="btn transparent secondary circle" data-dropdown-trigger>
+                    <i class="ri-sun-line"></i>
+                </button>
+                <div class="dropdown sm nowrap">
+                    <button class="dropdown-item dropdown-item-light" data-theme-btn="light">
+                        <i class="ri-sun-line"></i>
+                        <span>Light</span>
+                    </button>
+                    <button class="dropdown-item dropdown-item-light" data-theme-btn="dark">
+                        <i class="ri-moon-line"></i>
+                        <span>Dark</span>
+                    </button>
+                    <button class="dropdown-item dropdown-item-light active" data-theme-btn="auto">
+                        <i class="ri-subtract-line"></i>
+                        <span>Auto</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>User Dropdown</h3>
+        <div class="demo-row">
+            <div class="dropdown-wrapper">
+                <button class="btn transparent" data-dropdown-trigger>
+                    <span>admin@example.com</span>
+                    <i class="ri-arrow-drop-down-line"></i>
+                </button>
+                <div class="dropdown sm nowrap">
+                    <a class="dropdown-item dropdown-item-manage" href="#">
+                        <i class="ri-group-line"></i>
+                        <span>Manage superusers</span>
+                    </a>
+                    <hr>
+                    <button class="dropdown-item dropdown-item-logout txt-danger">
+                        <i class="ri-logout-circle-line"></i>
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Dropdown with Search</h3>
+        <div class="demo-row">
+            <div class="dropdown-wrapper">
+                <button class="btn secondary" data-dropdown-trigger>
+                    Select collection <i class="ri-arrow-drop-down-line"></i>
+                </button>
+                <div class="dropdown" style="min-width: 220px;">
+                    <div class="dropdown-search">
+                        <input type="text" placeholder="Search...">
+                    </div>
+                    <button class="dropdown-item"><i class="ri-group-line"></i> users</button>
+                    <button class="dropdown-item"><i class="ri-folder-2-line"></i> messages</button>
+                    <button class="dropdown-item active"><i class="ri-folder-2-line"></i> posts</button>
+                    <button class="dropdown-item"><i class="ri-table-line"></i> messagesReport</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Column Toggle Dropdown</h3>
+        <div class="demo-row">
+            <div class="dropdown-wrapper">
+                <button class="btn sm secondary transparent circle" data-dropdown-trigger title="Toggle columns">
+                    <i class="ri-more-2-line"></i>
+                </button>
+                <div class="dropdown sm gap-0" style="min-width: 160px;">
+                    <div class="dropdown-item">
+                        <div class="field" style="flex-direction:row;align-items:center;gap:8px;">
+                            <input type="checkbox" class="switch sm" id="col-title" checked>
+                            <label for="col-title" style="margin:0;font-weight:400;">title</label>
+                        </div>
+                    </div>
+                    <div class="dropdown-item">
+                        <div class="field" style="flex-direction:row;align-items:center;gap:8px;">
+                            <input type="checkbox" class="switch sm" id="col-desc">
+                            <label for="col-desc" style="margin:0;font-weight:400;">description</label>
+                        </div>
+                    </div>
+                    <div class="dropdown-item">
+                        <div class="field" style="flex-direction:row;align-items:center;gap:8px;">
+                            <input type="checkbox" class="switch sm" id="col-active" checked>
+                            <label for="col-active" style="margin:0;font-weight:400;">active</label>
+                        </div>
+                    </div>
+                    <div class="dropdown-item">
+                        <div class="field" style="flex-direction:row;align-items:center;gap:8px;">
+                            <input type="checkbox" class="switch sm" id="col-created" checked>
+                            <label for="col-created" style="margin:0;font-weight:400;">created</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="../components/js/theme.js"></script>
+<script src="../components/js/dropdown.js"></script>
+</body>
+</html>

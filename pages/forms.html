@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko" data-color-scheme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms — Pocket UI</title>
+    <link rel="stylesheet" href="../lib/fonts/remixicon/remixicon.css">
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="../components/css/typography.css">
+    <link rel="stylesheet" href="../components/css/buttons.css">
+    <link rel="stylesheet" href="../components/css/forms.css">
+    <link rel="stylesheet" href="../components/css/alerts.css">
+    <link rel="stylesheet" href="../components/css/layout.css">
+    <style>
+        body { padding: var(--spacing); max-width: var(--lgWrapperWidth); margin: 0 auto; }
+        .demo-section { margin-bottom: var(--spacing); }
+        .demo-section h3 { margin-bottom: var(--smSpacing); font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--surfaceTxtHintColor); border-bottom: 1px solid var(--surfaceAlt2Color); padding-bottom: 8px; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--surfaceTxtHintColor); font-size: var(--smFontSize); text-decoration: none; margin-bottom: var(--smSpacing); }
+        .back-link:hover { color: var(--surfaceTxtColor); }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link">
+        <i class="ri-arrow-left-line"></i> Back to Components
+    </a>
+    <h2>Forms & Inputs</h2>
+
+    <div class="demo-section">
+        <h3>Text Inputs</h3>
+        <div class="fields fields-col" style="max-width:520px;">
+            <div class="field">
+                <label for="inp1">Name</label>
+                <input type="text" id="inp1" placeholder="Enter your name">
+            </div>
+            <div class="field">
+                <label for="inp2">Email</label>
+                <input type="email" id="inp2" placeholder="email@example.com">
+            </div>
+            <div class="field">
+                <label for="inp3">Password</label>
+                <input type="password" id="inp3" placeholder="••••••••">
+            </div>
+            <div class="field">
+                <label for="inp4">Disabled</label>
+                <input type="text" id="inp4" placeholder="Disabled input" disabled>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Textarea</h3>
+        <div class="field" style="max-width: 520px;">
+            <label for="ta1">Description</label>
+            <textarea id="ta1" placeholder="Enter a description..."></textarea>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Select</h3>
+        <div class="field" style="max-width: 300px;">
+            <label for="sel1">Option</label>
+            <select id="sel1">
+                <option value="">Choose an option</option>
+                <option value="a">Option A</option>
+                <option value="b">Option B</option>
+                <option value="c">Option C</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Addon Fields (fused prefix / suffix)</h3>
+        <div style="max-width: 460px; display: flex; flex-direction: column; gap: 12px;">
+
+            <!-- text prefix -->
+            <div class="field addon">
+                <span class="input-addon">https://</span>
+                <input type="text" placeholder="example.com">
+            </div>
+
+            <!-- icon prefix + text suffix -->
+            <div class="field addon">
+                <span class="input-addon"><i class="ri-mail-line"></i></span>
+                <input type="text" placeholder="email@example.com">
+                <span class="input-addon">.com</span>
+            </div>
+
+            <!-- icon prefix + copy button suffix -->
+            <div class="field addon">
+                <span class="input-addon"><i class="ri-link"></i></span>
+                <input type="text" value="/api/collections/posts/records" readonly
+                       style="font-family:var(--monoFontFamily);font-size:var(--smFontSize);">
+                <button type="button" class="input-addon" title="Copy">
+                    <i class="ri-file-copy-line"></i>
+                </button>
+            </div>
+
+            <!-- text prefix + text suffix -->
+            <div class="field addon">
+                <span class="input-addon">$</span>
+                <input type="number" placeholder="0.00">
+                <span class="input-addon">USD</span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Searchbar style (pill button + rounded input)</h3>
+        <div style="border:1px solid var(--surfaceAlt2Color); border-radius:var(--lgBorderRadius); overflow:hidden;">
+            <div class="searchbar">
+                <button type="button" class="btn sm pill secondary transparent" style="flex-shrink:0;">
+                    <i class="ri-search-line" aria-hidden="true"></i>
+                    <i class="ri-arrow-drop-down-line" aria-hidden="true"></i>
+                </button>
+                <input type="text" class="searchbar-input" placeholder="Search term or filter...">
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Checkbox & Radio</h3>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+            <div class="field">
+                <input type="checkbox" id="chk1">
+                <label for="chk1">Accept terms and conditions</label>
+            </div>
+            <div class="field">
+                <input type="checkbox" id="chk2" checked>
+                <label for="chk2">Subscribe to newsletter</label>
+            </div>
+            <div class="field">
+                <input type="checkbox" id="chk3" disabled>
+                <label for="chk3">Disabled option</label>
+            </div>
+            <div class="field">
+                <input type="radio" id="rad1" name="radio-demo" value="a">
+                <label for="rad1">Option A</label>
+            </div>
+            <div class="field">
+                <input type="radio" id="rad2" name="radio-demo" value="b" checked>
+                <label for="rad2">Option B</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Switch / Toggle</h3>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <div class="field" style="flex-direction:row; align-items:center; gap:10px;">
+                <input type="checkbox" id="sw1" class="switch">
+                <label for="sw1" style="margin:0;">Enable notifications</label>
+            </div>
+            <div class="field" style="flex-direction:row; align-items:center; gap:10px;">
+                <input type="checkbox" id="sw2" class="switch" checked>
+                <label for="sw2" style="margin:0;">Active (checked)</label>
+            </div>
+            <div class="field" style="flex-direction:row; align-items:center; gap:10px;">
+                <input type="checkbox" id="sw3" class="switch sm">
+                <label for="sw3" style="margin:0;">Small switch</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Form with Validation States</h3>
+        <div style="max-width: 420px; display:flex; flex-direction:column; gap:12px;">
+            <div class="field">
+                <label for="val1">Valid Input</label>
+                <input type="text" id="val1" value="john@example.com" style="border-color: var(--successColor);">
+                <span class="field-hint" style="color: var(--successColor);">
+                    <i class="ri-checkbox-circle-line"></i> Looks good!
+                </span>
+            </div>
+            <div class="field">
+                <label for="val2">Invalid Input</label>
+                <input type="text" id="val2" value="invalid" style="border-color: var(--dangerColor);">
+                <span class="field-error">
+                    <i class="ri-error-warning-line"></i> This field is required.
+                </span>
+            </div>
+            <div class="field">
+                <label for="val3">Hint Text</label>
+                <input type="text" id="val3" placeholder="e.g. johndoe">
+                <span class="field-hint">Username can only contain letters, numbers and underscores.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Inline Fields Row</h3>
+        <div class="fields" style="max-width: 620px;">
+            <div class="field">
+                <label for="fn">First Name</label>
+                <input type="text" id="fn" placeholder="John">
+            </div>
+            <div class="field">
+                <label for="ln">Last Name</label>
+                <input type="text" id="ln" placeholder="Doe">
+            </div>
+        </div>
+        <div class="fields" style="max-width: 620px; margin-top: 10px;">
+            <div class="field">
+                <label for="city">City</label>
+                <input type="text" id="city" placeholder="Seoul">
+            </div>
+            <div class="field" style="max-width: 160px;">
+                <label for="zip">Zip</label>
+                <input type="text" id="zip" placeholder="12345">
+            </div>
+        </div>
+    </div>
+<script src="../components/js/theme.js"></script>
+</body>
+</html>

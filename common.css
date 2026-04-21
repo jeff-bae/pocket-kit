@@ -1,0 +1,515 @@
+/* =========================================================
+   Pocket UI — common.css
+   Design system based on PocketBase Admin UI
+   ========================================================= */
+
+/* --- Fonts --- */
+@font-face {
+    font-display: block;
+    font-family: "IBM Plex Sans";
+    font-style: normal;
+    font-weight: 400;
+    src: url(lib/fonts/ibm-plex-sans/ibm-plex-sans-regular.woff2) format("woff2");
+}
+@font-face {
+    font-display: block;
+    font-family: "IBM Plex Sans";
+    font-style: italic;
+    font-weight: 400;
+    src: url(lib/fonts/ibm-plex-sans/ibm-plex-sans-italic.woff2) format("woff2");
+}
+@font-face {
+    font-display: block;
+    font-family: "IBM Plex Sans";
+    font-style: normal;
+    font-weight: 600;
+    src: url(lib/fonts/ibm-plex-sans/ibm-plex-sans-600.woff2) format("woff2");
+}
+@font-face {
+    font-display: swap;
+    font-family: "IBM Plex Mono";
+    font-style: normal;
+    font-weight: 400;
+    src: url(lib/fonts/ibm-plex-mono/ibm-plex-mono-regular.woff2) format("woff2");
+}
+@font-face {
+    font-display: swap;
+    font-family: "IBM Plex Mono";
+    font-style: normal;
+    font-weight: 600;
+    src: url(lib/fonts/ibm-plex-mono/ibm-plex-mono-600.woff2) format("woff2");
+}
+
+/* --- Design Tokens (Light Theme) --- */
+:root {
+    /* Typography */
+    --fontFamily: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    --monoFontFamily: "IBM Plex Mono", "Courier New", monospace;
+    --fontSize: 14px;
+    --smFontSize: 13px;
+    --lgFontSize: 15px;
+    --lineHeight: 22px;
+    --smLineHeight: 16px;
+    --lgLineHeight: 24px;
+
+    /* Spacing */
+    --spacing: 30px;
+    --smSpacing: 20px;
+    --sidebarSpacing: 14px;
+    --tableSpacing: 12px;
+    --siblingSpacing: 8px;
+    --gridGap: 20px;
+
+    /* Sizes */
+    --btnHeight: 45px;
+    --smBtnHeight: 35px;
+    --lgBtnHeight: 52px;
+    --borderRadius: 5px;
+    --lgBorderRadius: 15px;
+    --inputPadding: 13px;
+    --inputBorderRadius: var(--borderRadius);
+    --checkboxSize: 20px;
+
+    /* Layout */
+    --pageSidebarWidth: 240px;
+    --wrapperWidth: 840px;
+    --smWrapperWidth: 430px;
+    --lgWrapperWidth: 1150px;
+
+    /* Shadows */
+    --boxShadow: 0px 8px 5px -5px #2224241a;
+    --leftBoxShadow: -1px 0px 5px 0 #2224241a;
+    --rightBoxShadow: 1px 0px 5px 0 #2224241a;
+    --topScrollShadow: 0px 2px 8px 1px #22242426;
+    --bottomScrollShadow: 0px -2px 8px 1px #22242426;
+    --leftScrollShadow: 3px 0px 5px 0px #22242433;
+    --rightScrollShadow: -3px 0px 5px 0px #22242433;
+
+    /* Animations */
+    --animationSpeed: 0.15s;
+    --activeAnimationSpeed: 70ms;
+    --modalAnimationSpeed: 0.2s;
+    --slideAnimationSpeed: 0.2s;
+    --loaderAnimationSpeed: 1.2s;
+
+    /* Brand Colors */
+    --accentColor: #1055c9;
+    --accentTxtColor: #fff;
+    --accentTxtHintColor: color-mix(in srgb, var(--accentTxtColor), transparent 40%);
+    --accentTxtDisabledColor: color-mix(in srgb, var(--accentTxtColor), transparent 50%);
+    --accentAlt1Color: color-mix(in srgb, var(--accentColor), white 10%);
+    --accentAlt2Color: color-mix(in srgb, var(--accentColor), white 15%);
+
+    /* Semantic Colors */
+    --primaryColor: #25272d;
+    --primaryTxtColor: #fff;
+    --primaryTxtHintColor: color-mix(in srgb, var(--primaryTxtColor), transparent 35%);
+    --primaryTxtDisabledColor: color-mix(in srgb, var(--primaryTxtColor), transparent 50%);
+
+    --secondaryColor: #e8eaee;
+    --secondaryTxtColor: var(--primaryColor);
+    --secondaryTxtHintColor: color-mix(in srgb, var(--secondaryTxtColor), transparent 35%);
+    --secondaryTxtDisabledColor: color-mix(in srgb, var(--secondaryTxtColor), transparent 50%);
+
+    --successColor: #22a96d;
+    --successTxtColor: var(--primaryTxtColor);
+    --successTxtHintColor: var(--primaryTxtHintColor);
+    --successTxtDisabledColor: var(--primaryTxtDisabledColor);
+
+    --dangerColor: #c33751;
+    --dangerTxtColor: var(--primaryTxtColor);
+    --dangerTxtHintColor: var(--primaryTxtHintColor);
+    --dangerTxtDisabledColor: var(--primaryTxtDisabledColor);
+
+    --warningColor: #e57534;
+    --warningTxtColor: var(--primaryTxtColor);
+    --warningTxtHintColor: var(--primaryTxtHintColor);
+    --warningTxtDisabledColor: var(--primaryTxtDisabledColor);
+
+    --infoColor: #3376e5;
+    --infoTxtColor: var(--primaryTxtColor);
+    --infoTxtHintColor: var(--primaryTxtHintColor);
+    --infoTxtDisabledColor: var(--primaryTxtDisabledColor);
+
+    /* Surface Colors (Light) */
+    --surfaceColor: #fff;
+    --surfaceAlt1Color: #f6f7f9;
+    --surfaceAlt2Color: #e8eaee;
+    --surfaceAlt3Color: #dfe2e7;
+    --surfaceAlt4Color: #d9dde2;
+    --surfaceAlt5Color: #d1d6dc;
+    --surfaceTxtColor: #25272d;
+    --surfaceTxtHintColor: #6b747b;
+    --surfaceTxtDisabledColor: #abaeba;
+    --surfaceAccentColor: color-mix(in srgb, var(--accentColor), white 80%);
+    --surfaceInfoColor: color-mix(in srgb, var(--infoColor), white 80%);
+    --surfaceSuccessColor: color-mix(in srgb, var(--successColor), white 80%);
+    --surfaceWarningColor: color-mix(in srgb, var(--warningColor), white 80%);
+    --surfaceDangerColor: color-mix(in srgb, var(--dangerColor), white 80%);
+
+    /* Input */
+    --inputColor: var(--surfaceAlt2Color);
+    --inputFocusColor: var(--surfaceAlt3Color);
+    --inputBorderColor: var(--surfaceAlt4Color);
+
+    /* Selection */
+    --selectionColor: #22242a38;
+
+    /* Links */
+    --linkColor: var(--surfaceTxtColor);
+    --linkFocusColor: var(--surfaceTxtColor);
+
+    /* Overlays */
+    --modalOverlayColor: #22242a38;
+    --tooltipTxtColor: #fff;
+    --tooltipSurfaceColor: #222424e6;
+
+    /* Prism / Code Highlighting */
+    --prismBg: var(--surfaceAlt1Color);
+    --prismTxtColor: var(--surfaceTxtColor);
+    --prismStringColor: #22a96d;
+    --prismNumberColor: #e57534;
+    --prismKeywordColor: #1055c9;
+    --prismPropertyColor: #c33751;
+    --prismCommentColor: var(--surfaceTxtHintColor);
+    --prismPunctuationColor: var(--surfaceTxtHintColor);
+    --prismFunctionColor: #3376e5;
+    --prismBooleanColor: #e57534;
+}
+
+/* --- Dark Theme --- */
+[data-color-scheme="dark"] {
+    --surfaceColor: #1f1f1f;
+    --surfaceTxtColor: #dedede;
+    --surfaceTxtHintColor: color-mix(in srgb, var(--surfaceTxtColor), transparent 45%);
+    --surfaceTxtDisabledColor: color-mix(in srgb, var(--surfaceTxtColor), transparent 65%);
+    --surfaceAlt1Color: color-mix(in srgb, var(--surfaceColor), white 3%);
+    --surfaceAlt2Color: color-mix(in srgb, var(--surfaceColor), white 7%);
+    --surfaceAlt3Color: color-mix(in srgb, var(--surfaceColor), white 12%);
+    --surfaceAlt4Color: color-mix(in srgb, var(--surfaceColor), white 14%);
+    --surfaceAlt5Color: color-mix(in srgb, var(--surfaceColor), white 16%);
+    --primaryColor: #161616;
+    --primaryTxtColor: var(--surfaceTxtColor);
+    --primaryTxtHintColor: color-mix(in srgb, var(--primaryTxtColor), transparent 35%);
+    --primaryTxtDisabledColor: color-mix(in srgb, var(--primaryTxtColor), transparent 50%);
+    --secondaryColor: var(--surfaceAlt2Color);
+    --secondaryTxtColor: var(--surfaceTxtColor);
+    --infoColor: #4273bd;
+    --infoTxtColor: var(--surfaceTxtColor);
+    --surfaceInfoColor: color-mix(in srgb, var(--infoColor), var(--surfaceColor) 45%);
+    --successColor: #27865d;
+    --successTxtColor: var(--surfaceTxtColor);
+    --surfaceSuccessColor: color-mix(in srgb, var(--successColor), var(--surfaceColor) 45%);
+    --warningColor: #cf4e17;
+    --warningTxtColor: var(--surfaceTxtColor);
+    --surfaceWarningColor: color-mix(in srgb, var(--warningColor), var(--surfaceColor) 45%);
+    --dangerColor: #bb303e;
+    --dangerTxtColor: var(--surfaceTxtColor);
+    --surfaceDangerColor: color-mix(in srgb, var(--dangerColor), var(--surfaceColor) 45%);
+    --selectionColor: #ffffff38;
+    --modalOverlayColor: #00000073;
+    --tooltipTxtColor: var(--surfaceTxtColor);
+    --boxShadow: 0px 8px 5px -5px #0000004d;
+    --leftBoxShadow: -1px 0px 5px 0 #0000004d;
+    --rightBoxShadow: 1px 0px 5px 0 #0000004d;
+    --topScrollShadow: 0px 2px 8px 1px #00000073;
+    --bottomScrollShadow: 0px -2px 8px 1px #00000073;
+
+    /* Prism / Code Highlighting (dark overrides) */
+    --prismBg: color-mix(in srgb, var(--surfaceColor), black 20%);
+    --prismStringColor: #4ade80;
+    --prismNumberColor: #fb923c;
+    --prismKeywordColor: #60a5fa;
+    --prismPropertyColor: #f87171;
+    --prismFunctionColor: #93c5fd;
+    --prismBooleanColor: #fb923c;
+}
+
+@media (prefers-color-scheme: dark) {
+    [data-color-scheme="auto"] {
+        --surfaceColor: #1f1f1f;
+        --surfaceTxtColor: #dedede;
+        --surfaceTxtHintColor: color-mix(in srgb, var(--surfaceTxtColor), transparent 45%);
+        --surfaceTxtDisabledColor: color-mix(in srgb, var(--surfaceTxtColor), transparent 65%);
+        --surfaceAlt1Color: color-mix(in srgb, var(--surfaceColor), white 3%);
+        --surfaceAlt2Color: color-mix(in srgb, var(--surfaceColor), white 7%);
+        --surfaceAlt3Color: color-mix(in srgb, var(--surfaceColor), white 12%);
+        --surfaceAlt4Color: color-mix(in srgb, var(--surfaceColor), white 14%);
+        --surfaceAlt5Color: color-mix(in srgb, var(--surfaceColor), white 16%);
+        --primaryColor: #161616;
+        --primaryTxtColor: var(--surfaceTxtColor);
+        --secondaryColor: var(--surfaceAlt2Color);
+        --secondaryTxtColor: var(--surfaceTxtColor);
+        --infoColor: #4273bd;
+        --successColor: #27865d;
+        --warningColor: #cf4e17;
+        --dangerColor: #bb303e;
+        --selectionColor: #ffffff38;
+        --modalOverlayColor: #00000073;
+        --boxShadow: 0px 8px 5px -5px #0000004d;
+        --leftBoxShadow: -1px 0px 5px 0 #0000004d;
+        --rightBoxShadow: 1px 0px 5px 0 #0000004d;
+    }
+}
+
+/* --- Accent Surface --- */
+.accent-surface {
+    --surfaceColor: var(--accentColor);
+    --surfaceTxtColor: #fff;
+    --surfaceTxtHintColor: color-mix(in srgb, var(--surfaceTxtColor), transparent 35%);
+    --surfaceTxtDisabledColor: color-mix(in srgb, var(--surfaceTxtColor), transparent 60%);
+    --surfaceAlt1Color: color-mix(in srgb, var(--surfaceColor), white 5%);
+    --surfaceAlt2Color: color-mix(in srgb, var(--surfaceColor), white 10%);
+    --surfaceAlt3Color: color-mix(in srgb, var(--surfaceColor), white 20%);
+    --surfaceAlt4Color: color-mix(in srgb, var(--surfaceColor), white 30%);
+    --surfaceAlt5Color: color-mix(in srgb, var(--surfaceColor), white 40%);
+    --inputColor: var(--surfaceAlt3Color);
+    --inputFocusColor: var(--surfaceAlt4Color);
+    --inputBorderColor: var(--surfaceAlt5Color);
+    --selectionColor: var(--surfaceAccentColor);
+    --linkColor: var(--surfaceTxtHintColor);
+    --linkFocusColor: var(--surfaceTxtColor);
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: var(--fontSize);
+    line-height: var(--lineHeight);
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--fontFamily);
+    font-size: var(--fontSize);
+    line-height: var(--lineHeight);
+    letter-spacing: 0.1px;
+    color: var(--surfaceTxtColor);
+    background: var(--surfaceColor);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+    background: var(--selectionColor);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 var(--smSpacing);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--surfaceTxtColor);
+}
+
+h1 { font-size: 28px; }
+h2 { font-size: 24px; }
+h3 { font-size: 20px; }
+h4 { font-size: 18px; }
+h5 { font-size: 16px; }
+h6 { font-size: var(--lgFontSize); }
+
+p {
+    margin: 0 0 var(--smSpacing);
+}
+
+a {
+    color: var(--linkColor);
+    text-decoration: none;
+    transition: opacity var(--animationSpeed);
+}
+a:hover, a:focus-visible {
+    color: var(--linkFocusColor);
+    text-decoration: underline;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--surfaceAlt2Color);
+    margin: 5px 0;
+}
+
+code, pre {
+    font-family: var(--monoFontFamily);
+    font-size: var(--smFontSize);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: var(--surfaceAlt3Color);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--surfaceAlt5Color);
+}
+
+/* --- Layout --- */
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--surfaceColor);
+}
+
+.page {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.page-content {
+    flex: 1;
+    overflow: auto;
+    padding: var(--spacing);
+}
+
+.page-content.full-height {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+}
+
+.wrapper {
+    max-width: var(--wrapperWidth);
+    margin: 0 auto;
+    padding: 0 var(--spacing);
+}
+
+.wrapper.sm { max-width: var(--smWrapperWidth); }
+.wrapper.lg { max-width: var(--lgWrapperWidth); }
+
+/* --- Flexbox Utilities --- */
+.flex        { display: flex; }
+.inline-flex { display: inline-flex; }
+.flex-wrap   { flex-wrap: wrap; }
+.flex-nowrap { flex-wrap: nowrap; }
+.flex-col    { flex-direction: column; }
+.flex-fill   { flex: 1 1 auto; }
+.flex-center { align-items: center; justify-content: center; }
+.items-center   { align-items: center; }
+.items-start    { align-items: flex-start; }
+.items-end      { align-items: flex-end; }
+.justify-center { justify-content: center; }
+.justify-between{ justify-content: space-between; }
+.justify-end    { justify-content: flex-end; }
+
+/* --- Display --- */
+.block        { display: block; }
+.inline-block { display: inline-block; }
+.hidden       { display: none !important; }
+.full-width   { width: 100%; }
+.full-height  { height: 100%; }
+
+/* --- Gap --- */
+.gap-0   { gap: 0 !important; }
+.gap-5   { gap: 5px !important; }
+.gap-10  { gap: 10px !important; }
+.gap-15  { gap: 15px !important; }
+.gap-20  { gap: 20px !important; }
+.gap-25  { gap: 25px !important; }
+.gap-30  { gap: 30px !important; }
+.gap-sm  { gap: var(--smSpacing) !important; }
+.gap-base{ gap: var(--spacing) !important; }
+.gap-auto{ gap: auto !important; }
+
+/* --- Margin --- */
+.m-0    { margin: 0 !important; }
+.m-t-0  { margin-top: 0 !important; }
+.m-r-0  { margin-right: 0 !important; }
+.m-b-0  { margin-bottom: 0 !important; }
+.m-l-0  { margin-left: 0 !important; }
+.m-5    { margin: 5px !important; }
+.m-t-5  { margin-top: 5px !important; }
+.m-r-5  { margin-right: 5px !important; }
+.m-b-5  { margin-bottom: 5px !important; }
+.m-l-5  { margin-left: 5px !important; }
+.m-10   { margin: 10px !important; }
+.m-t-10 { margin-top: 10px !important; }
+.m-r-10 { margin-right: 10px !important; }
+.m-b-10 { margin-bottom: 10px !important; }
+.m-l-10 { margin-left: 10px !important; }
+.m-15   { margin: 15px !important; }
+.m-t-15 { margin-top: 15px !important; }
+.m-r-15 { margin-right: 15px !important; }
+.m-b-15 { margin-bottom: 15px !important; }
+.m-l-15 { margin-left: 15px !important; }
+.m-20   { margin: 20px !important; }
+.m-t-20 { margin-top: 20px !important; }
+.m-r-20 { margin-right: 20px !important; }
+.m-b-20 { margin-bottom: 20px !important; }
+.m-l-20 { margin-left: 20px !important; }
+.m-auto { margin: auto !important; }
+.m-t-auto { margin-top: auto !important; }
+.m-r-auto { margin-right: auto !important; }
+.m-b-auto { margin-bottom: auto !important; }
+.m-l-auto { margin-left: auto !important; }
+.m-t-sm { margin-top: var(--smSpacing) !important; }
+.m-r-sm { margin-right: var(--smSpacing) !important; }
+.m-b-sm { margin-bottom: var(--smSpacing) !important; }
+.m-l-sm { margin-left: var(--smSpacing) !important; }
+.m-t-base { margin-top: var(--spacing) !important; }
+.m-r-base { margin-right: var(--spacing) !important; }
+.m-b-base { margin-bottom: var(--spacing) !important; }
+.m-l-base { margin-left: var(--spacing) !important; }
+
+/* --- Padding --- */
+.p-0    { padding: 0 !important; }
+.p-t-0  { padding-top: 0 !important; }
+.p-r-0  { padding-right: 0 !important; }
+.p-b-0  { padding-bottom: 0 !important; }
+.p-l-0  { padding-left: 0 !important; }
+.p-5    { padding: 5px !important; }
+.p-t-5  { padding-top: 5px !important; }
+.p-r-5  { padding-right: 5px !important; }
+.p-b-5  { padding-bottom: 5px !important; }
+.p-l-5  { padding-left: 5px !important; }
+.p-10   { padding: 10px !important; }
+.p-t-10 { padding-top: 10px !important; }
+.p-r-10 { padding-right: 10px !important; }
+.p-b-10 { padding-bottom: 10px !important; }
+.p-l-10 { padding-left: 10px !important; }
+.p-15   { padding: 15px !important; }
+.p-t-15 { padding-top: 15px !important; }
+.p-r-15 { padding-right: 15px !important; }
+.p-b-15 { padding-bottom: 15px !important; }
+.p-l-15 { padding-left: 15px !important; }
+.p-20   { padding: 20px !important; }
+.p-t-20 { padding-top: 20px !important; }
+.p-r-20 { padding-right: 20px !important; }
+.p-b-20 { padding-bottom: 20px !important; }
+.p-l-20 { padding-left: 20px !important; }
+.p-sm   { padding: var(--smSpacing) !important; }
+.p-t-sm { padding-top: var(--smSpacing) !important; }
+.p-r-sm { padding-right: var(--smSpacing) !important; }
+.p-b-sm { padding-bottom: var(--smSpacing) !important; }
+.p-l-sm { padding-left: var(--smSpacing) !important; }
+.p-base { padding: var(--spacing) !important; }
+.p-t-base { padding-top: var(--spacing) !important; }
+.p-r-base { padding-right: var(--spacing) !important; }
+.p-b-base { padding-bottom: var(--spacing) !important; }
+.p-l-base { padding-left: var(--spacing) !important; }
+
+/* --- Scrollable --- */
+.scrollable {
+    overflow: auto;
+    overscroll-behavior: contain;
+}
+.scrollable-x { overflow-x: auto; overflow-y: hidden; }

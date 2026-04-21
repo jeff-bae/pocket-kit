@@ -1,0 +1,95 @@
+/* =========================================================
+   Pocket UI — typography.css
+   ========================================================= */
+
+/* --- Text Size --- */
+.txt-sm   { font-size: var(--smFontSize) !important; line-height: var(--smLineHeight) !important; }
+.txt-base { font-size: var(--fontSize) !important; line-height: var(--lineHeight) !important; }
+.txt-lg   { font-size: var(--lgFontSize) !important; line-height: var(--lgLineHeight) !important; }
+
+/* --- Text Weight --- */
+.txt-bold   { font-weight: 600 !important; }
+.txt-normal { font-weight: 400 !important; }
+
+/* --- Text Alignment --- */
+.txt-center { text-align: center !important; }
+.txt-left   { text-align: left !important; }
+.txt-right  { text-align: right !important; }
+
+/* --- Text Transform --- */
+.txt-upper { text-transform: uppercase !important; }
+.txt-lower { text-transform: lowercase !important; }
+
+/* --- Text Overflow --- */
+.txt-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+}
+.txt-nowrap { white-space: nowrap !important; }
+.txt-break  { word-break: break-all !important; }
+
+/* --- Text Decoration --- */
+.txt-strikethrough { text-decoration: line-through !important; }
+
+/* --- Monospace / Code --- */
+.txt-code {
+    font-family: var(--monoFontFamily);
+    font-size: var(--smFontSize);
+    background: var(--surfaceAlt1Color);
+    border-radius: var(--borderRadius);
+    padding: 1px 5px;
+}
+
+/* --- Text Colors --- */
+.txt-primary   { color: var(--surfaceTxtColor) !important; }
+.txt-hint      { color: var(--surfaceTxtHintColor) !important; }
+.txt-disabled  { color: var(--surfaceTxtDisabledColor) !important; }
+.txt-accent    { color: var(--accentColor) !important; }
+.txt-success   { color: var(--successColor) !important; }
+.txt-danger    { color: var(--dangerColor) !important; }
+.txt-warning   { color: var(--warningColor) !important; }
+.txt-info      { color: var(--infoColor) !important; }
+.txt-white     { color: #fff !important; }
+
+/* --- Labels / Badges --- */
+.label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: var(--borderRadius);
+    font-size: var(--smFontSize);
+    line-height: var(--smLineHeight);
+    font-weight: 600;
+    background: var(--surfaceAlt2Color);
+    color: var(--surfaceTxtColor);
+    white-space: nowrap;
+    transition: background var(--animationSpeed);
+}
+.label.success  { background: var(--surfaceSuccessColor); color: var(--successColor); }
+.label.danger   { background: var(--surfaceDangerColor);  color: var(--dangerColor); }
+.label.warning  { background: var(--surfaceWarningColor); color: var(--warningColor); }
+.label.info     { background: var(--surfaceInfoColor);    color: var(--infoColor); }
+.label.accent   { background: var(--surfaceAccentColor);  color: var(--accentColor); }
+.label.primary  { background: var(--primaryColor);        color: var(--primaryTxtColor); }
+
+/* --- Link Variants --- */
+.link-faded {
+    opacity: 0.5;
+    transition: opacity var(--animationSpeed);
+}
+.link-faded:hover, .link-faded:focus-visible {
+    opacity: 1;
+}
+
+/* --- Missing Value --- */
+.missing-value {
+    display: inline-block;
+    width: 20px;
+    height: 2px;
+    background: var(--surfaceAlt4Color);
+    border-radius: 2px;
+    vertical-align: middle;
+}

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko" data-color-scheme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pocket UI — Component Library</title>
+    <link rel="stylesheet" href="lib/fonts/remixicon/remixicon.css">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="components/css/typography.css">
+    <link rel="stylesheet" href="components/css/buttons.css">
+    <link rel="stylesheet" href="components/css/forms.css">
+    <link rel="stylesheet" href="components/css/navigation.css">
+    <link rel="stylesheet" href="components/css/dropdowns.css">
+    <link rel="stylesheet" href="components/css/tables.css">
+    <link rel="stylesheet" href="components/css/modals.css">
+    <link rel="stylesheet" href="components/css/alerts.css">
+    <link rel="stylesheet" href="components/css/loader.css">
+    <link rel="stylesheet" href="components/css/layout.css">
+    <style>
+        .hero {
+            background: var(--accentColor);
+            color: #fff;
+            padding: var(--spacing) var(--smSpacing);
+            text-align: center;
+        }
+        .hero h1 { color: #fff; margin-bottom: 8px; font-size: 32px; }
+        .hero p { color: rgba(255,255,255,0.75); margin: 0; font-size: var(--lgFontSize); }
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--smSpacing);
+            padding: var(--spacing);
+            max-width: var(--lgWrapperWidth);
+            margin: 0 auto;
+        }
+        .component-card {
+            display: flex;
+            flex-direction: column;
+            background: var(--surfaceColor);
+            border: 1px solid var(--surfaceAlt2Color);
+            border-radius: var(--lgBorderRadius);
+            overflow: hidden;
+            text-decoration: none;
+            transition: box-shadow var(--animationSpeed), transform var(--animationSpeed);
+        }
+        .component-card:hover {
+            box-shadow: 0 4px 20px rgba(34,36,42,0.10);
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+        .card-preview {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: var(--smSpacing);
+            background: var(--surfaceAlt1Color);
+            flex-wrap: wrap;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .card-info {
+            padding: var(--tableSpacing) var(--smSpacing);
+            border-top: 1px solid var(--surfaceAlt2Color);
+        }
+        .card-info h4 {
+            font-size: var(--lgFontSize);
+            margin-bottom: 4px;
+            color: var(--surfaceTxtColor);
+        }
+        .card-info p {
+            font-size: var(--smFontSize);
+            color: var(--surfaceTxtHintColor);
+            margin: 0;
+        }
+        .theme-bar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: var(--siblingSpacing);
+            padding: 10px var(--spacing);
+            border-bottom: 1px solid var(--surfaceAlt2Color);
+            background: var(--surfaceColor);
+        }
+        .theme-bar span {
+            font-size: var(--smFontSize);
+            color: var(--surfaceTxtHintColor);
+            margin-right: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1><i class="ri-database-2-fill" aria-hidden="true" style="vertical-align:middle;margin-right:8px;"></i>Pocket UI</h1>
+    <p>PocketBase Admin UI 디자인 시스템 — 컴포넌트 라이브러리</p>
+</div>
+
+<div class="theme-bar">
+    <span>Color Scheme:</span>
+    <button class="btn sm pill secondary" data-theme-btn="light">
+        <i class="ri-sun-line"></i> Light
+    </button>
+    <button class="btn sm pill secondary" data-theme-btn="dark">
+        <i class="ri-moon-line"></i> Dark
+    </button>
+    <button class="btn sm pill secondary" data-theme-btn="auto">
+        <i class="ri-subtract-line"></i> Auto
+    </button>
+</div>
+
+<div class="components-grid">
+
+    <!-- Buttons -->
+    <a href="pages/buttons.html" class="component-card">
+        <div class="card-preview">
+            <button class="btn accent">Accent</button>
+            <button class="btn secondary">Secondary</button>
+            <button class="btn outline danger">Danger</button>
+            <button class="btn circle transparent secondary"><i class="ri-settings-3-line"></i></button>
+            <button class="btn sm pill success">Small Pill</button>
+        </div>
+        <div class="card-info">
+            <h4><i class="ri-cursor-line" aria-hidden="true"></i> Buttons</h4>
+            <p>Variants, sizes, shapes, icons — primary/outline/transparent styles</p>
+        </div>
+    </a>
+
+    <!-- Forms -->
+    <a href="pages/forms.html" class="component-card">
+        <div class="card-preview" style="flex-direction:column; align-items:stretch; padding: 16px;">
+            <div class="field" style="gap:4px;">
+                <label style="font-size:11px; font-weight:600;">Email</label>
+                <input type="text" placeholder="email@example.com" style="height:32px; font-size:12px; pointer-events:none;">
+            </div>
+            <div style="display:flex; gap:6px; margin-top:6px;">
+                <div class="field" style="flex-direction:row;align-items:center;gap:6px;flex:0 0 auto;">
+                    <input type="checkbox" class="switch sm" checked style="pointer-events:none;">
+                    <label style="font-size:11px;margin:0;">Active</label>
+                </div>
+                <div class="field" style="flex-direction:row;align-items:center;gap:6px;flex:0 0 auto;">
+                    <input type="checkbox" id="idx-chk" style="pointer-events:none;">
+                    <label for="idx-chk" style="font-size:11px;margin:0;">Subscribe</label>
+                </div>
+            </div>
+        </div>
+        <div class="card-info">
+            <h4><i class="ri-input-field" aria-hidden="true"></i> Forms</h4>
+            <p>Inputs, textarea, select, checkbox, radio, switch/toggle</p>
+        </div>
+    </a>
+
+    <!-- Tables -->
+    <a href="pages/tables.html" class="component-card">
+        <div class="card-preview" style="padding:0; align-items:stretch; flex-direction:column;">
+            <div style="padding:8px 12px; background:var(--surfaceAlt1Color); font-size:11px; font-weight:600; color:var(--surfaceTxtHintColor); display:flex; gap:20px; border-bottom:1px solid var(--surfaceAlt2Color);">
+                <span>ID</span><span>Title</span><span>Active</span>
+            </div>
+            <div style="padding:7px 12px; font-size:11px; border-bottom:1px solid var(--surfaceAlt2Color); display:flex; gap:20px;">
+                <span class="label" style="font-size:10px;">WyAw4</span>
+                <span>Another example</span>
+                <span class="label" style="font-size:10px;">False</span>
+            </div>
+            <div style="padding:7px 12px; font-size:11px; border-bottom:1px solid var(--surfaceAlt2Color); display:flex; gap:20px;">
+                <span class="label" style="font-size:10px;">FtHAW</span>
+                <span>Example title</span>
+                <span class="label success" style="font-size:10px;">True</span>
+            </div>
+            <div style="padding:7px 12px; font-size:11px; display:flex; gap:20px;">
+                <span class="label" style="font-size:10px;">UP06y</span>
+                <span>Lorem ipsum</span>
+                <span class="label" style="font-size:10px;">False</span>
+            </div>
+        </div>
+        <div class="card-info">
+            <h4><i class="ri-table-line" aria-hidden="true"></i> Tables</h4>
+            <p>Records table, bulk select, sorted columns, thumbnails</p>
+        </div>
+    </a>
+
+    <!-- Navigation -->
+    <a href="pages/navigation.html" class="component-card">
+        <div class="card-preview" style="padding:0; flex-direction:column; align-items:stretch; justify-content:flex-start;">
+            <header class="app-header accent-surface" style="height:44px; padding:0 12px; flex-shrink:0;">
+                <span style="color:#fff; font-weight:600; font-size:13px;"><i class="ri-database-2-fill" style="margin-right:4px;"></i>Pocket UI</span>
+                <div style="display:flex; gap:4px; margin-left:8px;">
+                    <span class="header-link active" style="height:28px; padding:0 8px; font-size:11px;">Collections</span>
+                    <span class="header-link" style="height:28px; padding:0 8px; font-size:11px;">Logs</span>
+                </div>
+            </header>
+            <div style="display:flex; flex:1; min-height:0; overflow:hidden;">
+                <div class="page-sidebar" style="width:130px; min-height:0;">
+                    <div style="padding:6px;">
+                        <button class="nav-item" style="font-size:11px; padding:4px 6px;"><i class="ri-folder-2-line"></i><span>posts</span></button>
+                        <button class="nav-item active" style="font-size:11px; padding:4px 6px;"><i class="ri-folder-2-line"></i><span>messages</span></button>
+                    </div>
+                </div>
+                <div style="flex:1; padding:8px; font-size:11px; color:var(--surfaceTxtHintColor);">Content area</div>
+            </div>
+        </div>
+        <div class="card-info">
+            <h4><i class="ri-layout-2-line" aria-hidden="true"></i> Navigation</h4>
+            <p>App header, sidebar, breadcrumbs, page header/footer</p>
+        </div>
+    </a>
+
+    <!-- Dropdowns -->
+    <a href="pages/dropdowns.html" class="component-card">
+        <div class="card-preview">
+            <div style="position:relative;">
+                <div class="dropdown" style="position:static; display:flex; min-width:160px; pointer-events:none;">
+                    <button class="dropdown-item active"><i class="ri-edit-2-line"></i> Edit</button>
+                    <button class="dropdown-item"><i class="ri-file-copy-line"></i> Duplicate</button>
+                    <button class="dropdown-item txt-danger"><i class="ri-delete-bin-7-line"></i> Delete</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-info">
+            <h4><i class="ri-menu-3-line" aria-hidden="true"></i> Dropdowns</h4>
+            <p>Menus, search dropdowns, column toggles, theme switcher</p>
+        </div>
+    </a>
+
+    <!-- Modals -->
+    <a href="pages/modals.html" class="component-card">
+        <div class="card-preview" style="flex-direction:column; padding:10px;">
+            <div class="modal" style="position:static; max-width:240px; animation:none; transform:none; box-shadow:0 2px 12px rgba(34,36,42,0.15); pointer-events:none;">
+                <div class="modal-header" style="padding:10px 14px;">
+                    <span class="modal-title" style="font-size:13px;">Edit Record</span>
+                    <button class="modal-close-btn" style="width:24px;height:24px;font-size:16px;">×</button>
+                </div>
+                <div class="modal-content" style="padding:10px 14px;">
+                    <input type="text" value="Lorem ipsum" style="font-size:12px; height:28px; width:100%;">
+                </div>
+                <div class="modal-footer" style="padding:10px 14px; gap:6px;">
+                    <button class="btn sm secondary">Cancel</button>
+                    <button class="btn sm accent">Save</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-info">
+            <h4><i class="ri-layout-top-2-line" aria-hidden="true"></i> Modals</h4>
+            <p>Dialog modals, confirm dialogs, slide panels / drawers</p>
+        </div>
+    </a>
+
+    <!-- Alerts -->
+    <a href="pages/alerts.html" class="component-card">
+        <div class="card-preview" style="flex-direction:column; align-items:stretch; padding: 10px 14px; gap:6px;">
+            <div class="alert success" style="padding:6px 10px; font-size:11px;">
+                <i class="ri-checkbox-circle-line"></i>
+                <span>Saved successfully!</span>
+            </div>
+            <div class="alert danger" style="padding:6px 10px; font-size:11px;">
+                <i class="ri-error-warning-line"></i>
+                <span>An error occurred.</span>
+            </div>
+            <div class="alert warning" style="padding:6px 10px; font-size:11px;">
+                <i class="ri-alert-line"></i>
+                <span>Action cannot be undone.</span>
+            </div>
+            <div style="display:flex; gap:5px; margin-top:2px;">
+                <span class="label success" style="font-size:10px;">Active</span>
+                <span class="label danger" style="font-size:10px;">Deleted</span>
+                <span class="label info" style="font-size:10px;">Pending</span>
+            </div>
+        </div>
+        <div class="card-info">
+            <h4><i class="ri-notification-3-line" aria-hidden="true"></i> Alerts & Toasts</h4>
+            <p>Alert banners, toast notifications, labels/badges, tooltips</p>
+        </div>
+    </a>
+
+    <!-- Typography -->
+    <a href="pages/typography.html" class="component-card">
+        <div class="card-preview" style="flex-direction:column; align-items:flex-start; padding: 14px 16px; gap:6px;">
+            <h4 style="margin:0; font-size:18px;">IBM Plex Sans</h4>
+            <p style="margin:0; font-size:13px; color:var(--surfaceTxtHintColor);">Regular · Semibold · Italic</p>
+            <code style="font-family:var(--monoFontFamily); font-size:12px; background:var(--surfaceAlt2Color); padding:2px 6px; border-radius:3px;">IBM Plex Mono</code>
+            <div style="display:flex; gap:6px; margin-top:4px;">
+                <div style="width:20px;height:20px;border-radius:3px;background:#1055c9;"></div>
+                <div style="width:20px;height:20px;border-radius:3px;background:#22a96d;"></div>
+                <div style="width:20px;height:20px;border-radius:3px;background:#c33751;"></div>
+                <div style="width:20px;height:20px;border-radius:3px;background:#e57534;"></div>
+                <div style="width:20px;height:20px;border-radius:3px;background:#3376e5;"></div>
+            </div>
+        </div>
+        <div class="card-info">
+            <h4><i class="ri-text" aria-hidden="true"></i> Typography & Colors</h4>
+            <p>Headings, body text, code, color palette, Remixicon icons</p>
+        </div>
+    </a>
+
+    <!-- Layout -->
+    <a href="pages/layout.html" class="component-card">
+        <div class="card-preview" style="flex-direction:column; align-items:stretch; padding:12px; gap:8px;">
+            <div class="card" style="padding:0; pointer-events:none;">
+                <div class="card-header" style="padding:8px 12px;">
+                    <span class="card-title" style="font-size:12px;">Card Title</span>
+                    <button class="btn sm circle transparent secondary" style="width:24px;height:24px;"><i class="ri-more-2-line" style="font-size:14px;"></i></button>
+                </div>
+                <div class="card-content" style="padding:10px 12px; font-size:11px; color:var(--surfaceTxtHintColor);">Card content area</div>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+                <div style="height:28px; background:var(--surfaceAlt2Color); border-radius:var(--borderRadius);"></div>
+                <div style="height:28px; background:var(--surfaceAlt3Color); border-radius:var(--borderRadius);"></div>
+            </div>
+        </div>
+        <div class="card-info">
+            <h4><i class="ri-layout-3-line" aria-hidden="true"></i> Layout & Cards</h4>
+            <p>Cards, sections, grid system, accordion, empty states</p>
+        </div>
+    </a>
+
+</div>
+
+<!-- Full Demo Page Link -->
+<div style="text-align:center; padding: var(--smSpacing) var(--spacing) var(--spacing);">
+    <a href="pages/demo.html" class="btn lg accent next">
+        <i class="ri-eye-line"></i>
+        <span>Full Dashboard Demo</span>
+        <i class="ri-arrow-right-line"></i>
+    </a>
+</div>
+
+<footer style="text-align:center; padding: var(--smSpacing); border-top: 1px solid var(--surfaceAlt2Color); color: var(--surfaceTxtHintColor); font-size: var(--smFontSize);">
+    Pocket UI — Based on <strong>PocketBase</strong> Admin UI design system
+</footer>
+
+<script src="components/js/theme.js"></script>
+</body>
+</html>

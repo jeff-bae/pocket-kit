@@ -1,0 +1,72 @@
+/* =========================================================
+   Pocket UI — loader.css
+   ========================================================= */
+
+/* --- Spinner Loader --- */
+@keyframes spin {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loader {
+    --loaderSize: 24px;
+    display: inline-block;
+    width: var(--loaderSize);
+    height: var(--loaderSize);
+    border: 2px solid var(--surfaceAlt3Color);
+    border-top-color: var(--accentColor);
+    border-radius: 50%;
+    animation: spin var(--loaderAnimationSpeed) linear infinite;
+    flex-shrink: 0;
+}
+
+.loader.sm {
+    --loaderSize: 18px;
+    border-width: 2px;
+}
+
+.loader.lg {
+    --loaderSize: 36px;
+    border-width: 3px;
+}
+
+/* --- Skeleton Loader --- */
+@keyframes shimmer {
+    0%   { background-position: -500px 0; }
+    100% { background-position: 500px 0; }
+}
+
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        var(--surfaceAlt1Color) 25%,
+        var(--surfaceAlt2Color) 50%,
+        var(--surfaceAlt1Color) 75%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: var(--borderRadius);
+}
+
+.skeleton-text {
+    height: 14px;
+    border-radius: 3px;
+    margin-bottom: 6px;
+}
+
+.skeleton-text.sm  { height: 12px; width: 60%; }
+.skeleton-text.lg  { height: 20px; width: 80%; }
+.skeleton-rect     { border-radius: var(--borderRadius); }
+.skeleton-circle   { border-radius: 50%; }
+
+/* --- Overlay Loading State --- */
+.loading-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in srgb, var(--surfaceColor), transparent 15%);
+    z-index: 50;
+    border-radius: inherit;
+}

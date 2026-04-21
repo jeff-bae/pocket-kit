@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="ko" data-color-scheme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Dashboard Demo — Pocket UI</title>
+    <link rel="stylesheet" href="../lib/fonts/remixicon/remixicon.css">
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="../components/css/typography.css">
+    <link rel="stylesheet" href="../components/css/buttons.css">
+    <link rel="stylesheet" href="../components/css/forms.css">
+    <link rel="stylesheet" href="../components/css/navigation.css">
+    <link rel="stylesheet" href="../components/css/dropdowns.css">
+    <link rel="stylesheet" href="../components/css/tables.css">
+    <link rel="stylesheet" href="../components/css/modals.css">
+    <link rel="stylesheet" href="../components/css/alerts.css">
+    <link rel="stylesheet" href="../components/css/loader.css">
+    <link rel="stylesheet" href="../components/css/layout.css">
+    <link rel="stylesheet" href="../components/css/prism-theme.css">
+    <style>
+        html, body { height: 100%; margin: 0; overflow: hidden; }
+        .app { height: 100vh; display: flex; flex-direction: column; }
+        .page { flex: 1; display: flex; overflow: hidden; }
+        .page-content.full-height { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .records-searchbar-wrapper { padding: 0 var(--smSpacing); border-bottom: 1px solid var(--surfaceAlt2Color); }
+    </style>
+</head>
+<body>
+<div class="app">
+
+    <!-- Demo Alert Banner -->
+    <div class="demo-alert">
+        This is a <strong>Pocket UI</strong> dashboard demo.
+        <a href="../index.html">← Back to Component Library</a>
+    </div>
+
+    <!-- App Header -->
+    <header class="app-header accent-surface" data-component="appHeader">
+        <a href="../index.html" class="logo" style="gap:8px; color:#fff; text-decoration:none;">
+            <i class="ri-database-2-fill" style="font-size:22px;"></i>
+            <span class="txt-bold" style="color:#fff;">Pocket UI</span>
+        </a>
+        <nav class="app-main-nav">
+            <a href="#" class="header-link active">
+                <i class="ri-database-2-line" aria-hidden="true"></i>
+                <span>Collections</span>
+            </a>
+            <a href="#" class="header-link">
+                <i class="ri-bar-chart-box-line" aria-hidden="true"></i>
+                <span>Logs</span>
+            </a>
+            <a href="#" class="header-link">
+                <i class="ri-settings-3-line" aria-hidden="true"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+        <div class="flex-fill"></div>
+
+        <!-- Theme Picker -->
+        <div class="dropdown-wrapper">
+            <button class="header-link" data-dropdown-trigger title="Color scheme">
+                <i class="ri-sun-line" aria-hidden="true"></i>
+            </button>
+            <div class="dropdown sm nowrap">
+                <button class="dropdown-item dropdown-item-light" data-theme-btn="light">
+                    <i class="ri-sun-line"></i><span>Light</span>
+                </button>
+                <button class="dropdown-item dropdown-item-light" data-theme-btn="dark">
+                    <i class="ri-moon-line"></i><span>Dark</span>
+                </button>
+                <button class="dropdown-item dropdown-item-light active" data-theme-btn="auto">
+                    <i class="ri-subtract-line"></i><span>Auto</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- User Dropdown -->
+        <div class="dropdown-wrapper">
+            <button class="header-link" data-dropdown-trigger>
+                <span class="txt-ellipsis" style="max-width:160px;">admin@example.com</span>
+                <i class="ri-arrow-drop-down-line" aria-hidden="true"></i>
+            </button>
+            <div class="dropdown sm nowrap" style="right:0; left:auto;">
+                <a class="dropdown-item dropdown-item-manage" href="#">
+                    <i class="ri-group-line"></i><span>Manage superusers</span>
+                </a>
+                <hr>
+                <button class="dropdown-item dropdown-item-logout txt-danger">
+                    <i class="ri-logout-circle-line"></i><span>Logout</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Layout -->
+    <div class="page">
+
+        <!-- Sidebar -->
+        <aside class="page-sidebar">
+            <div class="sidebar-search">
+                <div class="fields">
+                    <div class="field">
+                        <input type="text" placeholder="Search collections...">
+                    </div>
+                    <div class="field addon p-l-0 p-r-5 gap-0" style="flex:0;">
+                        <button type="button" class="btn sm circle transparent secondary" aria-label="Overview">
+                            <i class="ri-organization-chart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="sidebar-content scrollable">
+                <details class="nav-group" open>
+                    <summary tabindex="-1">Collections</summary>
+                    <button type="button" class="nav-item">
+                        <i class="ri-group-line" aria-hidden="true"></i>
+                        <span class="txt">users</span>
+                        <span class="pin"><i class="ri-pushpin-line"></i></span>
+                    </button>
+                    <button type="button" class="nav-item">
+                        <i class="ri-folder-2-line" aria-hidden="true"></i>
+                        <span class="txt">messages</span>
+                        <span class="pin"><i class="ri-pushpin-line"></i></span>
+                    </button>
+                    <button type="button" class="nav-item active" onclick="return false;">
+                        <i class="ri-folder-2-line" aria-hidden="true"></i>
+                        <span class="txt">posts</span>
+                        <span class="pin"><i class="ri-pushpin-fill"></i></span>
+                    </button>
+                    <button type="button" class="nav-item">
+                        <i class="ri-table-line" aria-hidden="true"></i>
+                        <span class="txt">messagesReport</span>
+                        <span class="pin"><i class="ri-pushpin-line"></i></span>
+                    </button>
+                </details>
+                <details class="nav-group" open>
+                    <summary>System</summary>
+                    <button type="button" class="nav-item">
+                        <i class="ri-group-line" aria-hidden="true"></i>
+                        <span class="txt">_superusers</span>
+                    </button>
+                    <button type="button" class="nav-item">
+                        <i class="ri-folder-2-line" aria-hidden="true"></i>
+                        <span class="txt">_authOrigins</span>
+                    </button>
+                    <button type="button" class="nav-item">
+                        <i class="ri-folder-2-line" aria-hidden="true"></i>
+                        <span class="txt">_externalAuths</span>
+                    </button>
+                </details>
+            </nav>
+            <div class="sidebar-content new-collection">
+                <button type="button" class="btn outline block">
+                    <i class="ri-add-line" aria-hidden="true"></i>
+                    <span>New collection</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="page-content full-height">
+
+            <!-- Page Header -->
+            <header class="page-header compact flex-nowrap" style="display:flex;">
+                <nav class="breadcrumbs">
+                    <div>Collections</div>
+                    <div title="posts">posts</div>
+                </nav>
+                <div class="page-header-secondary-btns">
+                    <button type="button" class="btn circle transparent secondary" aria-label="Settings">
+                        <i class="ri-settings-3-line" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="btn transparent secondary circle rotate-btn" aria-label="Refresh">
+                        <i class="ri-refresh-line" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="page-header-primary-btns">
+                    <button type="button" class="btn outline" data-modal-open="api-modal">
+                        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+                        <span>API preview</span>
+                    </button>
+                    <button type="button" class="btn accent" data-modal-open="record-modal">
+                        <i class="ri-add-line" aria-hidden="true"></i>
+                        <span>New Record</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Search Bar -->
+            <div class="searchbar">
+                <button type="button" class="btn sm pill secondary transparent" style="flex-shrink:0;">
+                    <i class="ri-search-line" aria-hidden="true"></i>
+                    <i class="ri-arrow-drop-down-line" aria-hidden="true"></i>
+                </button>
+                <input type="text" class="searchbar-input" placeholder="Search term or filter...">
+            </div>
+
+            <!-- Records Table -->
+            <div class="page-table-wrapper m-t-sm">
+                <table class="records-table responsive-table">
+                    <thead class="sticky">
+                        <tr>
+                            <th class="col-bulk-select">
+                                <div class="field">
+                                    <input type="checkbox" id="bulk-master" data-bulk-master="demo">
+                                    <label for="bulk-master"></label>
+                                </div>
+                            </th>
+                            <th class="sort-handle desc">
+                                <div class="inline-flex gap-5">
+                                    <i class="ri-key-line"></i><span>id</span>
+                                </div>
+                            </th>
+                            <th class="sort-handle">
+                                <div class="inline-flex gap-5">
+                                    <i class="ri-text"></i><span>title</span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="inline-flex gap-5">
+                                    <i class="ri-edit-2-line"></i><span>description</span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="inline-flex gap-5">
+                                    <i class="ri-toggle-line"></i><span>active</span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="inline-flex gap-5">
+                                    <i class="ri-list-check"></i><span>options</span>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="inline-flex gap-5">
+                                    <i class="ri-image-line"></i><span>images</span>
+                                </div>
+                            </th>
+                            <th class="sort-handle">
+                                <div class="inline-flex gap-5">
+                                    <i class="ri-calendar-check-line"></i><span>created</span>
+                                </div>
+                            </th>
+                            <th class="col-meta">
+                                <div class="dropdown-wrapper">
+                                    <button class="btn sm secondary transparent circle" data-dropdown-trigger title="Toggle columns">
+                                        <i class="ri-more-2-line"></i>
+                                    </button>
+                                    <div class="dropdown sm gap-0 nowrap" style="right:0;left:auto;">
+                                        <div class="dropdown-item">
+                                            <div class="field" style="flex-direction:row;align-items:center;gap:6px;">
+                                                <input type="checkbox" class="switch sm" id="col-t" checked>
+                                                <label for="col-t" style="margin:0;font-weight:400;font-size:var(--smFontSize);">title</label>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown-item">
+                                            <div class="field" style="flex-direction:row;align-items:center;gap:6px;">
+                                                <input type="checkbox" class="switch sm" id="col-d">
+                                                <label for="col-d" style="margin:0;font-weight:400;font-size:var(--smFontSize);">description</label>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown-item">
+                                            <div class="field" style="flex-direction:row;align-items:center;gap:6px;">
+                                                <input type="checkbox" class="switch sm" id="col-a" checked>
+                                                <label for="col-a" style="margin:0;font-weight:400;font-size:var(--smFontSize);">active</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr tabindex="0" onclick="PocketUI.modal.openModal('record-edit-modal')">
+                            <td class="col-bulk-select">
+                                <div class="field">
+                                    <input type="checkbox" id="r1" data-bulk-item="demo" onclick="event.stopPropagation()">
+                                    <label for="r1" onclick="event.stopPropagation()"></label>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="label">
+                                    <button class="copy-to-clipboard" data-copy="WyAw4bDrvws6gGl" onclick="event.stopPropagation()">
+                                        <i class="ri-file-copy-line"></i>
+                                    </button>
+                                    <span class="txt-ellipsis">WyAw4bDrvws6gGl</span>
+                                </span>
+                            </td>
+                            <td><span class="txt txt-ellipsis">Another example</span></td>
+                            <td><span class="missing-value"></span></td>
+                            <td><span class="label">False</span></td>
+                            <td><span class="missing-value"></span></td>
+                            <td><span class="missing-value"></span></td>
+                            <td>
+                                <div class="formatted-date short">
+                                    <span class="primary-date">2022-07-02</span>
+                                    <span class="secondary-date">08:30:44Z</span>
+                                </div>
+                            </td>
+                            <td class="col-meta"><i class="ri-arrow-right-line m-r-10"></i></td>
+                        </tr>
+                        <tr tabindex="0" onclick="PocketUI.modal.openModal('record-edit-modal')">
+                            <td class="col-bulk-select">
+                                <div class="field">
+                                    <input type="checkbox" id="r2" data-bulk-item="demo" onclick="event.stopPropagation()">
+                                    <label for="r2" onclick="event.stopPropagation()"></label>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="label">
+                                    <button class="copy-to-clipboard" data-copy="FtHAW9feB5rze7D" onclick="event.stopPropagation()">
+                                        <i class="ri-file-copy-line"></i>
+                                    </button>
+                                    <span class="txt-ellipsis">FtHAW9feB5rze7D</span>
+                                </span>
+                            </td>
+                            <td><span class="txt txt-ellipsis">Example title</span></td>
+                            <td><span class="missing-value"></span></td>
+                            <td><span class="label">False</span></td>
+                            <td><div class="inline-flex gap-5"><span class="label">optionA</span><span class="label">optionC</span></div></td>
+                            <td>
+                                <div class="thumb sm" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                            </td>
+                            <td>
+                                <div class="formatted-date short">
+                                    <span class="primary-date">2022-07-02</span>
+                                    <span class="secondary-date">07:47:48Z</span>
+                                </div>
+                            </td>
+                            <td class="col-meta"><i class="ri-arrow-right-line m-r-10"></i></td>
+                        </tr>
+                        <tr tabindex="0" onclick="PocketUI.modal.openModal('record-edit-modal')">
+                            <td class="col-bulk-select">
+                                <div class="field">
+                                    <input type="checkbox" id="r3" data-bulk-item="demo" onclick="event.stopPropagation()">
+                                    <label for="r3" onclick="event.stopPropagation()"></label>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="label">
+                                    <button class="copy-to-clipboard" data-copy="UP06yiygImYTMCI" onclick="event.stopPropagation()">
+                                        <i class="ri-file-copy-line"></i>
+                                    </button>
+                                    <span class="txt-ellipsis">UP06yiygImYTMCI</span>
+                                </span>
+                            </td>
+                            <td><span class="txt txt-ellipsis">Lorem ipsum</span></td>
+                            <td>
+                                <span class="txt txt-ellipsis" style="max-width:200px;">Lorem ipsum dolor sit amet consectetur adipiscing elit...</span>
+                            </td>
+                            <td><span class="label success">True</span></td>
+                            <td><div class="inline-flex gap-5"><span class="label">optionB</span></div></td>
+                            <td>
+                                <div class="inline-flex gap-5">
+                                    <div class="thumb sm" style="background:linear-gradient(135deg,#f093fb,#f5576c);"></div>
+                                    <div class="thumb sm" style="background:linear-gradient(135deg,#4facfe,#00f2fe);"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="formatted-date short">
+                                    <span class="primary-date">2022-07-02</span>
+                                    <span class="secondary-date">07:46:16Z</span>
+                                </div>
+                            </td>
+                            <td class="col-meta"><i class="ri-arrow-right-line m-r-10"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Bulk Action Bar -->
+                <div class="bulkbar-wrapper">
+                    <div class="bulkbar" id="demo-bulkbar" data-bulkbar="demo" hidden>
+                        <span>Selected <strong data-bulk-count>0</strong> records</span>
+                        <button class="btn sm secondary pill m-r-auto" data-bulk-reset="demo">Reset</button>
+                        <button class="btn sm pill outline danger">
+                            <i class="ri-delete-bin-7-line"></i> Delete
+                        </button>
+                        <button class="btn sm pill">
+                            <i class="ri-download-line"></i> JSON
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page Footer -->
+            <footer class="page-footer">
+                <span class="total-count">Total: 3</span>
+                <div class="credits">
+                    <a href="#" class="credit-item">
+                        <i class="ri-book-open-line"></i><span>Docs</span>
+                    </a>
+                    <a href="https://github.com/pocketbase/pocketbase" target="_blank" class="credit-item">
+                        <i class="ri-github-line"></i><span>PocketBase v0.37.2</span>
+                    </a>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+
+<!-- Record Edit Modal (Slide Panel) -->
+<div class="modal-overlay hidden" data-modal="record-edit-modal" style="justify-content:flex-end; padding:0;">
+    <div class="slide-panel">
+        <div class="modal-header">
+            <h5 class="modal-title">Edit Record</h5>
+            <button class="modal-close-btn" data-modal-close="record-edit-modal">
+                <i class="ri-close-line"></i>
+            </button>
+        </div>
+        <div class="modal-content scrollable">
+            <div class="fields fields-col" style="gap:14px;">
+                <div class="field">
+                    <label>ID</label>
+                    <div style="display:flex;align-items:center;gap:6px;">
+                        <span class="label txt-code">UP06yiygImYTMCI</span>
+                        <button class="copy-to-clipboard" data-copy="UP06yiygImYTMCI">
+                            <i class="ri-file-copy-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="edit-title">Title</label>
+                    <input type="text" id="edit-title" value="Lorem ipsum">
+                </div>
+                <div class="field">
+                    <label for="edit-desc">Description</label>
+                    <textarea id="edit-desc">Lorem ipsum dolor sit amet consectetur adipiscing elit.</textarea>
+                </div>
+                <div class="field" style="flex-direction:row;align-items:center;gap:8px;">
+                    <input type="checkbox" id="edit-active" class="switch" checked>
+                    <label for="edit-active" style="margin:0;">Active</label>
+                </div>
+                <div class="field">
+                    <label>Options</label>
+                    <div class="inline-flex gap-5">
+                        <span class="label">optionB</span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Created</label>
+                    <span class="txt-sm txt-hint">2022-07-02 07:46:16.478Z</span>
+                </div>
+                <div class="field">
+                    <label>Updated</label>
+                    <span class="txt-sm txt-hint">2023-01-29 17:05:09.805Z</span>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn sm outline danger m-r-auto" onclick="PocketUI.toast.danger('Record deleted'); PocketUI.modal.closeModal('record-edit-modal');">
+                <i class="ri-delete-bin-7-line"></i> Delete
+            </button>
+            <button class="btn sm secondary" data-modal-close="record-edit-modal">Cancel</button>
+            <button class="btn sm accent" onclick="PocketUI.toast.success('Record saved!'); PocketUI.modal.closeModal('record-edit-modal');">
+                <i class="ri-save-line"></i> Save
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- New Record Modal -->
+<div class="modal-overlay hidden" data-modal="record-modal">
+    <div class="modal">
+        <div class="modal-header">
+            <h5 class="modal-title">New Record</h5>
+            <button class="modal-close-btn" data-modal-close="record-modal">
+                <i class="ri-close-line"></i>
+            </button>
+        </div>
+        <div class="modal-content">
+            <div class="fields fields-col">
+                <div class="field">
+                    <label for="new-title">Title</label>
+                    <input type="text" id="new-title" placeholder="Enter title...">
+                </div>
+                <div class="field">
+                    <label for="new-desc">Description</label>
+                    <textarea id="new-desc" placeholder="Enter description..."></textarea>
+                </div>
+                <div class="field" style="flex-direction:row;align-items:center;gap:8px;">
+                    <input type="checkbox" id="new-active" class="switch">
+                    <label for="new-active" style="margin:0;">Active</label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn secondary" data-modal-close="record-modal">Cancel</button>
+            <button class="btn accent" onclick="PocketUI.toast.success('Record created!'); PocketUI.modal.closeModal('record-modal');">
+                <i class="ri-save-line"></i> Create
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- API Preview Modal -->
+<div class="modal-overlay hidden" data-modal="api-modal">
+    <div class="modal lg">
+        <div class="modal-header">
+            <h5 class="modal-title">
+                <i class="ri-code-s-slash-line"></i> API Preview — posts
+            </h5>
+            <button class="modal-close-btn" data-modal-close="api-modal">
+                <i class="ri-close-line"></i>
+            </button>
+        </div>
+        <div class="modal-content" style="padding:0; overflow:hidden;">
+            <div class="api-preview-modal" style="height:420px; border-top:1px solid var(--surfaceAlt2Color);">
+                <div class="api-preview-sidebar">
+                    <div class="api-preview-sidebar-title">Endpoints</div>
+                    <button class="api-nav-item active" data-endpoint="list">
+                        <span class="http-badge get">GET</span>
+                        <span class="api-nav-label">List records</span>
+                    </button>
+                    <button class="api-nav-item" data-endpoint="view">
+                        <span class="http-badge get">GET</span>
+                        <span class="api-nav-label">View record</span>
+                    </button>
+                    <button class="api-nav-item" data-endpoint="create">
+                        <span class="http-badge post">POST</span>
+                        <span class="api-nav-label">Create record</span>
+                    </button>
+                    <button class="api-nav-item" data-endpoint="update">
+                        <span class="http-badge patch">PATCH</span>
+                        <span class="api-nav-label">Update record</span>
+                    </button>
+                    <button class="api-nav-item" data-endpoint="delete">
+                        <span class="http-badge delete">DELETE</span>
+                        <span class="api-nav-label">Delete record</span>
+                    </button>
+                </div>
+                <div class="api-preview-content">
+                    <!-- List Records -->
+                    <div class="api-panel" data-panel="list">
+                        <div class="api-preview-content-header">
+                            <span class="http-badge get">GET</span>
+                            /api/collections/posts/records
+                        </div>
+                        <pre class="api-preview-code"><code class="language-json">{
+  "page": 1,
+  "perPage": 30,
+  "totalItems": 2,
+  "totalPages": 1,
+  "items": [
+    {
+      "id": "ae40239d2pvute7",
+      "collectionId": "a98f514eb05f454",
+      "collectionName": "posts",
+      "created": "2022-06-25 11:03:45.876",
+      "updated": "2022-06-25 11:03:45.876",
+      "title": "Hello World",
+      "active": true
+    },
+    {
+      "id": "d08dfc4f4d84419",
+      "collectionId": "a98f514eb05f454",
+      "collectionName": "posts",
+      "created": "2022-06-26 09:12:31.003",
+      "updated": "2022-06-27 14:50:22.117",
+      "title": "Second Post",
+      "active": false
+    }
+  ]
+}</code></pre>
+                    </div>
+                    <!-- View Record -->
+                    <div class="api-panel" data-panel="view" hidden>
+                        <div class="api-preview-content-header">
+                            <span class="http-badge get">GET</span>
+                            /api/collections/posts/records/:id
+                        </div>
+                        <pre class="api-preview-code"><code class="language-json">{
+  "id": "ae40239d2pvute7",
+  "collectionId": "a98f514eb05f454",
+  "collectionName": "posts",
+  "created": "2022-06-25 11:03:45.876",
+  "updated": "2022-06-25 11:03:45.876",
+  "title": "Hello World",
+  "active": true
+}</code></pre>
+                    </div>
+                    <!-- Create Record -->
+                    <div class="api-panel" data-panel="create" hidden>
+                        <div class="api-preview-content-header">
+                            <span class="http-badge post">POST</span>
+                            /api/collections/posts/records
+                        </div>
+                        <pre class="api-preview-code"><code class="language-json">{
+  "id": "e22ybynvwrhrn6z",
+  "collectionId": "a98f514eb05f454",
+  "collectionName": "posts",
+  "created": "2022-06-25 11:03:45.876",
+  "updated": "2022-06-25 11:03:45.876",
+  "title": "New Post",
+  "active": true
+}</code></pre>
+                    </div>
+                    <!-- Update Record -->
+                    <div class="api-panel" data-panel="update" hidden>
+                        <div class="api-preview-content-header">
+                            <span class="http-badge patch">PATCH</span>
+                            /api/collections/posts/records/:id
+                        </div>
+                        <pre class="api-preview-code"><code class="language-json">{
+  "id": "ae40239d2pvute7",
+  "collectionId": "a98f514eb05f454",
+  "collectionName": "posts",
+  "created": "2022-06-25 11:03:45.876",
+  "updated": "2022-06-27 16:44:28.190",
+  "title": "Updated Title",
+  "active": false
+}</code></pre>
+                    </div>
+                    <!-- Delete Record -->
+                    <div class="api-panel" data-panel="delete" hidden>
+                        <div class="api-preview-content-header">
+                            <span class="http-badge delete">DELETE</span>
+                            /api/collections/posts/records/:id
+                        </div>
+                        <pre class="api-preview-code"><code class="language-json">// HTTP 204 No Content
+// The record was successfully deleted.
+// No response body is returned.</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn secondary" data-modal-close="api-modal">Close</button>
+        </div>
+    </div>
+</div>
+
+<div class="toasts-container"></div>
+
+<script src="../lib/prism/prism.min.js"></script>
+<script src="../lib/prism/prism-json.min.js"></script>
+<script src="../components/js/theme.js"></script>
+<script src="../components/js/dropdown.js"></script>
+<script src="../components/js/modal.js"></script>
+<script src="../components/js/toast.js"></script>
+<script src="../components/js/utils.js"></script>
+<script src="../components/js/api-preview.js"></script>
+</body>
+</html>

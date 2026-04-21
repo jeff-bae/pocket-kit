@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko" data-color-scheme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation — Pocket UI</title>
+    <link rel="stylesheet" href="../lib/fonts/remixicon/remixicon.css">
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="../components/css/typography.css">
+    <link rel="stylesheet" href="../components/css/buttons.css">
+    <link rel="stylesheet" href="../components/css/forms.css">
+    <link rel="stylesheet" href="../components/css/navigation.css">
+    <link rel="stylesheet" href="../components/css/dropdowns.css">
+    <link rel="stylesheet" href="../components/css/alerts.css">
+    <link rel="stylesheet" href="../components/css/layout.css">
+    <style>
+        body { padding: 0; background: var(--surfaceAlt1Color); }
+        .demo-section { padding: var(--spacing); background: var(--surfaceColor); margin-bottom: 16px; }
+        .demo-section h3 { margin-bottom: var(--smSpacing); font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--surfaceTxtHintColor); border-bottom: 1px solid var(--surfaceAlt2Color); padding-bottom: 8px; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--surfaceTxtHintColor); font-size: var(--smFontSize); text-decoration: none; margin-bottom: var(--smSpacing); }
+        .back-link:hover { color: var(--surfaceTxtColor); }
+    </style>
+</head>
+<body>
+    <div class="demo-section">
+        <a href="../index.html" class="back-link">
+            <i class="ri-arrow-left-line"></i> Back to Components
+        </a>
+        <h2>Navigation</h2>
+    </div>
+
+    <!-- App Header: Light -->
+    <div class="demo-section">
+        <h3>App Header — Light</h3>
+        <div style="border: 1px solid var(--surfaceAlt2Color); border-radius: var(--borderRadius); overflow: hidden;">
+            <header class="app-header">
+                <a href="#" class="logo" style="gap:8px;">
+                    <i class="ri-database-2-fill" style="font-size:22px; color:var(--accentColor);"></i>
+                    <span class="txt-bold">Pocket UI</span>
+                </a>
+                <nav class="app-main-nav">
+                    <a href="#" class="header-link active">
+                        <i class="ri-database-2-line" aria-hidden="true"></i>
+                        <span>Collections</span>
+                    </a>
+                    <a href="#" class="header-link">
+                        <i class="ri-bar-chart-box-line" aria-hidden="true"></i>
+                        <span>Logs</span>
+                    </a>
+                    <a href="#" class="header-link">
+                        <i class="ri-settings-3-line" aria-hidden="true"></i>
+                        <span>Settings</span>
+                    </a>
+                </nav>
+                <div class="flex-fill"></div>
+                <button class="header-link">
+                    <i class="ri-sun-line" aria-hidden="true"></i>
+                </button>
+                <button class="header-link">
+                    <span>admin@example.com</span>
+                    <i class="ri-arrow-drop-down-line" aria-hidden="true"></i>
+                </button>
+            </header>
+        </div>
+    </div>
+
+    <!-- App Header: Accent Surface -->
+    <div class="demo-section">
+        <h3>App Header — Accent Surface</h3>
+        <div style="border: 1px solid var(--surfaceAlt2Color); border-radius: var(--borderRadius); overflow: hidden;">
+            <header class="app-header accent-surface">
+                <a href="#" class="logo" style="gap:8px;">
+                    <i class="ri-database-2-fill" style="font-size:22px; color:#fff;"></i>
+                    <span class="txt-bold" style="color:#fff;">Pocket UI</span>
+                </a>
+                <nav class="app-main-nav">
+                    <a href="#" class="header-link active">
+                        <i class="ri-database-2-line" aria-hidden="true"></i>
+                        <span>Collections</span>
+                    </a>
+                    <a href="#" class="header-link">
+                        <i class="ri-bar-chart-box-line" aria-hidden="true"></i>
+                        <span>Logs</span>
+                    </a>
+                    <a href="#" class="header-link">
+                        <i class="ri-settings-3-line" aria-hidden="true"></i>
+                        <span>Settings</span>
+                    </a>
+                </nav>
+                <div class="flex-fill"></div>
+                <button class="header-link">
+                    <i class="ri-sun-line" aria-hidden="true"></i>
+                </button>
+            </header>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="demo-section">
+        <h3>Page Sidebar</h3>
+        <div style="display:flex; height: 420px; border: 1px solid var(--surfaceAlt2Color); border-radius: var(--borderRadius); overflow:hidden;">
+            <aside class="page-sidebar" style="position:relative;">
+                <div class="sidebar-search">
+                    <div class="fields">
+                        <div class="field">
+                            <input type="text" placeholder="Search collections...">
+                        </div>
+                    </div>
+                </div>
+                <nav class="sidebar-content scrollable">
+                    <details class="nav-group" open>
+                        <summary tabindex="-1">Collections</summary>
+                        <button type="button" class="nav-item">
+                            <i class="ri-group-line" aria-hidden="true"></i>
+                            <span class="txt">users</span>
+                        </button>
+                        <button type="button" class="nav-item">
+                            <i class="ri-folder-2-line" aria-hidden="true"></i>
+                            <span class="txt">messages</span>
+                            <span class="pin"><i class="ri-pushpin-line"></i></span>
+                        </button>
+                        <button type="button" class="nav-item active">
+                            <i class="ri-folder-2-line" aria-hidden="true"></i>
+                            <span class="txt">posts</span>
+                            <span class="pin"><i class="ri-pushpin-fill"></i></span>
+                        </button>
+                        <button type="button" class="nav-item">
+                            <i class="ri-table-line" aria-hidden="true"></i>
+                            <span class="txt">messagesReport</span>
+                        </button>
+                    </details>
+                    <details class="nav-group" open>
+                        <summary>System</summary>
+                        <button type="button" class="nav-item">
+                            <i class="ri-group-line" aria-hidden="true"></i>
+                            <span class="txt">_superusers</span>
+                        </button>
+                        <button type="button" class="nav-item">
+                            <i class="ri-folder-2-line" aria-hidden="true"></i>
+                            <span class="txt">_authOrigins</span>
+                        </button>
+                    </details>
+                </nav>
+                <div class="sidebar-content new-collection">
+                    <button type="button" class="btn outline block">
+                        <i class="ri-add-line" aria-hidden="true"></i>
+                        <span>New collection</span>
+                    </button>
+                </div>
+            </aside>
+            <div style="flex:1; padding: var(--smSpacing); background: var(--surfaceColor);">
+                <p class="txt-hint">Page content goes here...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Header with Breadcrumbs -->
+    <div class="demo-section">
+        <h3>Page Header with Breadcrumbs</h3>
+        <div style="border: 1px solid var(--surfaceAlt2Color); border-radius: var(--borderRadius); overflow:hidden;">
+            <header class="page-header compact flex-nowrap" style="display:flex;">
+                <nav class="breadcrumbs">
+                    <div>Collections</div>
+                    <div title="posts">posts</div>
+                </nav>
+                <div class="page-header-secondary-btns">
+                    <button type="button" class="btn circle transparent secondary" aria-label="Settings">
+                        <i class="ri-settings-3-line" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="btn transparent secondary circle rotate-btn" aria-label="Refresh">
+                        <i class="ri-refresh-line" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="page-header-primary-btns">
+                    <button type="button" class="btn outline">
+                        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+                        <span>API preview</span>
+                    </button>
+                    <button type="button" class="btn accent">
+                        <i class="ri-add-line" aria-hidden="true"></i>
+                        <span>New Record</span>
+                    </button>
+                </div>
+            </header>
+        </div>
+    </div>
+
+    <!-- Page Footer -->
+    <div class="demo-section">
+        <h3>Page Footer</h3>
+        <div style="border: 1px solid var(--surfaceAlt2Color); border-radius: var(--borderRadius); overflow:hidden;">
+            <footer class="page-footer">
+                <span class="total-count">Total: 3</span>
+                <div class="credits">
+                    <a href="#" class="credit-item">
+                        <i class="ri-book-open-line" aria-hidden="true"></i>
+                        <span>Docs</span>
+                    </a>
+                    <a href="#" class="credit-item">
+                        <i class="ri-github-line" aria-hidden="true"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+<script src="../components/js/theme.js"></script>
+<script src="../components/js/dropdown.js"></script>
+<script src="../components/js/utils.js"></script>
+</body>
+</html>
