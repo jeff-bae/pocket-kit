@@ -16,14 +16,66 @@
                 if (!isOpen) {
                     wrapper.classList.add('open');
                     trigger.setAttribute('aria-expanded', 'true');
+                    const searchInput = menu.querySelector('.dropdown-search input');
+                    if (searchInput) {
+                        searchInput.value = '';
+                        filterItems(menu, '');
+                        setTimeout(() => searchInput.focus(), 0);
+                    }
                 }
             });
+
+            // Prevent menu clicks from bubbling to document (which would close it).
+            // Only close when a regular item (no checkbox/radio inside) is clicked.
+            menu.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const item = e.target.closest('.dropdown-item');
+                if (item && !item.querySelector('input[type="checkbox"], input[type="radio"]')) {
+                    closeAll();
+                }
+            });
+
+            const searchInput = menu.querySelector('.dropdown-search input');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    filterItems(menu, e.target.value);
+                });
+                searchInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') closeAll();
+                });
+            }
         });
 
         document.addEventListener('click', closeAll);
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeAll();
         });
+    }
+
+    function filterItems(menu, query) {
+        const term = query.trim().toLowerCase();
+        const items = menu.querySelectorAll('.dropdown-item');
+        let visibleCount = 0;
+
+        items.forEach(item => {
+            const text = item.textContent.trim().toLowerCase();
+            const match = !term || text.includes(term);
+            item.style.display = match ? '' : 'none';
+            if (match) visibleCount++;
+        });
+
+        let empty = menu.querySelector('.dropdown-empty');
+        if (visibleCount === 0) {
+            if (!empty) {
+                empty = document.createElement('div');
+                empty.className = 'dropdown-empty';
+                empty.textContent = 'No results';
+                menu.appendChild(empty);
+            }
+            empty.style.display = '';
+        } else if (empty) {
+            empty.style.display = 'none';
+        }
     }
 
     function closeAll() {

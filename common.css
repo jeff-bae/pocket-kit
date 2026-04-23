@@ -159,8 +159,12 @@
     --linkColor: var(--surfaceTxtColor);
     --linkFocusColor: var(--surfaceTxtColor);
 
+    /* Page background (separate from component surface) */
+    --pageBgColor: var(--surfaceColor);
+
     /* Overlays */
     --modalOverlayColor: #22242a38;
+    --modalShadow: 0 8px 40px rgba(34,36,42,0.18);
     --tooltipTxtColor: #fff;
     --tooltipSurfaceColor: #222424e6;
 
@@ -206,8 +210,10 @@
     --dangerColor: #bb303e;
     --dangerTxtColor: var(--surfaceTxtColor);
     --surfaceDangerColor: color-mix(in srgb, var(--dangerColor), var(--surfaceColor) 45%);
+    --pageBgColor: #000;
     --selectionColor: #ffffff38;
     --modalOverlayColor: #00000073;
+    --modalShadow: 0 8px 40px rgba(0,0,0,0.55);
     --tooltipTxtColor: var(--surfaceTxtColor);
     --boxShadow: 0px 8px 5px -5px #0000004d;
     --leftBoxShadow: -1px 0px 5px 0 #0000004d;
@@ -244,8 +250,10 @@
         --successColor: #27865d;
         --warningColor: #cf4e17;
         --dangerColor: #bb303e;
+        --pageBgColor: #000;
         --selectionColor: #ffffff38;
         --modalOverlayColor: #00000073;
+        --modalShadow: 0 8px 40px rgba(0,0,0,0.55);
         --boxShadow: 0px 8px 5px -5px #0000004d;
         --leftBoxShadow: -1px 0px 5px 0 #0000004d;
         --rightBoxShadow: 1px 0px 5px 0 #0000004d;
@@ -290,7 +298,7 @@ body {
     line-height: var(--lineHeight);
     letter-spacing: 0.1px;
     color: var(--surfaceTxtColor);
-    background: var(--surfaceColor);
+    background: var(--pageBgColor);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -364,7 +372,7 @@ img {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: var(--surfaceColor);
+    background: var(--pageBgColor);
 }
 
 .page {

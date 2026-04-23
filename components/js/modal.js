@@ -3,6 +3,8 @@
  * Modal open/close/focus-trap
  */
 (function () {
+    let mousedownOnOverlay = false;
+
     function openModal(modalId) {
         const overlay = document.querySelector(`[data-modal="${modalId}"]`);
         if (!overlay) return;
@@ -10,6 +12,7 @@
         document.body.style.overflow = 'hidden';
         const firstFocusable = overlay.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
         if (firstFocusable) firstFocusable.focus();
+        overlay.addEventListener('mousedown', onOverlayMousedown);
         overlay.addEventListener('click', onOverlayClick);
         document.addEventListener('keydown', onEscape);
     }
@@ -19,15 +22,21 @@
         if (!overlay) return;
         overlay.classList.add('hidden');
         document.body.style.overflow = '';
+        overlay.removeEventListener('mousedown', onOverlayMousedown);
         overlay.removeEventListener('click', onOverlayClick);
         document.removeEventListener('keydown', onEscape);
     }
 
+    function onOverlayMousedown(e) {
+        mousedownOnOverlay = (e.target === e.currentTarget);
+    }
+
     function onOverlayClick(e) {
-        if (e.target === e.currentTarget) {
+        if (e.target === e.currentTarget && mousedownOnOverlay) {
             const id = e.currentTarget.dataset.modal;
             closeModal(id);
         }
+        mousedownOnOverlay = false;
     }
 
     function onEscape(e) {

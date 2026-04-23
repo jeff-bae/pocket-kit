@@ -127,6 +127,14 @@
     outline: none;
 }
 
+/* --- Dropdown Search Empty State --- */
+.dropdown-empty {
+    padding: 8px 12px;
+    font-size: var(--smFontSize);
+    color: var(--surfaceTxtHintColor);
+    text-align: center;
+}
+
 /* --- Popover trigger --- */
 [popovertarget] {
     position: relative;

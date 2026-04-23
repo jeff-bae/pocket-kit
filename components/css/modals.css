@@ -32,8 +32,9 @@
     max-width: var(--smWrapperWidth);
     max-height: calc(100vh - var(--spacing) * 2);
     background: var(--surfaceColor);
+    border: 1px solid var(--surfaceAlt3Color);
     border-radius: var(--lgBorderRadius);
-    box-shadow: 0 8px 40px rgba(34,36,42,0.18);
+    box-shadow: var(--modalShadow);
     animation: modalIn var(--modalAnimationSpeed) ease;
     overflow: hidden;
 }
