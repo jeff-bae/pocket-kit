@@ -26,6 +26,13 @@ SOFTWARE.
 
 This project bundles the following third-party assets:
 
+### PocketBase Admin UI
+Copyright © 2022 Gani Georgiev
+Licensed under the MIT License
+https://github.com/pocketbase/pocketbase/blob/master/LICENSE
+This project is derived from the PocketBase Admin UI design and source.
+
+
 ### IBM Plex Sans & IBM Plex Mono
 Copyright © IBM Corp. 2017
 Licensed under the SIL Open Font License 1.1
