@@ -143,3 +143,26 @@ python -m http.server 8080
 - [IBM Plex Sans / Mono](https://www.ibm.com/plex/) — 로컬 woff2 번들
 - [Remixicon](https://remixicon.com/) — 로컬 번들
 - [Prism.js](https://prismjs.com/) — 데모 페이지 코드 하이라이트용
+
+## 브라우저 지원
+
+`color-mix()` 등 최신 CSS 기능을 사용하므로 아래 버전 이상을 권장합니다.
+
+| 브라우저 | 최소 버전 |
+|---|---|
+| Chrome / Edge | 111+ |
+| Firefox | 113+ |
+| Safari | 16.2+ |
+
+## Contributing
+
+버그 리포트, 기능 제안, PR 모두 환영합니다.
+
+- 이슈 등록 시 재현 방법과 스크린샷을 함께 첨부해 주세요.
+- PR은 변경 컴포넌트의 데모 페이지(`pages/`)도 함께 수정해 주세요.
+
+## License
+
+[MIT](./LICENSE) © cb.bae
+
+번들된 서드파티 에셋(IBM Plex 폰트, Remixicon, Prism.js)의 라이선스는 [LICENSE](./LICENSE) 파일 하단을 참조하세요.
