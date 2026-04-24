@@ -1,5 +1,5 @@
 /**
- * Pocket UI — dropdown.js
+ * Pocket Kit — dropdown.js
  * Dropdown menu open/close logic (fallback for non-Popover API browsers)
  */
 (function () {
@@ -92,6 +92,6 @@
         initDropdowns();
     }
 
-    window.PocketUI = window.PocketUI || {};
-    window.PocketUI.dropdown = { closeAll };
+    window.PocketKit = window.PocketKit || {};
+    window.PocketKit.dropdown = { closeAll };
 })();

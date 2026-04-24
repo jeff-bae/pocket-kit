@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full Dashboard Demo — Pocket UI</title>
+    <title>Full Dashboard Demo — Pocket Kit</title>
     <link rel="stylesheet" href="../lib/fonts/remixicon/remixicon.css">
     <link rel="stylesheet" href="../common.css">
     <link rel="stylesheet" href="../components/css/typography.css">
@@ -30,7 +30,7 @@
 
     <!-- Demo Alert Banner -->
     <div class="demo-alert">
-        This is a <strong>Pocket UI</strong> dashboard demo.
+        This is a <strong>Pocket Kit</strong> dashboard demo.
         <a href="../index.html">← Back to Component Library</a>
     </div>
 
@@ -38,7 +38,7 @@
     <header class="app-header accent-surface" data-component="appHeader">
         <a href="../index.html" class="logo" style="gap:8px; color:#fff; text-decoration:none;">
             <i class="ri-database-2-fill" style="font-size:22px;"></i>
-            <span class="txt-bold" style="color:#fff;">Pocket UI</span>
+            <span class="txt-bold" style="color:#fff;">Pocket Kit</span>
         </a>
         <nav class="app-main-nav">
             <a href="#" class="header-link active">
@@ -271,7 +271,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr tabindex="0" onclick="PocketUI.modal.openModal('record-edit-modal')">
+                        <tr tabindex="0" onclick="PocketKit.modal.openModal('record-edit-modal')">
                             <td class="col-bulk-select">
                                 <div class="field">
                                     <input type="checkbox" id="r1" data-bulk-item="demo" onclick="event.stopPropagation()">
@@ -299,7 +299,7 @@
                             </td>
                             <td class="col-meta"><i class="ri-arrow-right-line m-r-10"></i></td>
                         </tr>
-                        <tr tabindex="0" onclick="PocketUI.modal.openModal('record-edit-modal')">
+                        <tr tabindex="0" onclick="PocketKit.modal.openModal('record-edit-modal')">
                             <td class="col-bulk-select">
                                 <div class="field">
                                     <input type="checkbox" id="r2" data-bulk-item="demo" onclick="event.stopPropagation()">
@@ -329,7 +329,7 @@
                             </td>
                             <td class="col-meta"><i class="ri-arrow-right-line m-r-10"></i></td>
                         </tr>
-                        <tr tabindex="0" onclick="PocketUI.modal.openModal('record-edit-modal')">
+                        <tr tabindex="0" onclick="PocketKit.modal.openModal('record-edit-modal')">
                             <td class="col-bulk-select">
                                 <div class="field">
                                     <input type="checkbox" id="r3" data-bulk-item="demo" onclick="event.stopPropagation()">
@@ -447,11 +447,11 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button class="btn sm outline danger m-r-auto" onclick="PocketUI.toast.danger('Record deleted'); PocketUI.modal.closeModal('record-edit-modal');">
+            <button class="btn sm outline danger m-r-auto" onclick="PocketKit.toast.danger('Record deleted'); PocketKit.modal.closeModal('record-edit-modal');">
                 <i class="ri-delete-bin-7-line"></i> Delete
             </button>
             <button class="btn sm secondary" data-modal-close="record-edit-modal">Cancel</button>
-            <button class="btn sm accent" onclick="PocketUI.toast.success('Record saved!'); PocketUI.modal.closeModal('record-edit-modal');">
+            <button class="btn sm accent" onclick="PocketKit.toast.success('Record saved!'); PocketKit.modal.closeModal('record-edit-modal');">
                 <i class="ri-save-line"></i> Save
             </button>
         </div>
@@ -485,7 +485,7 @@
         </div>
         <div class="modal-footer">
             <button class="btn secondary" data-modal-close="record-modal">Cancel</button>
-            <button class="btn accent" onclick="PocketUI.toast.success('Record created!'); PocketUI.modal.closeModal('record-modal');">
+            <button class="btn accent" onclick="PocketKit.toast.success('Record created!'); PocketKit.modal.closeModal('record-modal');">
                 <i class="ri-save-line"></i> Create
             </button>
         </div>

@@ -1,5 +1,5 @@
 /**
- * Pocket UI — utils.js
+ * Pocket Kit — utils.js
  * Shared utility functions
  */
 (function () {
@@ -7,8 +7,8 @@
     function copyToClipboard(text) {
         if (navigator.clipboard) {
             return navigator.clipboard.writeText(text).then(() => {
-                if (window.PocketUI?.toast) {
-                    window.PocketUI.toast.success('Copied to clipboard!', 2000);
+                if (window.PocketKit?.toast) {
+                    window.PocketKit.toast.success('Copied to clipboard!', 2000);
                 }
             });
         }
@@ -87,6 +87,6 @@
         init();
     }
 
-    window.PocketUI = window.PocketUI || {};
-    window.PocketUI.utils = { copyToClipboard };
+    window.PocketKit = window.PocketKit || {};
+    window.PocketKit.utils = { copyToClipboard };
 })();

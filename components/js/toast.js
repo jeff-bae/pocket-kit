@@ -1,5 +1,5 @@
 /**
- * Pocket UI — toast.js
+ * Pocket Kit — toast.js
  * Toast notification system
  */
 (function () {
@@ -62,6 +62,6 @@
     function warning(msg, dur) { return show(msg, 'warning', dur); }
     function info(msg, dur)    { return show(msg, 'info', dur); }
 
-    window.PocketUI = window.PocketUI || {};
-    window.PocketUI.toast = { show, success, danger, warning, info };
+    window.PocketKit = window.PocketKit || {};
+    window.PocketKit.toast = { show, success, danger, warning, info };
 })();

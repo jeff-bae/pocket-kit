@@ -1,4 +1,4 @@
-# Pocket UI — Design System Context
+# Pocket Kit — Design System Context
 
 PocketBase Admin UI 디자인 시스템 기반의 순수 HTML/CSS/JS 컴포넌트 라이브러리.
 빌드 도구 없음. 외부 의존성 없음. 모든 에셋 로컬 번들.
@@ -450,11 +450,11 @@ Open/close: `data-modal-open` / `data-modal-close` 속성 또는 JS API.
 ### Toasts (JS API)
 
 ```js
-PocketUI.toast.success("Record saved!");
-PocketUI.toast.danger("Failed to save.");
-PocketUI.toast.warning("Check your input.");
-PocketUI.toast.info("Loading complete.");
-PocketUI.toast.show("Custom message", "default", 5000); // type, duration ms (0 = sticky)
+PocketKit.toast.success("Record saved!");
+PocketKit.toast.danger("Failed to save.");
+PocketKit.toast.warning("Check your input.");
+PocketKit.toast.info("Loading complete.");
+PocketKit.toast.show("Custom message", "default", 5000); // type, duration ms (0 = sticky)
 ```
 
 ### Tables
@@ -564,25 +564,25 @@ PocketUI.toast.show("Custom message", "default", 5000); // type, duration ms (0 
 
 ## JavaScript API
 
-모든 JS는 `window.PocketUI` 네임스페이스 아래 IIFE 패턴으로 노출.
+모든 JS는 `window.PocketKit` 네임스페이스 아래 IIFE 패턴으로 노출.
 
 ```js
 // Theme
-PocketUI.theme.applyScheme("dark");   // "light" | "dark" | "auto"
+PocketKit.theme.applyScheme("dark");   // "light" | "dark" | "auto"
 
 // Modal
-PocketUI.modal.openModal("modal-id");
-PocketUI.modal.closeModal("modal-id");
+PocketKit.modal.openModal("modal-id");
+PocketKit.modal.closeModal("modal-id");
 
 // Toast
-PocketUI.toast.success("message", duration?);
-PocketUI.toast.danger("message", duration?);
-PocketUI.toast.warning("message", duration?);
-PocketUI.toast.info("message", duration?);
-PocketUI.toast.show("message", "type", duration);   // duration 0 = sticky
+PocketKit.toast.success("message", duration?);
+PocketKit.toast.danger("message", duration?);
+PocketKit.toast.warning("message", duration?);
+PocketKit.toast.info("message", duration?);
+PocketKit.toast.show("message", "type", duration);   // duration 0 = sticky
 
 // Dropdown
-PocketUI.dropdown.closeAll();
+PocketKit.dropdown.closeAll();
 ```
 
 **Theme HTML hooks:**
@@ -635,7 +635,7 @@ Example: `.p-20` `.p-t-sm` `.p-l-base`
 - `light` — 명시적 라이트 모드
 - `dark` — 명시적 다크 모드
 - `auto` — `prefers-color-scheme` 미디어쿼리 따름
-- 사용자 선택은 `localStorage["pocket-ui-color-scheme"]`에 저장
+- 사용자 선택은 `localStorage["pocket-kit-color-scheme"]`에 저장
 
 ---
 

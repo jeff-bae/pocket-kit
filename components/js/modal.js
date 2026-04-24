@@ -1,5 +1,5 @@
 /**
- * Pocket UI — modal.js
+ * Pocket Kit — modal.js
  * Modal open/close/focus-trap
  */
 (function () {
@@ -62,6 +62,6 @@
         initModals();
     }
 
-    window.PocketUI = window.PocketUI || {};
-    window.PocketUI.modal = { openModal, closeModal };
+    window.PocketKit = window.PocketKit || {};
+    window.PocketKit.modal = { openModal, closeModal };
 })();

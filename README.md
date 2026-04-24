@@ -1,4 +1,4 @@
-# Pocket UI
+# Pocket Kit
 
 PocketBase Admin UI 디자인 시스템을 기반으로 한 순수 HTML/CSS/JS 컴포넌트 라이브러리입니다.  
 빌드 도구나 프레임워크 없이 바로 브라우저에서 실행됩니다.
@@ -6,7 +6,7 @@ PocketBase Admin UI 디자인 시스템을 기반으로 한 순수 HTML/CSS/JS �
 ## 구조
 
 ```
-pocket-ui/
+pocket-kit/
 ├── index.html              # 컴포넌트 갤러리 (진입점)
 ├── common.css              # 디자인 토큰, 테마, 전역 스타일
 ├── components/
@@ -85,7 +85,7 @@ pocket-ui/
 ## 테마 (다크 모드)
 
 라이트 / 다크 / 자동(시스템 설정) 세 가지 모드를 지원합니다.  
-`localStorage`에 `pocket-ui-color-scheme` 키로 사용자 선택이 저장됩니다.
+`localStorage`에 `pocket-kit-color-scheme` 키로 사용자 선택이 저장됩니다.
 
 ```html
 <!-- HTML 루트 속성으로 테마 지정 -->
@@ -99,7 +99,7 @@ pocket-ui/
 
 ```js
 // JS API
-PocketUI.theme.applyScheme('dark');
+PocketKit.theme.applyScheme('dark');
 ```
 
 ## 사용법

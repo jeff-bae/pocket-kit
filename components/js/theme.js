@@ -1,9 +1,9 @@
 /**
- * Pocket UI — theme.js
+ * Pocket Kit — theme.js
  * Dark / Light / Auto color scheme management
  */
 (function () {
-    const STORAGE_KEY = 'pocket-ui-color-scheme';
+    const STORAGE_KEY = 'pocket-kit-color-scheme';
     const root = document.documentElement;
 
     function applyScheme(scheme) {
@@ -29,6 +29,6 @@
         init();
     }
 
-    window.PocketUI = window.PocketUI || {};
-    window.PocketUI.theme = { applyScheme };
+    window.PocketKit = window.PocketKit || {};
+    window.PocketKit.theme = { applyScheme };
 })();

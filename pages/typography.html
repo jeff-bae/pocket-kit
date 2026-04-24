@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typography — Pocket UI</title>
+    <title>Typography — Pocket Kit</title>
     <link rel="stylesheet" href="../lib/fonts/remixicon/remixicon.css">
     <link rel="stylesheet" href="../common.css">
     <link rel="stylesheet" href="../components/css/typography.css">
@@ -130,32 +130,97 @@
     </div>
 
     <div class="demo-section">
-        <h3>Remixicon Examples</h3>
-        <div class="demo-row" style="font-size: 24px; color: var(--surfaceTxtColor); gap: 16px; flex-wrap: wrap;">
-            <i class="ri-database-2-line" title="ri-database-2-line"></i>
-            <i class="ri-settings-3-line" title="ri-settings-3-line"></i>
-            <i class="ri-bar-chart-box-line" title="ri-bar-chart-box-line"></i>
-            <i class="ri-add-circle-line" title="ri-add-circle-line"></i>
-            <i class="ri-delete-bin-7-line" title="ri-delete-bin-7-line"></i>
-            <i class="ri-edit-2-line" title="ri-edit-2-line"></i>
-            <i class="ri-search-line" title="ri-search-line"></i>
-            <i class="ri-filter-line" title="ri-filter-line"></i>
-            <i class="ri-download-line" title="ri-download-line"></i>
-            <i class="ri-upload-line" title="ri-upload-line"></i>
-            <i class="ri-refresh-line" title="ri-refresh-line"></i>
-            <i class="ri-key-line" title="ri-key-line"></i>
-            <i class="ri-lock-line" title="ri-lock-line"></i>
-            <i class="ri-user-line" title="ri-user-line"></i>
-            <i class="ri-group-line" title="ri-group-line"></i>
-            <i class="ri-folder-2-line" title="ri-folder-2-line"></i>
-            <i class="ri-file-copy-line" title="ri-file-copy-line"></i>
-            <i class="ri-image-line" title="ri-image-line"></i>
-            <i class="ri-toggle-line" title="ri-toggle-line"></i>
-            <i class="ri-list-check" title="ri-list-check"></i>
-            <i class="ri-code-s-slash-line" title="ri-code-s-slash-line"></i>
-            <i class="ri-pushpin-line" title="ri-pushpin-line"></i>
-            <i class="ri-arrow-right-line" title="ri-arrow-right-line"></i>
-            <i class="ri-arrow-left-line" title="ri-arrow-left-line"></i>
+        <h3>Remixicon Examples — <a href="icons.html" style="font-size:var(--smFontSize); text-transform:none; letter-spacing:0; color:var(--accentColor);">View all 3,058 icons →</a></h3>
+        <style>
+            .icon-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+                gap: 8px;
+            }
+            .icon-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+                padding: 12px 6px;
+                border-radius: var(--borderRadius);
+                border: 1px solid var(--surfaceAlt2Color);
+                background: var(--surfaceColor);
+                cursor: default;
+                transition: background var(--animationSpeed), border-color var(--animationSpeed);
+            }
+            .icon-item:hover {
+                background: var(--surfaceAlt1Color);
+                border-color: var(--surfaceAlt3Color);
+            }
+            .icon-item i {
+                font-size: 22px;
+                color: var(--surfaceTxtColor);
+            }
+            .icon-item span {
+                font-size: 10px;
+                color: var(--surfaceTxtHintColor);
+                font-family: var(--monoFontFamily);
+                text-align: center;
+                word-break: break-all;
+                line-height: 1.3;
+            }
+        </style>
+        <div class="icon-grid">
+            <div class="icon-item"><i class="ri-database-2-line"></i><span>ri-database-2-line</span></div>
+            <div class="icon-item"><i class="ri-database-2-fill"></i><span>ri-database-2-fill</span></div>
+            <div class="icon-item"><i class="ri-settings-3-line"></i><span>ri-settings-3-line</span></div>
+            <div class="icon-item"><i class="ri-bar-chart-box-line"></i><span>ri-bar-chart-box-line</span></div>
+            <div class="icon-item"><i class="ri-add-line"></i><span>ri-add-line</span></div>
+            <div class="icon-item"><i class="ri-add-circle-line"></i><span>ri-add-circle-line</span></div>
+            <div class="icon-item"><i class="ri-close-line"></i><span>ri-close-line</span></div>
+            <div class="icon-item"><i class="ri-delete-bin-7-line"></i><span>ri-delete-bin-7-line</span></div>
+            <div class="icon-item"><i class="ri-edit-2-line"></i><span>ri-edit-2-line</span></div>
+            <div class="icon-item"><i class="ri-search-line"></i><span>ri-search-line</span></div>
+            <div class="icon-item"><i class="ri-filter-line"></i><span>ri-filter-line</span></div>
+            <div class="icon-item"><i class="ri-download-line"></i><span>ri-download-line</span></div>
+            <div class="icon-item"><i class="ri-upload-line"></i><span>ri-upload-line</span></div>
+            <div class="icon-item"><i class="ri-refresh-line"></i><span>ri-refresh-line</span></div>
+            <div class="icon-item"><i class="ri-key-line"></i><span>ri-key-line</span></div>
+            <div class="icon-item"><i class="ri-lock-line"></i><span>ri-lock-line</span></div>
+            <div class="icon-item"><i class="ri-lock-unlock-line"></i><span>ri-lock-unlock-line</span></div>
+            <div class="icon-item"><i class="ri-user-line"></i><span>ri-user-line</span></div>
+            <div class="icon-item"><i class="ri-user-add-line"></i><span>ri-user-add-line</span></div>
+            <div class="icon-item"><i class="ri-group-line"></i><span>ri-group-line</span></div>
+            <div class="icon-item"><i class="ri-folder-2-line"></i><span>ri-folder-2-line</span></div>
+            <div class="icon-item"><i class="ri-file-copy-line"></i><span>ri-file-copy-line</span></div>
+            <div class="icon-item"><i class="ri-file-list-line"></i><span>ri-file-list-line</span></div>
+            <div class="icon-item"><i class="ri-image-line"></i><span>ri-image-line</span></div>
+            <div class="icon-item"><i class="ri-toggle-line"></i><span>ri-toggle-line</span></div>
+            <div class="icon-item"><i class="ri-list-check"></i><span>ri-list-check</span></div>
+            <div class="icon-item"><i class="ri-code-s-slash-line"></i><span>ri-code-s-slash-line</span></div>
+            <div class="icon-item"><i class="ri-pushpin-line"></i><span>ri-pushpin-line</span></div>
+            <div class="icon-item"><i class="ri-more-2-line"></i><span>ri-more-2-line</span></div>
+            <div class="icon-item"><i class="ri-arrow-right-line"></i><span>ri-arrow-right-line</span></div>
+            <div class="icon-item"><i class="ri-arrow-left-line"></i><span>ri-arrow-left-line</span></div>
+            <div class="icon-item"><i class="ri-arrow-up-line"></i><span>ri-arrow-up-line</span></div>
+            <div class="icon-item"><i class="ri-arrow-down-line"></i><span>ri-arrow-down-line</span></div>
+            <div class="icon-item"><i class="ri-arrow-down-s-line"></i><span>ri-arrow-down-s-line</span></div>
+            <div class="icon-item"><i class="ri-arrow-right-s-line"></i><span>ri-arrow-right-s-line</span></div>
+            <div class="icon-item"><i class="ri-checkbox-circle-line"></i><span>ri-checkbox-circle-line</span></div>
+            <div class="icon-item"><i class="ri-error-warning-line"></i><span>ri-error-warning-line</span></div>
+            <div class="icon-item"><i class="ri-alert-line"></i><span>ri-alert-line</span></div>
+            <div class="icon-item"><i class="ri-information-line"></i><span>ri-information-line</span></div>
+            <div class="icon-item"><i class="ri-notification-3-line"></i><span>ri-notification-3-line</span></div>
+            <div class="icon-item"><i class="ri-sun-line"></i><span>ri-sun-line</span></div>
+            <div class="icon-item"><i class="ri-moon-line"></i><span>ri-moon-line</span></div>
+            <div class="icon-item"><i class="ri-eye-line"></i><span>ri-eye-line</span></div>
+            <div class="icon-item"><i class="ri-eye-off-line"></i><span>ri-eye-off-line</span></div>
+            <div class="icon-item"><i class="ri-external-link-line"></i><span>ri-external-link-line</span></div>
+            <div class="icon-item"><i class="ri-link"></i><span>ri-link</span></div>
+            <div class="icon-item"><i class="ri-table-line"></i><span>ri-table-line</span></div>
+            <div class="icon-item"><i class="ri-layout-2-line"></i><span>ri-layout-2-line</span></div>
+            <div class="icon-item"><i class="ri-layout-3-line"></i><span>ri-layout-3-line</span></div>
+            <div class="icon-item"><i class="ri-cursor-line"></i><span>ri-cursor-line</span></div>
+            <div class="icon-item"><i class="ri-input-field"></i><span>ri-input-field</span></div>
+            <div class="icon-item"><i class="ri-menu-3-line"></i><span>ri-menu-3-line</span></div>
+            <div class="icon-item"><i class="ri-layout-top-2-line"></i><span>ri-layout-top-2-line</span></div>
+            <div class="icon-item"><i class="ri-text"></i><span>ri-text</span></div>
         </div>
     </div>
 
