@@ -110,6 +110,7 @@
     padding: var(--sidebarSpacing);
     flex: 1;
     overflow: auto;
+    min-height: 0;
 }
 
 .sidebar-search {
@@ -226,7 +227,7 @@
 
 /* --- New Collection Button --- */
 .sidebar-content.new-collection {
-    flex: 0;
+    flex: none;
     padding: var(--sidebarSpacing);
     border-top: 1px solid var(--surfaceAlt2Color);
 }
