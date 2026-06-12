@@ -231,6 +231,8 @@ button.input-addon:hover {
     border-top: none;
     border-left: none;
     transform: rotate(45deg) translateY(-1px);
+    margin-left: -1px;
+    margin-top: -1px;
 }
 
 .field input[type="radio"]:checked::after {
@@ -277,7 +279,7 @@ input[type="checkbox"].switch::after {
     display: block;
     width: var(--thumbSize);
     height: var(--thumbSize);
-    border-radius: 50%;
+    border-radius: 4px;
     background: #fff;
     position: absolute;
     top: 50%;
@@ -299,7 +301,7 @@ input[type="checkbox"].switch:checked::after {
     width: var(--thumbSize);
     height: var(--thumbSize);
     background: #fff;
-    border-radius: 50%;
+    border-radius: 4px;
 }
 
 input[type="checkbox"].switch.sm {
@@ -332,9 +334,42 @@ input[type="checkbox"].switch.sm {
     transform: translateY(-50%);
     color: var(--surfaceTxtHintColor);
     pointer-events: none;
+    font-size: 16px;
 }
-.input-icon input {
-    padding-left: calc(var(--inputPadding) + 22px);
+.input-icon input,
+.field.input-icon input:not([type="checkbox"]):not([type="radio"]) {
+    padding-left: 35px;
+}
+
+/* --- Size modifiers: regular fields (input + select) --- */
+.field.sm:not(.input-icon) input:not([type="checkbox"]):not([type="radio"]),
+.field.sm:not(.input-icon) select {
+    height: var(--smBtnHeight);
+    font-size: var(--smFontSize);
+}
+.field.lg:not(.input-icon) input:not([type="checkbox"]):not([type="radio"]),
+.field.lg:not(.input-icon) select {
+    height: var(--lgBtnHeight);
+    font-size: var(--lgFontSize);
+}
+
+/* --- Size modifiers: icon fields (input only) --- */
+.field.input-icon.sm i { font-size: 14px; }
+.field.input-icon.lg i { font-size: 20px; margin-left: -2px; }
+.field.input-icon.sm input:not([type="checkbox"]):not([type="radio"]) {
+    height: var(--smBtnHeight);
+    font-size: var(--smFontSize);
+    padding-left: 35px;
+}
+.field.input-icon.lg input:not([type="checkbox"]):not([type="radio"]) {
+    height: var(--lgBtnHeight);
+    font-size: var(--lgFontSize);
+    padding-left: 35px;
+}
+
+/* --- Pill variant (rounded) --- */
+.field.pill input:not([type="checkbox"]):not([type="radio"]) {
+    border-radius: 999px;
 }
 
 /* --- Searchbar --- */

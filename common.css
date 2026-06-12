@@ -194,7 +194,7 @@
     --surfaceAlt3Color: color-mix(in srgb, var(--surfaceColor), white 12%);
     --surfaceAlt4Color: color-mix(in srgb, var(--surfaceColor), white 14%);
     --surfaceAlt5Color: color-mix(in srgb, var(--surfaceColor), white 16%);
-    --accentColor: #09388b;
+    --accentColor: #105ce3;
     --primaryColor: #595959;
     --primaryTxtColor: #fff;
     --primaryTxtHintColor: color-mix(in srgb, var(--primaryTxtColor), transparent 35%);
@@ -246,7 +246,7 @@
         --surfaceAlt3Color: color-mix(in srgb, var(--surfaceColor), white 12%);
         --surfaceAlt4Color: color-mix(in srgb, var(--surfaceColor), white 14%);
         --surfaceAlt5Color: color-mix(in srgb, var(--surfaceColor), white 16%);
-        --accentColor: #09388b;
+        --accentColor: #105ce3;
         --primaryColor: #595959;
         --primaryTxtColor: #fff;
         --secondaryColor: color-mix(in srgb, var(--surfaceColor), white 14%);

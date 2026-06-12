@@ -43,6 +43,39 @@
     </div>
 
     <div class="demo-section">
+        <h3>Field Sizes (sm / base / lg)</h3>
+        <div style="display:flex; flex-direction:column; gap:10px; max-width:400px;">
+            <div class="field sm">
+                <input type="text" placeholder="Small input (sm)">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Base input">
+            </div>
+            <div class="field lg">
+                <input type="text" placeholder="Large input (lg)">
+            </div>
+            <div class="field sm">
+                <select>
+                    <option>Small select (sm)</option>
+                    <option>Option B</option>
+                </select>
+            </div>
+            <div class="field">
+                <select>
+                    <option>Base select</option>
+                    <option>Option B</option>
+                </select>
+            </div>
+            <div class="field lg">
+                <select>
+                    <option>Large select (lg)</option>
+                    <option>Option B</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
         <h3>Textarea</h3>
         <div class="field" style="max-width: 520px;">
             <label for="ta1">Description</label>
@@ -205,6 +238,42 @@
             </div>
         </div>
     </div>
+    <div class="demo-section">
+        <h3>Icon Input</h3>
+        <div style="display:flex; flex-direction:column; gap:10px; max-width:400px;">
+            <div class="field input-icon sm">
+                <i class="ri-user-line"></i>
+                <input type="text" placeholder="Username (sm)">
+            </div>
+            <div class="field input-icon">
+                <i class="ri-mail-line"></i>
+                <input type="text" placeholder="Email (base)">
+            </div>
+            <div class="field input-icon lg">
+                <i class="ri-lock-line"></i>
+                <input type="password" placeholder="Password (lg)">
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>Search Input</h3>
+        <div style="display:flex; flex-direction:column; gap:10px; max-width:400px;">
+            <div class="field input-icon pill sm">
+                <i class="ri-search-line"></i>
+                <input type="text" placeholder="Search… (sm)">
+            </div>
+            <div class="field input-icon pill">
+                <i class="ri-search-line"></i>
+                <input type="text" placeholder="Search… (base)">
+            </div>
+            <div class="field input-icon pill lg">
+                <i class="ri-search-line"></i>
+                <input type="text" placeholder="Search… (lg)">
+            </div>
+        </div>
+    </div>
+
 <script src="../components/js/page-header.js"></script>
 <script src="../components/js/theme.js"></script>
 </body>
