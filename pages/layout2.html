@@ -259,6 +259,71 @@
             font-size: var(--smFontSize);
             width: 100%;
         }
+
+        /* ── Drawer backdrop ── */
+        .drawer-backdrop {
+            display: none;
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.25);
+            z-index: 150;
+            cursor: pointer;
+        }
+
+        /* ── Tablet (≤ 1024px) ── */
+        @media (max-width: 1024px) {
+            .drawer-backdrop.visible {
+                display: block;
+            }
+            .top-toolbar .logo-text {
+                width: auto;
+                flex: 1;
+            }
+            .top-toolbar .app-main-nav {
+                display: none;
+            }
+            .page {
+                position: relative;
+            }
+            .icon-toolbar {
+                position: relative;
+                z-index: 200;
+            }
+            .submenu-panel {
+                position: absolute;
+                left: 56px;
+                top: 0;
+                bottom: 0;
+                z-index: 180;
+                box-shadow: 4px 0 20px rgba(0, 0, 0, 0.12);
+            }
+            .stat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ── Mobile (≤ 768px) ── */
+        @media (max-width: 768px) {
+            .page-header {
+                flex-wrap: wrap;
+            }
+            .page-header .breadcrumbs {
+                flex: 0 0 100%;
+            }
+            .submenu-panel.open {
+                width: min(260px, 80vw);
+            }
+            .stat-grid {
+                grid-template-columns: 1fr;
+            }
+            .page-header .input-icon.field {
+                display: none;
+            }
+            .app-footer > a,
+            .app-footer > span:not(:first-child):not(.label) {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -291,6 +356,8 @@
 
     <!-- 본문 중간 행 -->
     <div class="page">
+
+        <div class="drawer-backdrop" id="drawerBackdrop"></div>
 
         <!-- ② 왼쪽 아이콘 툴바 -->
         <nav class="icon-toolbar" id="iconToolbar">
@@ -667,37 +734,60 @@
 <script src="../components/js/theme.js"></script>
 <script>
 (function () {
-    var toolbar  = document.getElementById('iconToolbar');
-    var panel    = document.getElementById('submenuPanel');
-    var current  = 'collections'; // 초기 활성 섹션
+    var toolbar         = document.getElementById('iconToolbar');
+    var panel           = document.getElementById('submenuPanel');
+    var drawerBackdrop  = document.getElementById('drawerBackdrop');
+    var current         = 'collections';
+
+    function openPanel(section) {
+        toolbar.querySelectorAll('.icon-toolbar-item').forEach(function (b) {
+            b.classList.remove('active');
+        });
+        document.querySelectorAll('.submenu-data').forEach(function (d) {
+            d.classList.remove('active');
+        });
+        var btn = toolbar.querySelector('[data-section="' + section + '"]');
+        if (btn) btn.classList.add('active');
+        var target = document.getElementById('submenu-' + section);
+        if (target) target.classList.add('active');
+        panel.classList.add('open');
+        drawerBackdrop.classList.add('visible');
+        current = section;
+    }
+
+    function closePanel() {
+        panel.classList.remove('open');
+        drawerBackdrop.classList.remove('visible');
+        toolbar.querySelectorAll('.icon-toolbar-item').forEach(function (b) {
+            b.classList.remove('active');
+        });
+        current = null;
+    }
 
     toolbar.addEventListener('click', function (e) {
         var btn = e.target.closest('[data-section]');
         if (!btn) return;
-
         var section = btn.dataset.section;
-
         if (section === current && panel.classList.contains('open')) {
-            // 같은 아이콘 재클릭 → 패널 닫기
-            panel.classList.remove('open');
-            btn.classList.remove('active');
-            current = null;
+            closePanel();
         } else {
-            // 다른 아이콘 → 패널 전환
-            toolbar.querySelectorAll('.icon-toolbar-item').forEach(function (b) {
-                b.classList.remove('active');
-            });
-            document.querySelectorAll('.submenu-data').forEach(function (d) {
-                d.classList.remove('active');
-            });
-
-            btn.classList.add('active');
-            var target = document.getElementById('submenu-' + section);
-            if (target) target.classList.add('active');
-            panel.classList.add('open');
-            current = section;
+            openPanel(section);
         }
     });
+
+    drawerBackdrop.addEventListener('click', closePanel);
+
+    // 모바일 초기 상태: panel 닫기
+    if (window.matchMedia('(max-width: 768px)').matches) {
+        panel.classList.remove('open');
+        document.querySelectorAll('.submenu-data').forEach(function (d) {
+            d.classList.remove('active');
+        });
+        toolbar.querySelectorAll('.icon-toolbar-item').forEach(function (b) {
+            b.classList.remove('active');
+        });
+        current = null;
+    }
 }());
 </script>
 </body>
