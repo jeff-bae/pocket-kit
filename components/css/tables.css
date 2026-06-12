@@ -161,7 +161,7 @@
 .formatted-date {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 1px;
     font-size: var(--smFontSize);
 }
 
@@ -172,18 +172,11 @@
 
 .formatted-date .secondary-date {
     color: var(--surfaceTxtHintColor);
-    font-size: 12px;
+    font-size: 11px;
 }
 
-.formatted-date.short .secondary-date {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity var(--animationSpeed);
-}
-
-.formatted-date.short:hover .secondary-date {
-    opacity: 1;
-    pointer-events: auto;
+.formatted-date span {
+    line-height: 13px;
 }
 
 /* --- Thumbnail --- */

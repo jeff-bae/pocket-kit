@@ -55,8 +55,9 @@
     /* Spacing */
     --spacing: 30px;
     --smSpacing: 20px;
+    --xsSpacing: 10px;
     --sidebarSpacing: 14px;
-    --tableSpacing: 12px;
+    --tableSpacing: 10px;
     --siblingSpacing: 8px;
     --gridGap: 20px;
 
@@ -64,8 +65,9 @@
     --btnHeight: 45px;
     --smBtnHeight: 35px;
     --lgBtnHeight: 52px;
-    --borderRadius: 5px;
-    --lgBorderRadius: 15px;
+    --xsBtnHeight: 20px;
+    --borderRadius: 4px;
+    --lgBorderRadius: 4px;
     --inputPadding: 13px;
     --inputBorderRadius: var(--borderRadius);
     --checkboxSize: 20px;
@@ -163,7 +165,7 @@
     --pageBgColor: var(--surfaceColor);
 
     /* Overlays */
-    --modalOverlayColor: #22242a38;
+    --modalOverlayColor: #a8a8a873;
     --modalShadow: 0 8px 40px rgba(34,36,42,0.18);
     --tooltipTxtColor: #fff;
     --tooltipSurfaceColor: #222424e6;
@@ -192,11 +194,12 @@
     --surfaceAlt3Color: color-mix(in srgb, var(--surfaceColor), white 12%);
     --surfaceAlt4Color: color-mix(in srgb, var(--surfaceColor), white 14%);
     --surfaceAlt5Color: color-mix(in srgb, var(--surfaceColor), white 16%);
-    --primaryColor: #161616;
-    --primaryTxtColor: var(--surfaceTxtColor);
+    --accentColor: #09388b;
+    --primaryColor: #595959;
+    --primaryTxtColor: #fff;
     --primaryTxtHintColor: color-mix(in srgb, var(--primaryTxtColor), transparent 35%);
     --primaryTxtDisabledColor: color-mix(in srgb, var(--primaryTxtColor), transparent 50%);
-    --secondaryColor: var(--surfaceAlt2Color);
+    --secondaryColor: color-mix(in srgb, var(--surfaceColor), white 14%);
     --secondaryTxtColor: var(--surfaceTxtColor);
     --infoColor: #4273bd;
     --infoTxtColor: var(--surfaceTxtColor);
@@ -210,9 +213,10 @@
     --dangerColor: #bb303e;
     --dangerTxtColor: var(--surfaceTxtColor);
     --surfaceDangerColor: color-mix(in srgb, var(--dangerColor), var(--surfaceColor) 45%);
+    --surfaceAccentColor: color-mix(in srgb, var(--accentColor), var(--surfaceColor) 55%);
     --pageBgColor: #000;
     --selectionColor: #ffffff38;
-    --modalOverlayColor: #00000073;
+    --modalOverlayColor: #a8a8a873;
     --modalShadow: 0 8px 40px rgba(0,0,0,0.55);
     --tooltipTxtColor: var(--surfaceTxtColor);
     --boxShadow: 0px 8px 5px -5px #0000004d;
@@ -242,17 +246,19 @@
         --surfaceAlt3Color: color-mix(in srgb, var(--surfaceColor), white 12%);
         --surfaceAlt4Color: color-mix(in srgb, var(--surfaceColor), white 14%);
         --surfaceAlt5Color: color-mix(in srgb, var(--surfaceColor), white 16%);
-        --primaryColor: #161616;
-        --primaryTxtColor: var(--surfaceTxtColor);
-        --secondaryColor: var(--surfaceAlt2Color);
+        --accentColor: #09388b;
+        --primaryColor: #595959;
+        --primaryTxtColor: #fff;
+        --secondaryColor: color-mix(in srgb, var(--surfaceColor), white 14%);
         --secondaryTxtColor: var(--surfaceTxtColor);
         --infoColor: #4273bd;
         --successColor: #27865d;
         --warningColor: #cf4e17;
         --dangerColor: #bb303e;
+        --surfaceAccentColor: color-mix(in srgb, var(--accentColor), var(--surfaceColor) 55%);
         --pageBgColor: #000;
         --selectionColor: #ffffff38;
-        --modalOverlayColor: #00000073;
+        --modalOverlayColor: #a8a8a873;
         --modalShadow: 0 8px 40px rgba(0,0,0,0.55);
         --boxShadow: 0px 8px 5px -5px #0000004d;
         --leftBoxShadow: -1px 0px 5px 0 #0000004d;
@@ -360,11 +366,18 @@ img {
     background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
+    border-radius: 4px;
     background: var(--surfaceAlt3Color);
 }
 ::-webkit-scrollbar-thumb:hover {
     background: var(--surfaceAlt5Color);
+}
+
+:is([data-color-scheme="dark"], [data-color-scheme="auto"]) ::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--surfaceColor), white 30%);
+}
+:is([data-color-scheme="dark"], [data-color-scheme="auto"]) ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--surfaceColor), white 45%);
 }
 
 /* --- Layout --- */

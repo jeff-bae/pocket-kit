@@ -53,6 +53,13 @@
 .txt-info      { color: var(--infoColor) !important; }
 .txt-white     { color: #fff !important; }
 
+/* --- Dark mode: txt-* colors lightened for readability --- */
+:is([data-color-scheme="dark"], [data-color-scheme="auto"]) .txt-accent  { color: color-mix(in srgb, var(--accentColor),  white 45%) !important; }
+:is([data-color-scheme="dark"], [data-color-scheme="auto"]) .txt-success { color: color-mix(in srgb, var(--successColor), white 45%) !important; }
+:is([data-color-scheme="dark"], [data-color-scheme="auto"]) .txt-danger  { color: color-mix(in srgb, var(--dangerColor),  white 45%) !important; }
+:is([data-color-scheme="dark"], [data-color-scheme="auto"]) .txt-warning { color: color-mix(in srgb, var(--warningColor), white 45%) !important; }
+:is([data-color-scheme="dark"], [data-color-scheme="auto"]) .txt-info    { color: color-mix(in srgb, var(--infoColor),    white 45%) !important; }
+
 /* --- Labels / Badges --- */
 .label {
     display: inline-flex;
@@ -74,6 +81,13 @@
 .label.info     { background: var(--surfaceInfoColor);    color: var(--infoColor); }
 .label.accent   { background: var(--surfaceAccentColor);  color: var(--accentColor); }
 .label.primary  { background: var(--primaryColor);        color: var(--primaryTxtColor); }
+
+/* --- Dark mode: label text lightened for readability --- */
+:is([data-color-scheme="dark"], [data-color-scheme="auto"]) .label.success { color: color-mix(in srgb, var(--successColor), white 45%); }
+:is([data-color-scheme="dark"], [data-color-scheme="auto"]) .label.danger  { color: color-mix(in srgb, var(--dangerColor),  white 45%); }
+:is([data-color-scheme="dark"], [data-color-scheme="auto"]) .label.warning { color: color-mix(in srgb, var(--warningColor), white 45%); }
+:is([data-color-scheme="dark"], [data-color-scheme="auto"]) .label.info    { color: color-mix(in srgb, var(--infoColor),    white 45%); }
+:is([data-color-scheme="dark"], [data-color-scheme="auto"]) .label.accent  { color: color-mix(in srgb, var(--accentColor),  white 45%); }
 
 /* --- Link Variants --- */
 .link-faded {

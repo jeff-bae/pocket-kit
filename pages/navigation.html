@@ -19,6 +19,8 @@
         .demo-section h3 { margin-bottom: var(--smSpacing); font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--surfaceTxtHintColor); border-bottom: 1px solid var(--surfaceAlt2Color); padding-bottom: 8px; }
         .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--surfaceTxtHintColor); font-size: var(--smFontSize); text-decoration: none; margin-bottom: var(--smSpacing); }
         .back-link:hover { color: var(--surfaceTxtColor); }
+        .logo-icon { font-size: 22px; color: var(--accentColor); }
+        :is([data-color-scheme="dark"], [data-color-scheme="auto"]) .logo-icon { color: var(--infoTxtColor); }
     </style>
 </head>
 <body data-no-wrap>
@@ -31,7 +33,7 @@
         <div style="border: 1px solid var(--surfaceAlt2Color); border-radius: var(--borderRadius); overflow: hidden;">
             <header class="app-header">
                 <a href="#" class="logo" style="gap:8px;">
-                    <i class="ri-database-2-fill" style="font-size:22px; color:var(--accentColor);"></i>
+                    <i class="ri-database-2-fill logo-icon"></i>
                     <span class="txt-bold">Pocket Kit</span>
                 </a>
                 <nav class="app-main-nav">

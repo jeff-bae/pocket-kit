@@ -56,6 +56,15 @@
 }
 
 /* --- Sizes --- */
+.btn.xs {
+    --circleSize: 20px;
+    height: 20px;
+    padding: 0 5px;
+    font-size: 11px;
+    gap: 3px;
+    border-width: 1px;
+}
+
 .btn.sm {
     --circleSize: var(--smBtnHeight);
     height: var(--smBtnHeight);
@@ -82,7 +91,7 @@
 }
 
 .btn.pill {
-    border-radius: 30px;
+    border-radius: 4px;
 }
 
 .btn.block {
@@ -181,6 +190,13 @@
 .btn.rotate-btn.loading i,
 .rotate-btn.loading i {
     animation: rotate var(--loaderAnimationSpeed) linear infinite;
+}
+
+/* --- Dark mode: secondary hover goes lighter, not darker --- */
+[data-color-scheme="dark"] .btn.secondary,
+[data-color-scheme="auto"] .btn.secondary {
+    --btnHoverColor: color-mix(in srgb, var(--btnColor), white 12%);
+    --btnActiveColor: color-mix(in srgb, var(--btnColor), white 20%);
 }
 
 /* --- Next / Arrow button --- */

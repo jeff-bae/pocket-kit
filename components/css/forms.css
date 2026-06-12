@@ -257,7 +257,7 @@ input[type="checkbox"].switch {
     --thumbSize: 16px;
     width: var(--switchW);
     height: var(--switchH);
-    border-radius: var(--switchH);
+    border-radius: 4px;
     border: none;
     background: var(--surfaceAlt3Color);
     cursor: pointer;
@@ -355,7 +355,7 @@ input[type="checkbox"].switch.sm {
     height: var(--smBtnHeight);
     padding: 0 var(--inputPadding);
     border: 1px solid var(--inputBorderColor);
-    border-radius: 30px;
+    border-radius: 4px;
     background: var(--inputColor);
     color: var(--surfaceTxtColor);
     font-family: var(--fontFamily);

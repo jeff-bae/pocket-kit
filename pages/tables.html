@@ -11,189 +11,735 @@
     <link rel="stylesheet" href="../components/css/forms.css">
     <link rel="stylesheet" href="../components/css/tables.css">
     <link rel="stylesheet" href="../components/css/alerts.css">
+    <link rel="stylesheet" href="../components/css/navigation.css">
     <link rel="stylesheet" href="../components/css/layout.css">
     <style>
-        body { padding: var(--spacing); max-width: var(--lgWrapperWidth); margin: 0 auto; }
-        .demo-section { margin-bottom: var(--spacing); }
-        .demo-section h3 { margin-bottom: var(--smSpacing); font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--surfaceTxtHintColor); border-bottom: 1px solid var(--surfaceAlt2Color); padding-bottom: 8px; }
-        .back-link { display: inline-flex; align-items: center; gap: 6px; color: var(--surfaceTxtHintColor); font-size: var(--smFontSize); text-decoration: none; margin-bottom: var(--smSpacing); }
+        body { padding: var(--spacing); max-width: 1280px; margin: 0 auto; }
+
+.demo-section { margin-bottom: var(--spacing); }
+        .demo-section > h3 {
+            margin-bottom: var(--smSpacing);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--surfaceTxtHintColor);
+            border-bottom: 1px solid var(--surfaceAlt2Color);
+            padding-bottom: 8px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--surfaceTxtHintColor);
+            font-size: var(--smFontSize);
+            text-decoration: none;
+        }
         .back-link:hover { color: var(--surfaceTxtColor); }
+
+        .table-wrap {
+            border: 1px solid var(--surfaceAlt2Color);
+            border-radius: var(--borderRadius);
+            overflow: hidden;
+        }
+
+        /* ── Table Toolbar ── */
+        .table-toolbar {
+            display: flex;
+            align-items: center;
+            gap: var(--siblingSpacing);
+            padding: var(--tableSpacing) var(--smSpacing);
+            border-bottom: 1px solid var(--surfaceAlt2Color);
+            background: var(--surfaceColor);
+        }
+        .table-toolbar-title {
+            font-weight: 600;
+            font-size: var(--smFontSize);
+            flex: 1;
+        }
+
+        /* ── Avatar ── */
+        .avatar {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: var(--smBtnHeight);
+            height: var(--smBtnHeight);
+            border-radius: 50%;
+            font-size: 11px;
+            font-weight: 700;
+            flex-shrink: 0;
+            color: #fff;
+            text-transform: uppercase;
+            user-select: none;
+        }
+
+        /* ── User Cell ── */
+        .user-cell { display: flex; align-items: center; gap: 10px; }
+        .user-cell-info { display: flex; flex-direction: column; gap: 1px; }
+        .user-cell-name { font-weight: 600; font-size: var(--smFontSize); color: var(--surfaceTxtColor); white-space: nowrap; }
+        .user-cell-email { font-size: 11px; color: var(--surfaceTxtHintColor); white-space: nowrap; }
+
+        /* ── Row Actions (fade in on hover) ── */
+        .row-actions { display: inline-flex; gap: 4px; opacity: 0; transition: opacity 0.15s; }
+        tr:hover .row-actions,
+        tr:focus-within .row-actions { opacity: 1; }
+
+        /* ── Trend ── */
+        .trend { display: inline-flex; align-items: center; gap: 3px; font-size: var(--smFontSize); font-weight: 600; }
+        .trend.up { color: var(--successColor); }
+        .trend.down { color: var(--dangerColor); }
+
+        /* ── Number / Mono Cell ── */
+        .num { font-family: var(--monoFontFamily); font-size: var(--smFontSize); }
+
+        /* ── Mini Progress Bar ── */
+        .mini-bar {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .mini-bar-track {
+            width: 64px;
+            height: 4px;
+            background: var(--surfaceAlt2Color);
+            border-radius: 2px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .mini-bar-fill {
+            height: 100%;
+            border-radius: 2px;
+            background: var(--accentColor);
+        }
+        .mini-bar-fill.success { background: var(--successColor); }
+        .mini-bar-fill.danger  { background: var(--dangerColor); }
+        .mini-bar-fill.warning { background: var(--warningColor); }
+
+        /* ── File Icon ── */
+        .file-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: var(--smBtnHeight);
+            height: var(--smBtnHeight);
+            border-radius: var(--borderRadius);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .file-cell { display: flex; align-items: center; gap: 10px; }
+        .file-cell-info { display: flex; flex-direction: column; gap: 1px; }
+        .file-cell-name { font-size: var(--smFontSize); font-weight: 600; color: var(--surfaceTxtColor); white-space: nowrap; }
+        .file-cell-type { font-size: 11px; color: var(--surfaceTxtHintColor); }
+
+        /* ── Compact Table ── */
+        .records-table.compact th,
+        .records-table.compact td {
+            padding: 5px var(--smSpacing);
+            font-size: 11px;
+        }
+
+        /* ── Dot Status ── */
+        .dot-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: var(--smFontSize);
+        }
+        .dot-status::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--surfaceAlt3Color);
+            flex-shrink: 0;
+        }
+        .dot-status.online::before  { background: var(--successColor); }
+        .dot-status.offline::before { background: var(--surfaceAlt3Color); }
+        .dot-status.away::before    { background: var(--warningColor); }
+        .dot-status.error::before   { background: var(--dangerColor); box-shadow: 0 0 0 2px color-mix(in srgb, var(--dangerColor), transparent 70%); }
     </style>
 </head>
 <body>
-    <div class="demo-section">
-        <h3>Records Table</h3>
-        <div style="border: 1px solid var(--surfaceAlt2Color); border-radius: var(--lgBorderRadius); overflow: hidden;">
-            <table class="records-table">
-                <thead>
-                    <tr>
-                        <th class="col-bulk-select">
-                            <div class="field">
-                                <input type="checkbox" id="master-chk" data-bulk-master="demo-table">
-                                <label for="master-chk"></label>
-                            </div>
-                        </th>
-                        <th class="sort-handle desc">
-                            <div class="inline-flex gap-5">
-                                <i class="ri-key-line" aria-hidden="true"></i>
-                                <span>id</span>
-                            </div>
-                        </th>
-                        <th class="sort-handle">
-                            <div class="inline-flex gap-5">
-                                <i class="ri-text" aria-hidden="true"></i>
-                                <span>title</span>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="inline-flex gap-5">
-                                <i class="ri-toggle-line" aria-hidden="true"></i>
-                                <span>active</span>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="inline-flex gap-5">
-                                <i class="ri-list-check" aria-hidden="true"></i>
-                                <span>options</span>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="inline-flex gap-5">
-                                <i class="ri-calendar-check-line" aria-hidden="true"></i>
-                                <span>created</span>
-                            </div>
-                        </th>
-                        <th class="col-meta"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr tabindex="0">
-                        <td class="col-bulk-select">
-                            <div class="field">
-                                <input type="checkbox" id="row1" data-bulk-item="demo-table">
-                                <label for="row1"></label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="record-field-view">
-                                <span class="label">
-                                    <button type="button" class="copy-to-clipboard" data-copy="WyAw4bDrvws6gGl" title="Copy">
-                                        <i class="copy-icon ri-file-copy-line" aria-hidden="true"></i>
-                                    </button>
-                                    <span class="txt-ellipsis">WyAw4bDrvws6gGl</span>
-                                </span>
-                            </div>
-                        </td>
-                        <td><span class="txt txt-ellipsis">Another example</span></td>
-                        <td><span class="label">False</span></td>
-                        <td><span class="missing-value"></span></td>
-                        <td>
-                            <div class="formatted-date short">
-                                <span class="primary-date">2022-07-02</span>
-                                <span class="secondary-date">08:30:44.289Z</span>
-                            </div>
-                        </td>
-                        <td class="col-meta"><i class="ri-arrow-right-line" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr tabindex="0">
-                        <td class="col-bulk-select">
-                            <div class="field">
-                                <input type="checkbox" id="row2" data-bulk-item="demo-table">
-                                <label for="row2"></label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="record-field-view">
-                                <span class="label">
-                                    <button type="button" class="copy-to-clipboard" data-copy="FtHAW9feB5rze7D" title="Copy">
-                                        <i class="copy-icon ri-file-copy-line" aria-hidden="true"></i>
-                                    </button>
-                                    <span class="txt-ellipsis">FtHAW9feB5rze7D</span>
-                                </span>
-                            </div>
-                        </td>
-                        <td><span class="txt txt-ellipsis">Example title</span></td>
-                        <td><span class="label">False</span></td>
-                        <td>
-                            <div class="inline-flex gap-5">
-                                <span class="label">optionA</span>
-                                <span class="label">optionC</span>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="formatted-date short">
-                                <span class="primary-date">2022-07-02</span>
-                                <span class="secondary-date">07:47:48.669Z</span>
-                            </div>
-                        </td>
-                        <td class="col-meta"><i class="ri-arrow-right-line" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr tabindex="0">
-                        <td class="col-bulk-select">
-                            <div class="field">
-                                <input type="checkbox" id="row3" data-bulk-item="demo-table">
-                                <label for="row3"></label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="record-field-view">
-                                <span class="label">
-                                    <button type="button" class="copy-to-clipboard" data-copy="UP06yiygImYTMCI" title="Copy">
-                                        <i class="copy-icon ri-file-copy-line" aria-hidden="true"></i>
-                                    </button>
-                                    <span class="txt-ellipsis">UP06yiygImYTMCI</span>
-                                </span>
-                            </div>
-                        </td>
-                        <td><span class="txt txt-ellipsis">Lorem ipsum</span></td>
-                        <td><span class="label success">True</span></td>
-                        <td>
-                            <div class="inline-flex gap-5">
-                                <span class="label">optionB</span>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="formatted-date short">
-                                <span class="primary-date">2022-07-02</span>
-                                <span class="secondary-date">07:46:16.478Z</span>
-                            </div>
-                        </td>
-                        <td class="col-meta"><i class="ri-arrow-right-line" aria-hidden="true"></i></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="bulkbar-wrapper">
-                <div class="bulkbar" id="demo-bulkbar" data-bulkbar="demo-table" hidden>
-                    <span class="txt">Selected <strong data-bulk-count>0</strong> records</span>
-                    <button type="button" class="btn sm secondary pill m-r-auto" data-bulk-reset="demo-table">
-                        <span>Reset</span>
-                    </button>
-                    <button type="button" class="btn sm pill outline danger">
-                        <i class="ri-delete-bin-7-line" aria-hidden="true"></i>
-                        <span>Delete</span>
-                    </button>
-                    <button type="button" class="btn sm pill">
-                        <i class="ri-download-line" aria-hidden="true"></i>
-                        <span>JSON</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="demo-section">
-        <h3>Thumbnail Preview</h3>
-        <div class="inline-flex gap-5">
-            <div class="thumb sm" style="background: var(--surfaceAlt3Color);">
-                <i class="ri-image-line" style="font-size:18px; color:var(--surfaceTxtHintColor);"></i>
+
+
+
+<!-- ① Records Table ─────────────────────────────────── -->
+<div class="demo-section">
+    <h3>Records Table — Bulk Select · Sort · Labels · Date</h3>
+    <div class="table-wrap">
+        <div class="table-toolbar">
+            <span class="table-toolbar-title">collections / <strong>posts</strong></span>
+            <div class="input-icon" style="position:relative; flex:none; width:180px;">
+                <i class="ri-search-line"></i>
+                <input type="text" placeholder="Search records…" style="height:var(--smBtnHeight); font-size:var(--smFontSize); padding-left:calc(var(--inputPadding) + 22px); border:1px solid var(--inputBorderColor); border-radius:var(--borderRadius); background:var(--inputColor); color:var(--surfaceTxtColor); width:100%; outline:none;">
             </div>
-            <div class="thumb sm" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-            <div class="thumb sm" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
-            <div class="thumb" style="background: var(--surfaceAccentColor);">
-                <i class="ri-folder-2-line" style="font-size:22px; color:var(--accentColor);"></i>
+            <button class="btn sm secondary"><i class="ri-filter-3-line"></i> Filter</button>
+            <button class="btn sm accent"><i class="ri-add-line"></i> New Record</button>
+        </div>
+        <table class="records-table">
+            <thead class="sticky">
+                <tr>
+                    <th class="col-bulk-select">
+                        <div class="field"><input type="checkbox" id="m1" data-bulk-master="t1"><label for="m1"></label></div>
+                    </th>
+                    <th class="sort-handle desc"><div class="inline-flex gap-5"><i class="ri-key-line"></i><span>id</span></div></th>
+                    <th class="sort-handle"><div class="inline-flex gap-5"><i class="ri-text"></i><span>title</span></div></th>
+                    <th><div class="inline-flex gap-5"><i class="ri-toggle-line"></i><span>active</span></div></th>
+                    <th><div class="inline-flex gap-5"><i class="ri-list-check"></i><span>tags</span></div></th>
+                    <th><div class="inline-flex gap-5"><i class="ri-user-line"></i><span>author</span></div></th>
+                    <th class="sort-handle"><div class="inline-flex gap-5"><i class="ri-calendar-check-line"></i><span>created</span></div></th>
+                    <th class="col-meta"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr tabindex="0">
+                    <td class="col-bulk-select"><div class="field"><input type="checkbox" id="r1a" data-bulk-item="t1"><label for="r1a"></label></div></td>
+                    <td><div class="record-field-view"><span class="label"><button class="copy-to-clipboard" data-copy="WyAw4bDrvws6gGl" title="Copy"><i class="copy-icon ri-file-copy-line"></i></button><span class="txt-ellipsis">WyAw4bDrvws6gGl</span></span></div></td>
+                    <td><span class="txt-ellipsis" style="max-width:200px; display:inline-block;">Getting started with PocketBase</span></td>
+                    <td><span class="label success">True</span></td>
+                    <td><div class="inline-flex gap-5"><span class="label accent">tutorial</span><span class="label">guide</span></div></td>
+                    <td><span class="txt-sm">admin</span></td>
+                    <td><div class="formatted-date short"><span class="primary-date">2024-03-12</span><span class="secondary-date">09:15:22.000Z</span></div></td>
+                    <td class="col-meta"><i class="ri-arrow-right-line"></i></td>
+                </tr>
+                <tr tabindex="0">
+                    <td class="col-bulk-select"><div class="field"><input type="checkbox" id="r1b" data-bulk-item="t1"><label for="r1b"></label></div></td>
+                    <td><div class="record-field-view"><span class="label"><button class="copy-to-clipboard" data-copy="FtHAW9feB5rze7D" title="Copy"><i class="copy-icon ri-file-copy-line"></i></button><span class="txt-ellipsis">FtHAW9feB5rze7D</span></span></div></td>
+                    <td><span class="txt-ellipsis" style="max-width:200px; display:inline-block;">Advanced query patterns</span></td>
+                    <td><span class="label">False</span></td>
+                    <td><div class="inline-flex gap-5"><span class="label">api</span><span class="label">advanced</span></div></td>
+                    <td><span class="txt-sm">editor01</span></td>
+                    <td><div class="formatted-date short"><span class="primary-date">2024-03-10</span><span class="secondary-date">14:30:55.000Z</span></div></td>
+                    <td class="col-meta"><i class="ri-arrow-right-line"></i></td>
+                </tr>
+                <tr tabindex="0" class="selected">
+                    <td class="col-bulk-select"><div class="field"><input type="checkbox" id="r1c" data-bulk-item="t1" checked><label for="r1c"></label></div></td>
+                    <td><div class="record-field-view"><span class="label"><button class="copy-to-clipboard" data-copy="UP06yiygImYTMCI" title="Copy"><i class="copy-icon ri-file-copy-line"></i></button><span class="txt-ellipsis">UP06yiygImYTMCI</span></span></div></td>
+                    <td><span class="txt-ellipsis" style="max-width:200px; display:inline-block;">Real-time subscriptions</span></td>
+                    <td><span class="label success">True</span></td>
+                    <td><div class="inline-flex gap-5"><span class="label accent">realtime</span></div></td>
+                    <td><span class="txt-sm">admin</span></td>
+                    <td><div class="formatted-date short"><span class="primary-date">2024-03-08</span><span class="secondary-date">11:05:03.000Z</span></div></td>
+                    <td class="col-meta"><i class="ri-arrow-right-line"></i></td>
+                </tr>
+                <tr tabindex="0">
+                    <td class="col-bulk-select"><div class="field"><input type="checkbox" id="r1d" data-bulk-item="t1"><label for="r1d"></label></div></td>
+                    <td><div class="record-field-view"><span class="label"><button class="copy-to-clipboard" data-copy="Mn3Kp2qLxWvRsYt" title="Copy"><i class="copy-icon ri-file-copy-line"></i></button><span class="txt-ellipsis">Mn3Kp2qLxWvRsYt</span></span></div></td>
+                    <td><span class="txt-ellipsis" style="max-width:200px; display:inline-block;">File storage &amp; uploads</span></td>
+                    <td><span class="label success">True</span></td>
+                    <td><span class="missing-value"></span></td>
+                    <td><span class="txt-sm">editor02</span></td>
+                    <td><div class="formatted-date short"><span class="primary-date">2024-03-05</span><span class="secondary-date">16:42:11.000Z</span></div></td>
+                    <td class="col-meta"><i class="ri-arrow-right-line"></i></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="bulkbar-wrapper">
+            <div class="bulkbar" id="t1-bulkbar" data-bulkbar="t1" hidden>
+                <span class="txt">Selected <strong data-bulk-count>0</strong> records</span>
+                <button class="btn sm secondary m-r-auto" data-bulk-reset="t1">Reset</button>
+                <button class="btn sm outline danger"><i class="ri-delete-bin-7-line"></i> Delete</button>
+                <button class="btn sm secondary"><i class="ri-download-line"></i> Export</button>
             </div>
         </div>
     </div>
+</div>
+
+
+<!-- ② User Management Table ─────────────────────────── -->
+<div class="demo-section">
+    <h3>User Management — Avatar · Role · Status · Inline Actions</h3>
+    <div class="table-wrap">
+        <div class="table-toolbar">
+            <span class="table-toolbar-title">Users <span class="label" style="margin-left:6px;">24 total</span></span>
+            <button class="btn sm secondary"><i class="ri-filter-3-line"></i> Filter</button>
+            <button class="btn sm accent"><i class="ri-user-add-line"></i> Invite</button>
+        </div>
+        <table class="records-table">
+            <thead>
+                <tr>
+                    <th class="col-bulk-select"><div class="field"><input type="checkbox" id="m2" data-bulk-master="t2"><label for="m2"></label></div></th>
+                    <th class="sort-handle">User</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th class="sort-handle">Last Active</th>
+                    <th class="sort-handle">Joined</th>
+                    <th class="col-meta"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr tabindex="0">
+                    <td class="col-bulk-select"><div class="field"><input type="checkbox" id="r2a" data-bulk-item="t2"><label for="r2a"></label></div></td>
+                    <td>
+                        <div class="user-cell">
+                            <div class="avatar" style="background:#5046e5;">JK</div>
+                            <div class="user-cell-info">
+                                <span class="user-cell-name">Jeff Kim</span>
+                                <span class="user-cell-email">jeff@company.com</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="label accent">Admin</span></td>
+                    <td><span class="dot-status online">Online</span></td>
+                    <td><span class="txt-sm txt-hint">Just now</span></td>
+                    <td><div class="formatted-date short"><span class="primary-date">2023-01-05</span><span class="secondary-date">09:00:00.000Z</span></div></td>
+                    <td class="col-meta">
+                        <div class="row-actions">
+                            <button class="btn xs secondary" title="Edit"><i class="ri-pencil-line"></i></button>
+                            <button class="btn xs outline danger" title="Delete"><i class="ri-delete-bin-line"></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr tabindex="0">
+                    <td class="col-bulk-select"><div class="field"><input type="checkbox" id="r2b" data-bulk-item="t2"><label for="r2b"></label></div></td>
+                    <td>
+                        <div class="user-cell">
+                            <div class="avatar" style="background:#0891b2;">SC</div>
+                            <div class="user-cell-info">
+                                <span class="user-cell-name">Sarah Chen</span>
+                                <span class="user-cell-email">sarah@company.com</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="label info">Editor</span></td>
+                    <td><span class="dot-status online">Online</span></td>
+                    <td><span class="txt-sm txt-hint">5 min ago</span></td>
+                    <td><div class="formatted-date short"><span class="primary-date">2023-04-18</span><span class="secondary-date">14:22:00.000Z</span></div></td>
+                    <td class="col-meta">
+                        <div class="row-actions">
+                            <button class="btn xs secondary" title="Edit"><i class="ri-pencil-line"></i></button>
+                            <button class="btn xs outline danger" title="Delete"><i class="ri-delete-bin-line"></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr tabindex="0">
+                    <td class="col-bulk-select"><div class="field"><input type="checkbox" id="r2c" data-bulk-item="t2"><label for="r2c"></label></div></td>
+                    <td>
+                        <div class="user-cell">
+                            <div class="avatar" style="background:#64748b;">TW</div>
+                            <div class="user-cell-info">
+                                <span class="user-cell-name">Tom Wilson</span>
+                                <span class="user-cell-email">tom@company.com</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="label">Viewer</span></td>
+                    <td><span class="dot-status away">Away</span></td>
+                    <td><span class="txt-sm txt-hint">2 days ago</span></td>
+                    <td><div class="formatted-date short"><span class="primary-date">2023-06-30</span><span class="secondary-date">10:15:00.000Z</span></div></td>
+                    <td class="col-meta">
+                        <div class="row-actions">
+                            <button class="btn xs secondary" title="Edit"><i class="ri-pencil-line"></i></button>
+                            <button class="btn xs outline danger" title="Delete"><i class="ri-delete-bin-line"></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr tabindex="0">
+                    <td class="col-bulk-select"><div class="field"><input type="checkbox" id="r2d" data-bulk-item="t2"><label for="r2d"></label></div></td>
+                    <td>
+                        <div class="user-cell">
+                            <div class="avatar" style="background:#c2410c;">ED</div>
+                            <div class="user-cell-info">
+                                <span class="user-cell-name">Emma Davis</span>
+                                <span class="user-cell-email">emma@company.com</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="label info">Editor</span></td>
+                    <td><span class="label warning" style="font-size:11px;">Pending</span></td>
+                    <td><span class="txt-sm txt-hint">—</span></td>
+                    <td><div class="formatted-date short"><span class="primary-date">2024-03-11</span><span class="secondary-date">08:00:00.000Z</span></div></td>
+                    <td class="col-meta">
+                        <div class="row-actions">
+                            <button class="btn xs secondary" title="Edit"><i class="ri-pencil-line"></i></button>
+                            <button class="btn xs outline danger" title="Delete"><i class="ri-delete-bin-line"></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr tabindex="0">
+                    <td class="col-bulk-select"><div class="field"><input type="checkbox" id="r2e" data-bulk-item="t2"><label for="r2e"></label></div></td>
+                    <td>
+                        <div class="user-cell">
+                            <div class="avatar" style="background:#374151;">ML</div>
+                            <div class="user-cell-info">
+                                <span class="user-cell-name">Mike Lee</span>
+                                <span class="user-cell-email">mike@company.com</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="label">Viewer</span></td>
+                    <td><span class="label danger" style="font-size:11px;">Banned</span></td>
+                    <td><span class="txt-sm txt-hint">30 days ago</span></td>
+                    <td><div class="formatted-date short"><span class="primary-date">2023-09-14</span><span class="secondary-date">17:50:00.000Z</span></div></td>
+                    <td class="col-meta">
+                        <div class="row-actions">
+                            <button class="btn xs secondary" title="Edit"><i class="ri-pencil-line"></i></button>
+                            <button class="btn xs outline danger" title="Delete"><i class="ri-delete-bin-line"></i></button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="bulkbar-wrapper">
+            <div class="bulkbar" data-bulkbar="t2" hidden>
+                <span class="txt">Selected <strong data-bulk-count>0</strong> users</span>
+                <button class="btn sm secondary m-r-auto" data-bulk-reset="t2">Reset</button>
+                <button class="btn sm outline danger"><i class="ri-user-unfollow-line"></i> Revoke Access</button>
+                <button class="btn sm outline danger"><i class="ri-delete-bin-7-line"></i> Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ③ Analytics / API Stats ─────────────────────────── -->
+<div class="demo-section">
+    <h3>Analytics — Numbers · Progress · Trend</h3>
+    <div class="table-wrap">
+        <div class="table-toolbar">
+            <span class="table-toolbar-title">API Endpoint Stats</span>
+            <span class="label success">Live</span>
+            <button class="btn sm secondary"><i class="ri-refresh-line"></i></button>
+            <button class="btn sm secondary"><i class="ri-download-2-line"></i> Export</button>
+        </div>
+        <table class="records-table">
+            <thead>
+                <tr>
+                    <th class="sort-handle">Endpoint</th>
+                    <th>Method</th>
+                    <th class="sort-handle desc">Requests</th>
+                    <th>Success Rate</th>
+                    <th class="sort-handle">Avg (ms)</th>
+                    <th class="sort-handle">Errors</th>
+                    <th>7d Trend</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr tabindex="0">
+                    <td><span class="txt-code">/api/users</span></td>
+                    <td><span class="label info">GET</span></td>
+                    <td><span class="num">48,291</span></td>
+                    <td>
+                        <div class="mini-bar">
+                            <div class="mini-bar-track"><div class="mini-bar-fill success" style="width:99%;"></div></div>
+                            <span class="num">99.1%</span>
+                        </div>
+                    </td>
+                    <td><span class="num">42</span></td>
+                    <td><span class="num txt-success">38</span></td>
+                    <td><span class="trend up"><i class="ri-arrow-up-line"></i> 12%</span></td>
+                    <td><span class="dot-status online">Healthy</span></td>
+                </tr>
+                <tr tabindex="0">
+                    <td><span class="txt-code">/api/products</span></td>
+                    <td><span class="label info">GET</span></td>
+                    <td><span class="num">31,045</span></td>
+                    <td>
+                        <div class="mini-bar">
+                            <div class="mini-bar-track"><div class="mini-bar-fill success" style="width:97%;"></div></div>
+                            <span class="num">97.4%</span>
+                        </div>
+                    </td>
+                    <td><span class="num">88</span></td>
+                    <td><span class="num txt-warning">812</span></td>
+                    <td><span class="trend down"><i class="ri-arrow-down-line"></i> 3%</span></td>
+                    <td><span class="dot-status online">Healthy</span></td>
+                </tr>
+                <tr tabindex="0">
+                    <td><span class="txt-code">/api/orders</span></td>
+                    <td><span class="label warning" style="font-size:11px;">POST</span></td>
+                    <td><span class="num">9,817</span></td>
+                    <td>
+                        <div class="mini-bar">
+                            <div class="mini-bar-track"><div class="mini-bar-fill warning" style="width:91%;"></div></div>
+                            <span class="num">91.2%</span>
+                        </div>
+                    </td>
+                    <td><span class="num txt-warning">215</span></td>
+                    <td><span class="num txt-danger">864</span></td>
+                    <td><span class="trend down"><i class="ri-arrow-down-line"></i> 18%</span></td>
+                    <td><span class="dot-status away">Degraded</span></td>
+                </tr>
+                <tr tabindex="0">
+                    <td><span class="txt-code">/api/auth</span></td>
+                    <td><span class="label warning" style="font-size:11px;">POST</span></td>
+                    <td><span class="num">22,503</span></td>
+                    <td>
+                        <div class="mini-bar">
+                            <div class="mini-bar-track"><div class="mini-bar-fill success" style="width:99.8%;"></div></div>
+                            <span class="num">99.8%</span>
+                        </div>
+                    </td>
+                    <td><span class="num">19</span></td>
+                    <td><span class="num txt-success">45</span></td>
+                    <td><span class="trend up"><i class="ri-arrow-up-line"></i> 7%</span></td>
+                    <td><span class="dot-status online">Healthy</span></td>
+                </tr>
+                <tr tabindex="0">
+                    <td><span class="txt-code">/api/webhook</span></td>
+                    <td><span class="label danger" style="font-size:11px;">POST</span></td>
+                    <td><span class="num">1,204</span></td>
+                    <td>
+                        <div class="mini-bar">
+                            <div class="mini-bar-track"><div class="mini-bar-fill danger" style="width:74%;"></div></div>
+                            <span class="num txt-danger">74.0%</span>
+                        </div>
+                    </td>
+                    <td><span class="num txt-danger">1,840</span></td>
+                    <td><span class="num txt-danger">313</span></td>
+                    <td><span class="trend down"><i class="ri-arrow-down-line"></i> 44%</span></td>
+                    <td><span class="dot-status error">Error</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- ④ Files / Assets Table ──────────────────────────── -->
+<div class="demo-section">
+    <h3>Files &amp; Assets — Thumbnail · File Type · Size</h3>
+    <div class="table-wrap">
+        <div class="table-toolbar">
+            <span class="table-toolbar-title">Storage <span class="label" style="margin-left:6px;">3.2 GB used</span></span>
+            <button class="btn sm secondary"><i class="ri-sort-asc"></i> Sort</button>
+            <button class="btn sm accent"><i class="ri-upload-2-line"></i> Upload</button>
+        </div>
+        <table class="records-table">
+            <thead>
+                <tr>
+                    <th class="col-bulk-select"><div class="field"><input type="checkbox" id="m4" data-bulk-master="t4"><label for="m4"></label></div></th>
+                    <th class="sort-handle">Name</th>
+                    <th>Type</th>
+                    <th class="sort-handle desc">Size</th>
+                    <th>Uploaded by</th>
+                    <th class="sort-handle">Modified</th>
+                    <th class="col-meta"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr tabindex="0">
+                    <td class="col-bulk-select"><div class="field"><input type="checkbox" id="r4a" data-bulk-item="t4"><label for="r4a"></label></div></td>
+                    <td>
+                        <div class="file-cell">
+                            <div class="file-icon" style="background:color-mix(in srgb, var(--dangerColor), transparent 85%);"><i class="ri-file-pdf-2-line txt-danger"></i></div>
+                            <div class="file-cell-info">
+                                <span class="file-cell-name">Q1-2024-Report.pdf</span>
+                                <span class="file-cell-type">PDF Document</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="label danger" style="font-size:11px;">PDF</span></td>
+                    <td><span class="num">4.2 MB</span></td>
+                    <td><span class="txt-sm">Jeff Kim</span></td>
+                    <td><div class="formatted-date short"><span class="primary-date">2024-03-12</span><span class="secondary-date">09:00:00.000Z</span></div></td>
+                    <td class="col-meta">
+                        <div class="row-actions">
+                            <button class="btn xs secondary" title="Download"><i class="ri-download-line"></i></button>
+                            <button class="btn xs outline danger" title="Delete"><i class="ri-delete-bin-line"></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr tabindex="0">
+                    <td class="col-bulk-select"><div class="field"><input type="checkbox" id="r4b" data-bulk-item="t4"><label for="r4b"></label></div></td>
+                    <td>
+                        <div class="file-cell">
+                            <div class="thumb sm" style="background: linear-gradient(135deg,#667eea,#764ba2);">
+                                <i class="ri-image-line" style="color:#fff; font-size:14px;"></i>
+                            </div>
+                            <div class="file-cell-info" style="margin-left:2px;">
+                                <span class="file-cell-name">hero-banner.png</span>
+                                <span class="file-cell-type">PNG Image · 1920×640</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="label info" style="font-size:11px;">PNG</span></td>
+                    <td><span class="num">1.8 MB</span></td>
+                    <td><span class="txt-sm">Sarah Chen</span></td>
+                    <td><div class="formatted-date short"><span class="primary-date">2024-03-10</span><span class="secondary-date">14:22:00.000Z</span></div></td>
+                    <td class="col-meta">
+                        <div class="row-actions">
+                            <button class="btn xs secondary" title="Download"><i class="ri-download-line"></i></button>
+                            <button class="btn xs outline danger" title="Delete"><i class="ri-delete-bin-line"></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr tabindex="0">
+                    <td class="col-bulk-select"><div class="field"><input type="checkbox" id="r4c" data-bulk-item="t4"><label for="r4c"></label></div></td>
+                    <td>
+                        <div class="file-cell">
+                            <div class="file-icon" style="background:color-mix(in srgb, var(--successColor), transparent 85%);"><i class="ri-file-excel-2-line txt-success"></i></div>
+                            <div class="file-cell-info">
+                                <span class="file-cell-name">user-export-2024.xlsx</span>
+                                <span class="file-cell-type">Excel Spreadsheet</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="label success" style="font-size:11px;">XLS</span></td>
+                    <td><span class="num">892 KB</span></td>
+                    <td><span class="txt-sm">admin</span></td>
+                    <td><div class="formatted-date short"><span class="primary-date">2024-03-08</span><span class="secondary-date">11:05:00.000Z</span></div></td>
+                    <td class="col-meta">
+                        <div class="row-actions">
+                            <button class="btn xs secondary" title="Download"><i class="ri-download-line"></i></button>
+                            <button class="btn xs outline danger" title="Delete"><i class="ri-delete-bin-line"></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr tabindex="0">
+                    <td class="col-bulk-select"><div class="field"><input type="checkbox" id="r4d" data-bulk-item="t4"><label for="r4d"></label></div></td>
+                    <td>
+                        <div class="file-cell">
+                            <div class="file-icon" style="background:color-mix(in srgb, var(--warningColor), transparent 85%);"><i class="ri-file-zip-line txt-warning"></i></div>
+                            <div class="file-cell-info">
+                                <span class="file-cell-name">assets-v2.3.zip</span>
+                                <span class="file-cell-type">ZIP Archive</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="label warning" style="font-size:11px;">ZIP</span></td>
+                    <td><span class="num">28.4 MB</span></td>
+                    <td><span class="txt-sm">Tom Wilson</span></td>
+                    <td><div class="formatted-date short"><span class="primary-date">2024-03-01</span><span class="secondary-date">09:30:00.000Z</span></div></td>
+                    <td class="col-meta">
+                        <div class="row-actions">
+                            <button class="btn xs secondary" title="Download"><i class="ri-download-line"></i></button>
+                            <button class="btn xs outline danger" title="Delete"><i class="ri-delete-bin-line"></i></button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="bulkbar-wrapper">
+            <div class="bulkbar" data-bulkbar="t4" hidden>
+                <span class="txt">Selected <strong data-bulk-count>0</strong> files</span>
+                <button class="btn sm secondary m-r-auto" data-bulk-reset="t4">Reset</button>
+                <button class="btn sm secondary"><i class="ri-download-line"></i> Download All</button>
+                <button class="btn sm outline danger"><i class="ri-delete-bin-7-line"></i> Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ⑤ Compact Log Table ─────────────────────────────── -->
+<div class="demo-section">
+    <h3>Compact Log — Dense · Mono · Level</h3>
+    <div class="table-wrap">
+        <div class="table-toolbar">
+            <span class="table-toolbar-title">System Log</span>
+            <span class="label danger">3 Errors</span>
+            <span class="label warning">2 Warnings</span>
+            <button class="btn sm secondary" style="margin-left:auto;"><i class="ri-delete-bin-line"></i> Clear</button>
+        </div>
+        <table class="records-table compact">
+            <thead>
+                <tr>
+                    <th style="width:80px;">Level</th>
+                    <th>Message</th>
+                    <th style="width:140px;">Source</th>
+                    <th class="sort-handle desc" style="width:160px;">Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr tabindex="0">
+                    <td><span class="label danger" style="font-size:10px;">ERROR</span></td>
+                    <td><span class="num txt-danger">ECONNREFUSED — Cannot connect to Redis at 127.0.0.1:6379</span></td>
+                    <td><span class="num txt-hint">cache.service</span></td>
+                    <td><span class="num" style="font-size:11px;">2024-03-12 09:15:42</span></td>
+                </tr>
+                <tr tabindex="0">
+                    <td><span class="label warning" style="font-size:10px;">WARN</span></td>
+                    <td><span class="num">Response time exceeded 500ms threshold (took 812ms)</span></td>
+                    <td><span class="num txt-hint">api.products</span></td>
+                    <td><span class="num" style="font-size:11px;">2024-03-12 09:14:55</span></td>
+                </tr>
+                <tr tabindex="0">
+                    <td><span class="label info" style="font-size:10px;">INFO</span></td>
+                    <td><span class="num">User jeff@company.com authenticated via OAuth2</span></td>
+                    <td><span class="num txt-hint">auth.service</span></td>
+                    <td><span class="num" style="font-size:11px;">2024-03-12 09:14:30</span></td>
+                </tr>
+                <tr tabindex="0">
+                    <td><span class="label danger" style="font-size:10px;">ERROR</span></td>
+                    <td><span class="num txt-danger">Unhandled rejection: Cannot read properties of null (reading 'id')</span></td>
+                    <td><span class="num txt-hint">api.orders</span></td>
+                    <td><span class="num" style="font-size:11px;">2024-03-12 09:13:11</span></td>
+                </tr>
+                <tr tabindex="0">
+                    <td><span class="label info" style="font-size:10px;">INFO</span></td>
+                    <td><span class="num">Scheduled job "cleanup-expired-tokens" completed in 240ms</span></td>
+                    <td><span class="num txt-hint">scheduler</span></td>
+                    <td><span class="num" style="font-size:11px;">2024-03-12 09:10:00</span></td>
+                </tr>
+                <tr tabindex="0">
+                    <td><span class="label warning" style="font-size:10px;">WARN</span></td>
+                    <td><span class="num">Disk usage at 84% — /var/data partition</span></td>
+                    <td><span class="num txt-hint">monitor</span></td>
+                    <td><span class="num" style="font-size:11px;">2024-03-12 09:05:22</span></td>
+                </tr>
+                <tr tabindex="0">
+                    <td><span class="label danger" style="font-size:10px;">ERROR</span></td>
+                    <td><span class="num txt-danger">Webhook delivery failed after 3 retries — https://hooks.slack.com/…</span></td>
+                    <td><span class="num txt-hint">webhook</span></td>
+                    <td><span class="num" style="font-size:11px;">2024-03-12 09:02:09</span></td>
+                </tr>
+                <tr tabindex="0">
+                    <td><span class="label" style="font-size:10px;">DEBUG</span></td>
+                    <td><span class="num txt-hint">DB query executed in 3ms — SELECT * FROM users WHERE active = 1</span></td>
+                    <td><span class="num txt-hint">db.pool</span></td>
+                    <td><span class="num" style="font-size:11px;">2024-03-12 09:01:44</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn load-more-btn secondary txt-sm">
+            <i class="ri-arrow-down-line"></i> Load older logs
+        </button>
+    </div>
+</div>
+
+
+<!-- ⑥ Empty State ───────────────────────────────────── -->
+<div class="demo-section">
+    <h3>Empty State</h3>
+    <div class="table-wrap">
+        <div class="table-toolbar">
+            <span class="table-toolbar-title">collections / <strong>products</strong></span>
+            <button class="btn sm accent"><i class="ri-add-line"></i> New Record</button>
+        </div>
+        <table class="records-table">
+            <thead>
+                <tr>
+                    <th class="col-bulk-select"><div class="field"><input type="checkbox" disabled><label></label></div></th>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>price</th>
+                    <th>stock</th>
+                    <th>created</th>
+                    <th class="col-meta"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="7" style="padding:0; border:none;">
+                        <div class="empty-state">
+                            <i class="ri-inbox-2-line"></i>
+                            <h6>No records found</h6>
+                            <p>This collection is empty. Create your first record to get started.</p>
+                            <button class="btn sm accent"><i class="ri-add-line"></i> New Record</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
 <script src="../components/js/page-header.js"></script>
 <script src="../components/js/theme.js"></script>
 <script src="../components/js/utils.js"></script>

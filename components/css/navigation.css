@@ -29,6 +29,11 @@
     text-decoration: none;
 }
 
+.logo:hover,
+.logo:focus-visible {
+    text-decoration: none;
+}
+
 .logo img {
     height: 28px;
     width: auto;
@@ -74,7 +79,7 @@
 }
 
 .header-link.active {
-    background: var(--surfaceAlt2Color);
+    background: var(--surfaceAlt5Color);
     color: var(--surfaceTxtColor);
 }
 
@@ -204,6 +209,10 @@
 
 .nav-item.active i {
     color: var(--accentColor);
+}
+
+:is([data-color-scheme="dark"], [data-color-scheme="auto"]) .nav-item.active i {
+    color: var(--infoTxtColor);
 }
 
 /* --- Pin Button --- */

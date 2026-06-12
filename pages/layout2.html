@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="ko" data-color-scheme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Layout 2 — Pocket Kit</title>
+    <link rel="stylesheet" href="../lib/fonts/remixicon/remixicon.css">
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="../components/css/buttons.css">
+    <link rel="stylesheet" href="../components/css/navigation.css">
+    <link rel="stylesheet" href="../components/css/forms.css">
+    <link rel="stylesheet" href="../components/css/tables.css">
+    <link rel="stylesheet" href="../components/css/alerts.css">
+    <link rel="stylesheet" href="../components/css/layout.css">
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* ── 전체 앱 컨테이너 ── */
+        .app {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ── ① 상단 툴바 ── */
+        .top-toolbar {
+            /* .app-header 기반 */
+        }
+
+        .top-toolbar .logo-text {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            color: #fff;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .top-toolbar .logo-text:hover,
+        .top-toolbar .logo-text:focus-visible {
+            text-decoration: none;
+        }
+
+        .top-toolbar .logo-text i {
+            font-size: 20px;
+        }
+
+        /* ── 본문 중간 행 ── */
+        .page {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* ── ② 왼쪽 아이콘 툴바 ── */
+        .icon-toolbar {
+            width: 56px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 0;
+            gap: 2px;
+            background: var(--surfaceAlt1Color);
+            border-right: 1px solid var(--surfaceAlt2Color);
+            overflow: visible;
+            z-index: 50;
+        }
+
+        .icon-toolbar-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: var(--borderRadius);
+            background: transparent;
+            color: var(--surfaceTxtHintColor);
+            cursor: pointer;
+            font-size: 18px;
+            flex-shrink: 0;
+            transition:
+                background var(--animationSpeed),
+                color var(--animationSpeed);
+        }
+
+        .icon-toolbar-item:hover {
+            background: var(--surfaceAlt2Color);
+            color: var(--surfaceTxtColor);
+        }
+
+        .icon-toolbar-item.active {
+            background: var(--surfaceAlt3Color);
+            color: var(--accentColor);
+        }
+
+        /* 툴팁 */
+        .icon-toolbar-item::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            left: calc(100% + 12px);
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--tooltipSurfaceColor);
+            color: var(--tooltipTxtColor);
+            font-family: var(--fontFamily);
+            font-size: var(--smFontSize);
+            white-space: nowrap;
+            padding: 4px 10px;
+            border-radius: var(--borderRadius);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity var(--animationSpeed);
+            z-index: 300;
+        }
+
+        .icon-toolbar-item:hover::after {
+            opacity: 1;
+        }
+
+        .icon-toolbar-spacer {
+            flex: 1;
+        }
+
+        /* ── ③ 하위메뉴 패널 ── */
+        .submenu-panel {
+            width: 0;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            background: var(--surfaceAlt1Color);
+            border-right: 1px solid var(--surfaceAlt2Color);
+            overflow: hidden;
+            transition: width var(--slideAnimationSpeed);
+        }
+
+        .submenu-panel.open {
+            width: var(--pageSidebarWidth);
+        }
+
+        /* 각 서브메뉴 데이터 패널 */
+        .submenu-data {
+            display: none;
+            flex-direction: column;
+            height: 100%;
+            min-width: var(--pageSidebarWidth);
+        }
+
+        .submenu-data.active {
+            display: flex;
+        }
+
+        .submenu-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--siblingSpacing);
+            padding: 10px var(--sidebarSpacing);
+            border-bottom: 1px solid var(--surfaceAlt2Color);
+            flex-shrink: 0;
+        }
+
+        .submenu-title {
+            font-weight: 600;
+            font-size: var(--smFontSize);
+            color: var(--surfaceTxtColor);
+            flex: 1;
+        }
+
+        .submenu-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0;
+        }
+
+        /* ── ④ 메인 컨텐츠 ── */
+        .page-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+			padding:0px;
+        }
+
+        .page-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: var(--smSpacing) var(--spacing);
+        }
+
+        /* ── ⑤ 하단 풋터 ── */
+        .app-footer {
+            display: flex;
+            align-items: center;
+            gap: var(--smSpacing);
+            height: 38px;
+            padding: 0 var(--smSpacing);
+            background: var(--surfaceAlt1Color);
+            border-top: 1px solid var(--surfaceAlt2Color);
+            flex-shrink: 0;
+            font-size: var(--smFontSize);
+            color: var(--surfaceTxtHintColor);
+        }
+
+        /* ── 데모용 stat 카드 ── */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--gridGap);
+            margin-bottom: var(--smSpacing);
+        }
+
+        .stat-card {
+            background: var(--surfaceColor);
+            border: 1px solid var(--surfaceAlt2Color);
+            border-radius: var(--lgBorderRadius);
+            padding: var(--smSpacing);
+        }
+
+        .stat-label {
+            font-size: var(--smFontSize);
+            color: var(--surfaceTxtHintColor);
+            margin-bottom: 6px;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--surfaceTxtColor);
+            line-height: 1.2;
+        }
+
+        .stat-sub {
+            font-size: var(--smFontSize);
+            margin-top: 4px;
+        }
+
+        /* input-icon 인라인 사용 보정 */
+        .page-header .input-icon.field {
+            margin: 0;
+            flex: none;
+            width: 200px;
+        }
+
+        .page-header .input-icon input {
+            height: var(--smBtnHeight);
+            font-size: var(--smFontSize);
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="app">
+
+    <!-- ① 상단 툴바 -->
+    <header class="app-header accent-surface top-toolbar">
+        <a href="../index.html" class="logo-text">
+            <i class="ri-database-2-fill"></i>
+            Pocket Kit
+        </a>
+        <div class="app-header-separator"></div>
+        <nav class="app-main-nav">
+            <a href="#" class="header-link active">Dashboard</a>
+            <a href="#" class="header-link">API</a>
+            <a href="#" class="header-link">Logs</a>
+        </nav>
+        <div class="app-header-separator"></div>
+        <button class="btn sm circle transparent secondary" title="Notifications">
+            <i class="ri-notification-3-line"></i>
+        </button>
+        <button class="btn sm circle transparent secondary" title="Profile">
+            <i class="ri-user-line"></i>
+        </button>
+        <button data-theme-btn="light" class="btn sm circle transparent secondary" title="Light">
+            <i class="ri-sun-line"></i>
+        </button>
+        <button data-theme-btn="dark" class="btn sm circle transparent secondary" title="Dark">
+            <i class="ri-moon-line"></i>
+        </button>
+    </header>
+
+    <!-- 본문 중간 행 -->
+    <div class="page">
+
+        <!-- ② 왼쪽 아이콘 툴바 -->
+        <nav class="icon-toolbar" id="iconToolbar">
+            <button class="icon-toolbar-item active" data-section="collections" data-tooltip="Collections">
+                <i class="ri-database-2-fill"></i>
+            </button>
+            <button class="icon-toolbar-item" data-section="api" data-tooltip="API">
+                <i class="ri-code-s-slash-line"></i>
+            </button>
+            <button class="icon-toolbar-item" data-section="logs" data-tooltip="Logs">
+                <i class="ri-file-list-3-line"></i>
+            </button>
+            <button class="icon-toolbar-item" data-section="analytics" data-tooltip="Analytics">
+                <i class="ri-bar-chart-2-line"></i>
+            </button>
+            <div class="icon-toolbar-spacer"></div>
+            <button class="icon-toolbar-item" data-section="settings" data-tooltip="Settings">
+                <i class="ri-settings-3-line"></i>
+            </button>
+        </nav>
+
+        <!-- ③ 하위메뉴 패널 -->
+        <aside class="submenu-panel open" id="submenuPanel">
+
+            <!-- Collections -->
+            <div class="submenu-data active" id="submenu-collections">
+                <div class="submenu-header">
+                    <span class="submenu-title">Collections</span>
+                    <button class="btn sm circle transparent secondary">
+                        <i class="ri-add-line"></i>
+                    </button>
+                </div>
+                <div class="submenu-content">
+                    <details class="nav-group" open>
+                        <summary>Base</summary>
+                        <button class="nav-item active">
+                            <i class="ri-folder-2-line"></i>
+                            <span class="txt">users</span>
+                        </button>
+                        <button class="nav-item">
+                            <i class="ri-folder-2-line"></i>
+                            <span class="txt">posts</span>
+                        </button>
+                        <button class="nav-item">
+                            <i class="ri-folder-2-line"></i>
+                            <span class="txt">comments</span>
+                        </button>
+                        <button class="nav-item">
+                            <i class="ri-folder-2-line"></i>
+                            <span class="txt">categories</span>
+                        </button>
+                        <button class="nav-item">
+                            <i class="ri-folder-2-line"></i>
+                            <span class="txt">tags</span>
+                        </button>
+                    </details>
+                    <details class="nav-group">
+                        <summary>Auth</summary>
+                        <button class="nav-item">
+                            <i class="ri-user-3-line"></i>
+                            <span class="txt">_pb_users_auth_</span>
+                        </button>
+                    </details>
+                </div>
+            </div>
+
+            <!-- API -->
+            <div class="submenu-data" id="submenu-api">
+                <div class="submenu-header">
+                    <span class="submenu-title">API</span>
+                </div>
+                <div class="submenu-content">
+                    <button class="nav-item active">
+                        <i class="ri-book-2-line"></i>
+                        <span class="txt">Reference</span>
+                    </button>
+                    <button class="nav-item">
+                        <i class="ri-key-2-line"></i>
+                        <span class="txt">API Keys</span>
+                    </button>
+                    <button class="nav-item">
+                        <i class="ri-webhook-line"></i>
+                        <span class="txt">Webhooks</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Logs -->
+            <div class="submenu-data" id="submenu-logs">
+                <div class="submenu-header">
+                    <span class="submenu-title">Logs</span>
+                    <button class="btn sm circle transparent secondary">
+                        <i class="ri-refresh-line"></i>
+                    </button>
+                </div>
+                <div class="submenu-content">
+                    <button class="nav-item active">
+                        <i class="ri-file-list-line"></i>
+                        <span class="txt">All Logs</span>
+                    </button>
+                    <button class="nav-item">
+                        <i class="ri-error-warning-line"></i>
+                        <span class="txt">Errors</span>
+                    </button>
+                    <button class="nav-item">
+                        <i class="ri-information-line"></i>
+                        <span class="txt">Info</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Analytics -->
+            <div class="submenu-data" id="submenu-analytics">
+                <div class="submenu-header">
+                    <span class="submenu-title">Analytics</span>
+                </div>
+                <div class="submenu-content">
+                    <button class="nav-item active">
+                        <i class="ri-dashboard-line"></i>
+                        <span class="txt">Overview</span>
+                    </button>
+                    <button class="nav-item">
+                        <i class="ri-line-chart-line"></i>
+                        <span class="txt">Traffic</span>
+                    </button>
+                    <button class="nav-item">
+                        <i class="ri-user-star-line"></i>
+                        <span class="txt">Users</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Settings -->
+            <div class="submenu-data" id="submenu-settings">
+                <div class="submenu-header">
+                    <span class="submenu-title">Settings</span>
+                </div>
+                <div class="submenu-content">
+                    <button class="nav-item active">
+                        <i class="ri-settings-3-line"></i>
+                        <span class="txt">General</span>
+                    </button>
+                    <button class="nav-item">
+                        <i class="ri-mail-settings-line"></i>
+                        <span class="txt">Email</span>
+                    </button>
+                    <button class="nav-item">
+                        <i class="ri-shield-check-line"></i>
+                        <span class="txt">Auth</span>
+                    </button>
+                    <button class="nav-item">
+                        <i class="ri-file-storage-line"></i>
+                        <span class="txt">Storage</span>
+                    </button>
+                    <button class="nav-item">
+                        <i class="ri-database-2-line"></i>
+                        <span class="txt">Database</span>
+                    </button>
+                    <button class="nav-item">
+                        <i class="ri-cloud-line"></i>
+                        <span class="txt">Backups</span>
+                    </button>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- ④ 메인 컨텐츠 (navbar + ctrl buttons / 컨텐츠 영역) -->
+        <main class="page-content">
+
+            <!-- Navbar + Ctrl buttons -->
+            <div class="page-header">
+                <div class="breadcrumbs">
+                    <div>Collections</div>
+                    <div>users</div>
+                </div>
+                <div class="page-header-secondary-btns">
+                    <div class="input-icon field">
+                        <i class="ri-search-line"></i>
+                        <input type="text" placeholder="Search records...">
+                    </div>
+                    <button class="btn sm outline">
+                        <i class="ri-code-s-slash-line"></i> API
+                    </button>
+                    <button class="btn sm secondary">
+                        <i class="ri-download-2-line"></i> Export
+                    </button>
+                </div>
+                <div class="page-header-primary-btns">
+                    <button class="btn sm accent">
+                        <i class="ri-add-line"></i> New Record
+                    </button>
+                </div>
+            </div>
+
+            <!-- 컨텐츠 영역 -->
+            <div class="page-body">
+
+                <!-- 통계 카드 -->
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Total Users</div>
+                        <div class="stat-value">1,284</div>
+                        <div class="stat-sub" style="color:var(--successColor);">
+                            <i class="ri-arrow-up-s-line"></i> 12% this week
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Active Today</div>
+                        <div class="stat-value">342</div>
+                        <div class="stat-sub" style="color:var(--successColor);">
+                            <i class="ri-arrow-up-s-line"></i> 5% vs yesterday
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">API Requests</div>
+                        <div class="stat-value">89.2k</div>
+                        <div class="stat-sub" style="color:var(--surfaceTxtHintColor);">
+                            Same as last week
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 레코드 테이블 -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">users</span>
+                        <span class="label info" style="margin-left:6px;">1,284 records</span>
+                    </div>
+                    <div class="page-table-wrapper" style="max-height: 360px;">
+                        <table class="records-table">
+                            <thead class="sticky">
+                                <tr>
+                                    <th class="col-bulk-select"><input type="checkbox"></th>
+                                    <th class="sort-handle asc">Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th class="sort-handle desc">Created</th>
+                                    <th class="col-meta"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="selected">
+                                    <td class="col-bulk-select"><input type="checkbox" checked></td>
+                                    <td>
+                                        <div class="record-field-view" style="gap:8px;">
+                                            <span class="thumb sm"><i class="ri-user-fill" style="font-size:16px;color:var(--surfaceTxtHintColor);"></i></span>
+                                            <span class="txt">Alice Johnson</span>
+                                        </div>
+                                    </td>
+                                    <td>alice@example.com</td>
+                                    <td><span class="label accent">Admin</span></td>
+                                    <td>
+                                        <div class="formatted-date">
+                                            <span class="primary-date">2026-01-15</span>
+                                            <span class="secondary-date">09:12:00</span>
+                                        </div>
+                                    </td>
+                                    <td class="col-meta">
+                                        <button class="btn sm circle transparent secondary"><i class="ri-more-2-line"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-bulk-select"><input type="checkbox"></td>
+                                    <td>
+                                        <div class="record-field-view" style="gap:8px;">
+                                            <span class="thumb sm"><i class="ri-user-fill" style="font-size:16px;color:var(--surfaceTxtHintColor);"></i></span>
+                                            <span class="txt">Bob Kim</span>
+                                        </div>
+                                    </td>
+                                    <td>bob@example.com</td>
+                                    <td><span class="label success">Editor</span></td>
+                                    <td>
+                                        <div class="formatted-date">
+                                            <span class="primary-date">2026-02-03</span>
+                                            <span class="secondary-date">14:25:00</span>
+                                        </div>
+                                    </td>
+                                    <td class="col-meta">
+                                        <button class="btn sm circle transparent secondary"><i class="ri-more-2-line"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-bulk-select"><input type="checkbox"></td>
+                                    <td>
+                                        <div class="record-field-view" style="gap:8px;">
+                                            <span class="thumb sm"><i class="ri-user-fill" style="font-size:16px;color:var(--surfaceTxtHintColor);"></i></span>
+                                            <span class="txt">Carol Park</span>
+                                        </div>
+                                    </td>
+                                    <td>carol@example.com</td>
+                                    <td><span class="label">Viewer</span></td>
+                                    <td>
+                                        <div class="formatted-date">
+                                            <span class="primary-date">2026-03-20</span>
+                                            <span class="secondary-date">11:00:00</span>
+                                        </div>
+                                    </td>
+                                    <td class="col-meta">
+                                        <button class="btn sm circle transparent secondary"><i class="ri-more-2-line"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-bulk-select"><input type="checkbox"></td>
+                                    <td>
+                                        <div class="record-field-view" style="gap:8px;">
+                                            <span class="thumb sm"><i class="ri-user-fill" style="font-size:16px;color:var(--surfaceTxtHintColor);"></i></span>
+                                            <span class="txt">David Lee</span>
+                                        </div>
+                                    </td>
+                                    <td>david@example.com</td>
+                                    <td><span class="label warning">Pending</span></td>
+                                    <td>
+                                        <div class="formatted-date">
+                                            <span class="primary-date">2026-04-08</span>
+                                            <span class="secondary-date">16:44:00</span>
+                                        </div>
+                                    </td>
+                                    <td class="col-meta">
+                                        <button class="btn sm circle transparent secondary"><i class="ri-more-2-line"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-bulk-select"><input type="checkbox"></td>
+                                    <td>
+                                        <div class="record-field-view" style="gap:8px;">
+                                            <span class="thumb sm"><i class="ri-user-fill" style="font-size:16px;color:var(--surfaceTxtHintColor);"></i></span>
+                                            <span class="txt">Eva Choi</span>
+                                        </div>
+                                    </td>
+                                    <td>eva@example.com</td>
+                                    <td><span class="label danger">Banned</span></td>
+                                    <td>
+                                        <div class="formatted-date">
+                                            <span class="primary-date">2026-05-10</span>
+                                            <span class="secondary-date">08:30:00</span>
+                                        </div>
+                                    </td>
+                                    <td class="col-meta">
+                                        <button class="btn sm circle transparent secondary"><i class="ri-more-2-line"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="page-footer">
+                        <div class="total-count">1,284 records</div>
+                        <button class="btn sm transparent secondary"><i class="ri-arrow-left-s-line"></i></button>
+                        <span>Page 1 / 52</span>
+                        <button class="btn sm transparent secondary"><i class="ri-arrow-right-s-line"></i></button>
+                    </div>
+                </div>
+
+            </div><!-- /page-body -->
+
+        </main><!-- /page-content -->
+
+    </div><!-- /page -->
+
+    <!-- ⑤ 하단 풋터 -->
+    <footer class="app-footer">
+        <span>Pocket Kit</span>
+        <span class="label" style="font-size:11px;">v1.0</span>
+        <div class="flex-fill"></div>
+        <a href="../index.html" style="color:inherit; text-decoration:none;">Component Gallery</a>
+        <span>·</span>
+        <span>© 2026 cb.bae</span>
+        <span>·</span>
+        <span>MIT License</span>
+    </footer>
+
+</div><!-- /app -->
+
+<script src="../components/js/theme.js"></script>
+<script>
+(function () {
+    var toolbar  = document.getElementById('iconToolbar');
+    var panel    = document.getElementById('submenuPanel');
+    var current  = 'collections'; // 초기 활성 섹션
+
+    toolbar.addEventListener('click', function (e) {
+        var btn = e.target.closest('[data-section]');
+        if (!btn) return;
+
+        var section = btn.dataset.section;
+
+        if (section === current && panel.classList.contains('open')) {
+            // 같은 아이콘 재클릭 → 패널 닫기
+            panel.classList.remove('open');
+            btn.classList.remove('active');
+            current = null;
+        } else {
+            // 다른 아이콘 → 패널 전환
+            toolbar.querySelectorAll('.icon-toolbar-item').forEach(function (b) {
+                b.classList.remove('active');
+            });
+            document.querySelectorAll('.submenu-data').forEach(function (d) {
+                d.classList.remove('active');
+            });
+
+            btn.classList.add('active');
+            var target = document.getElementById('submenu-' + section);
+            if (target) target.classList.add('active');
+            panel.classList.add('open');
+            current = section;
+        }
+    });
+}());
+</script>
+</body>
+</html>

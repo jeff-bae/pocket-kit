@@ -43,6 +43,13 @@
     color: var(--accentColor);
 }
 
+/* --- Dark mode: alert text lightened for readability --- */
+:is([data-color-scheme="dark"], [data-color-scheme="auto"]) .alert.success { color: color-mix(in srgb, var(--successColor), white 45%); }
+:is([data-color-scheme="dark"], [data-color-scheme="auto"]) .alert.danger  { color: color-mix(in srgb, var(--dangerColor),  white 45%); }
+:is([data-color-scheme="dark"], [data-color-scheme="auto"]) .alert.warning { color: color-mix(in srgb, var(--warningColor), white 45%); }
+:is([data-color-scheme="dark"], [data-color-scheme="auto"]) .alert.info    { color: color-mix(in srgb, var(--infoColor),    white 45%); }
+:is([data-color-scheme="dark"], [data-color-scheme="auto"]) .alert.accent  { color: color-mix(in srgb, var(--accentColor),  white 45%); }
+
 /* --- Toast Notifications --- */
 .toasts-container {
     position: fixed;
@@ -161,10 +168,16 @@
     to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes tooltipInBottom {
+    from { opacity: 0; transform: translateX(-50%) translateY(2px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
 .tooltip-bottom {
     top: calc(100% + 6px);
     left: 50%;
     transform: translateX(-50%);
+    animation: tooltipInBottom var(--animationSpeed) ease;
 }
 
 [title]:hover .tooltip,
