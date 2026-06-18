@@ -65,7 +65,7 @@
 
         /* ── ② 왼쪽 아이콘 툴바 ── */
         .icon-toolbar {
-            width: 56px;
+            width: 64px;
             flex-shrink: 0;
             display: flex;
             flex-direction: column;
@@ -81,10 +81,13 @@
         .icon-toolbar-item {
             position: relative;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 38px;
-            height: 38px;
+            gap: 3px;
+            width: 54px;
+            height: auto;
+            padding: 7px 4px;
             border: none;
             border-radius: var(--borderRadius);
             background: transparent;
@@ -105,6 +108,15 @@
         .icon-toolbar-item.active {
             background: var(--surfaceAlt3Color);
             color: var(--accentColor);
+        }
+
+        .icon-toolbar-item span {
+            font-size: 9px;
+            font-weight: 500;
+            line-height: 1;
+            letter-spacing: 0.2px;
+            white-space: nowrap;
+            color: inherit;
         }
 
         /* 툴팁 */
@@ -364,19 +376,24 @@
         <nav class="icon-toolbar" id="iconToolbar">
             <button class="icon-toolbar-item active" data-section="collections" data-tooltip="Collections">
                 <i class="ri-database-2-fill"></i>
+                <span>Collections</span>
             </button>
             <button class="icon-toolbar-item" data-section="api" data-tooltip="API">
                 <i class="ri-code-s-slash-line"></i>
+                <span>API</span>
             </button>
             <button class="icon-toolbar-item" data-section="logs" data-tooltip="Logs">
                 <i class="ri-file-list-3-line"></i>
+                <span>Logs</span>
             </button>
             <button class="icon-toolbar-item" data-section="analytics" data-tooltip="Analytics">
                 <i class="ri-bar-chart-2-line"></i>
+                <span>Analytics</span>
             </button>
             <div class="icon-toolbar-spacer"></div>
             <button class="icon-toolbar-item" data-section="settings" data-tooltip="Settings">
                 <i class="ri-settings-3-line"></i>
+                <span>Settings</span>
             </button>
         </nav>
 
