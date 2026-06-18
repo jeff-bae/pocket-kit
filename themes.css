@@ -1,0 +1,119 @@
+/* =========================================================
+   Pocket Kit — themes.css
+   Accent color themes via data-accent attribute
+   Usage: <html data-accent="emerald">
+   Available: blue (default) | emerald | rose | amber |
+              violet | teal | crimson | indigo | slate
+   ========================================================= */
+
+/* ---- Emerald ---- */
+[data-accent="emerald"] {
+    --accentColor: #059669;
+    --accentTxtColor: #fff;
+}
+[data-color-scheme="dark"][data-accent="emerald"] {
+    --accentColor: #10b981;
+}
+@media (prefers-color-scheme: dark) {
+    [data-color-scheme="auto"][data-accent="emerald"] {
+        --accentColor: #10b981;
+    }
+}
+
+/* ---- Rose ---- */
+[data-accent="rose"] {
+    --accentColor: #be185d;
+    --accentTxtColor: #fff;
+}
+[data-color-scheme="dark"][data-accent="rose"] {
+    --accentColor: #db2777;
+}
+@media (prefers-color-scheme: dark) {
+    [data-color-scheme="auto"][data-accent="rose"] {
+        --accentColor: #db2777;
+    }
+}
+
+/* ---- Amber ---- */
+[data-accent="amber"] {
+    --accentColor: #b45309;
+    --accentTxtColor: #fff;
+}
+[data-color-scheme="dark"][data-accent="amber"] {
+    --accentColor: #d97706;
+}
+@media (prefers-color-scheme: dark) {
+    [data-color-scheme="auto"][data-accent="amber"] {
+        --accentColor: #d97706;
+    }
+}
+
+/* ---- Violet ---- */
+[data-accent="violet"] {
+    --accentColor: #6d28d9;
+    --accentTxtColor: #fff;
+}
+[data-color-scheme="dark"][data-accent="violet"] {
+    --accentColor: #7c3aed;
+}
+@media (prefers-color-scheme: dark) {
+    [data-color-scheme="auto"][data-accent="violet"] {
+        --accentColor: #7c3aed;
+    }
+}
+
+/* ---- Teal ---- */
+[data-accent="teal"] {
+    --accentColor: #0e7490;
+    --accentTxtColor: #fff;
+}
+[data-color-scheme="dark"][data-accent="teal"] {
+    --accentColor: #0891b2;
+}
+@media (prefers-color-scheme: dark) {
+    [data-color-scheme="auto"][data-accent="teal"] {
+        --accentColor: #0891b2;
+    }
+}
+
+/* ---- Crimson ---- */
+[data-accent="crimson"] {
+    --accentColor: #b91c1c;
+    --accentTxtColor: #fff;
+}
+[data-color-scheme="dark"][data-accent="crimson"] {
+    --accentColor: #dc2626;
+}
+@media (prefers-color-scheme: dark) {
+    [data-color-scheme="auto"][data-accent="crimson"] {
+        --accentColor: #dc2626;
+    }
+}
+
+/* ---- Indigo ---- */
+[data-accent="indigo"] {
+    --accentColor: #4338ca;
+    --accentTxtColor: #fff;
+}
+[data-color-scheme="dark"][data-accent="indigo"] {
+    --accentColor: #4f46e5;
+}
+@media (prefers-color-scheme: dark) {
+    [data-color-scheme="auto"][data-accent="indigo"] {
+        --accentColor: #4f46e5;
+    }
+}
+
+/* ---- Slate ---- */
+[data-accent="slate"] {
+    --accentColor: #374151;
+    --accentTxtColor: #fff;
+}
+[data-color-scheme="dark"][data-accent="slate"] {
+    --accentColor: #4b5563;
+}
+@media (prefers-color-scheme: dark) {
+    [data-color-scheme="auto"][data-accent="slate"] {
+        --accentColor: #4b5563;
+    }
+}

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="components/css/alerts.css">
     <link rel="stylesheet" href="components/css/loader.css">
     <link rel="stylesheet" href="components/css/layout.css">
+    <link rel="stylesheet" href="themes.css">
     <style>
         .hero {
             background: var(--accentColor);
@@ -88,6 +89,36 @@
             color: var(--surfaceTxtHintColor);
             margin-right: 4px;
         }
+        .theme-separator {
+            width: 1px;
+            height: 20px;
+            background: var(--surfaceAlt3Color);
+            flex-shrink: 0;
+        }
+        .accent-swatches {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .accent-swatch {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            flex-shrink: 0;
+            transition: transform var(--animationSpeed), outline-offset var(--animationSpeed);
+            outline: 2px solid transparent;
+            outline-offset: 0px;
+        }
+        .accent-swatch:hover {
+            transform: scale(1.18);
+        }
+        .accent-swatch.active {
+            outline-color: var(--surfaceTxtColor);
+            outline-offset: 3px;
+        }
     </style>
 </head>
 <body>
@@ -102,7 +133,7 @@
         <i class="ri-github-fill"></i> GitHub
     </a>
     <div style="flex:1;"></div>
-    <span>Color Scheme:</span>
+    <span>Scheme:</span>
     <button class="btn sm pill secondary" data-theme-btn="light">
         <i class="ri-sun-line"></i> Light
     </button>
@@ -112,6 +143,19 @@
     <button class="btn sm pill secondary" data-theme-btn="auto">
         <i class="ri-subtract-line"></i> Auto
     </button>
+    <div class="theme-separator"></div>
+    <span>Accent:</span>
+    <div class="accent-swatches">
+        <button class="accent-swatch" data-accent-btn="blue"    style="background:#1055c9" title="Blue"></button>
+        <button class="accent-swatch" data-accent-btn="indigo"  style="background:#4338ca" title="Indigo"></button>
+        <button class="accent-swatch" data-accent-btn="violet"  style="background:#6d28d9" title="Violet"></button>
+        <button class="accent-swatch" data-accent-btn="rose"    style="background:#be185d" title="Rose"></button>
+        <button class="accent-swatch" data-accent-btn="crimson" style="background:#b91c1c" title="Crimson"></button>
+        <button class="accent-swatch" data-accent-btn="amber"   style="background:#b45309" title="Amber"></button>
+        <button class="accent-swatch" data-accent-btn="emerald" style="background:#059669" title="Emerald"></button>
+        <button class="accent-swatch" data-accent-btn="teal"    style="background:#0e7490" title="Teal"></button>
+        <button class="accent-swatch" data-accent-btn="slate"   style="background:#374151" title="Slate"></button>
+    </div>
 </div>
 
 <div class="components-grid">

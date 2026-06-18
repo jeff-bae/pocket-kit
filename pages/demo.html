@@ -6,6 +6,7 @@
     <title>Full Dashboard Demo — Pocket Kit</title>
     <link rel="stylesheet" href="../lib/fonts/remixicon/remixicon.css">
     <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="../themes.css">
     <link rel="stylesheet" href="../components/css/typography.css">
     <link rel="stylesheet" href="../components/css/buttons.css">
     <link rel="stylesheet" href="../components/css/forms.css">
@@ -23,6 +24,41 @@
         .page { flex: 1; display: flex; overflow: hidden; }
         .page-content.full-height { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
         .records-searchbar-wrapper { padding: 0 var(--smSpacing); border-bottom: 1px solid var(--surfaceAlt2Color); }
+        .theme-accent-section {
+            padding: 6px 10px 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+        .theme-accent-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--surfaceTxtHintColor);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .theme-accent-swatches {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .theme-accent-swatch {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            flex-shrink: 0;
+            transition: transform var(--animationSpeed), outline-offset var(--animationSpeed);
+            outline: 2px solid transparent;
+            outline-offset: 0;
+        }
+        .theme-accent-swatch:hover { transform: scale(1.18); }
+        .theme-accent-swatch.active {
+            outline-color: var(--surfaceTxtColor);
+            outline-offset: 2px;
+        }
     </style>
 </head>
 <body>
@@ -58,19 +94,34 @@
 
         <!-- Theme Picker -->
         <div class="dropdown-wrapper">
-            <button class="header-link" data-dropdown-trigger title="Color scheme">
-                <i class="ri-sun-line" aria-hidden="true"></i>
+            <button class="header-link" data-dropdown-trigger title="Theme">
+                <i class="ri-palette-line" aria-hidden="true"></i>
             </button>
-            <div class="dropdown sm nowrap">
+            <div class="dropdown sm nowrap left" style="min-width:160px;">
                 <button class="dropdown-item dropdown-item-light" data-theme-btn="light">
                     <i class="ri-sun-line"></i><span>Light</span>
                 </button>
                 <button class="dropdown-item dropdown-item-light" data-theme-btn="dark">
                     <i class="ri-moon-line"></i><span>Dark</span>
                 </button>
-                <button class="dropdown-item dropdown-item-light active" data-theme-btn="auto">
+                <button class="dropdown-item dropdown-item-light" data-theme-btn="auto">
                     <i class="ri-subtract-line"></i><span>Auto</span>
                 </button>
+                <hr>
+                <div class="theme-accent-section">
+                    <span class="theme-accent-label">Accent</span>
+                    <div class="theme-accent-swatches">
+                        <button class="theme-accent-swatch" data-accent-btn="blue"    style="background:#1055c9" title="Blue"></button>
+                        <button class="theme-accent-swatch" data-accent-btn="indigo"  style="background:#4338ca" title="Indigo"></button>
+                        <button class="theme-accent-swatch" data-accent-btn="violet"  style="background:#6d28d9" title="Violet"></button>
+                        <button class="theme-accent-swatch" data-accent-btn="rose"    style="background:#be185d" title="Rose"></button>
+                        <button class="theme-accent-swatch" data-accent-btn="crimson" style="background:#b91c1c" title="Crimson"></button>
+                        <button class="theme-accent-swatch" data-accent-btn="amber"   style="background:#b45309" title="Amber"></button>
+                        <button class="theme-accent-swatch" data-accent-btn="emerald" style="background:#059669" title="Emerald"></button>
+                        <button class="theme-accent-swatch" data-accent-btn="teal"    style="background:#0e7490" title="Teal"></button>
+                        <button class="theme-accent-swatch" data-accent-btn="slate"   style="background:#374151" title="Slate"></button>
+                    </div>
+                </div>
             </div>
         </div>
 
