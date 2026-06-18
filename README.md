@@ -9,6 +9,7 @@ PocketBase Admin UI 디자인 시스템을 기반으로 한 순수 HTML/CSS/JS �
 pocket-kit/
 ├── index.html              # 컴포넌트 갤러리 (진입점)
 ├── common.css              # 디자인 토큰, 테마, 전역 스타일
+├── themes.css              # 액센트 컬러 테마 (9가지)
 ├── components/
 │   ├── css/                # 컴포넌트별 스타일시트
 │   │   ├── alerts.css
@@ -38,10 +39,12 @@ pocket-kit/
 └── pages/                  # 컴포넌트 데모 페이지
     ├── alerts.html
     ├── buttons.html
-    ├── demo.html           # 전체 대시보드 데모
+    ├── demo.html           # 전체 대시보드 데모 (Classic Layout)
     ├── dropdowns.html
     ├── forms.html
+    ├── icons.html
     ├── layout.html
+    ├── layout2.html        # 대시보드 데모 (Icon Toolbar Layout)
     ├── modals.html
     ├── navigation.html
     ├── tables.html
@@ -82,25 +85,58 @@ pocket-kit/
 - 코드/고정폭: `IBM Plex Mono` (400, 600)
 - 아이콘: `Remixicon`
 
-## 테마 (다크 모드)
+## 테마 시스템
+
+### 다크 모드 (Color Scheme)
 
 라이트 / 다크 / 자동(시스템 설정) 세 가지 모드를 지원합니다.  
-`localStorage`에 `pocket-kit-color-scheme` 키로 사용자 선택이 저장됩니다.
+`localStorage`의 `pocket-kit-color-scheme` 키로 사용자 선택이 저장됩니다.
 
 ```html
-<!-- HTML 루트 속성으로 테마 지정 -->
+<!-- HTML 루트 속성으로 컬러 스킴 지정 -->
 <html data-color-scheme="light">   <!-- light | dark | auto -->
 
-<!-- 테마 전환 버튼 -->
+<!-- 전환 버튼 -->
 <button data-theme-btn="light">Light</button>
 <button data-theme-btn="dark">Dark</button>
 <button data-theme-btn="auto">Auto</button>
 ```
 
 ```js
-// JS API
 PocketKit.theme.applyScheme('dark');
 ```
+
+### 액센트 컬러 테마 (`themes.css`)
+
+9가지 액센트 컬러 테마를 제공합니다. `data-accent` 속성 하나로 버튼, 링크, 폼, 네비게이션 등 전체 강조색이 일괄 교체됩니다.
+
+| 이름 | Light | Dark |
+|---|---|---|
+| `blue` *(기본)* | `#1055c9` | `#105ce3` |
+| `indigo` | `#4338ca` | `#4f46e5` |
+| `violet` | `#6d28d9` | `#7c3aed` |
+| `rose` | `#be185d` | `#db2777` |
+| `crimson` | `#b91c1c` | `#dc2626` |
+| `amber` | `#b45309` | `#d97706` |
+| `emerald` | `#059669` | `#10b981` |
+| `teal` | `#0e7490` | `#0891b2` |
+| `slate` | `#374151` | `#4b5563` |
+
+```html
+<!-- HTML 루트 속성으로 액센트 테마 지정 -->
+<html data-color-scheme="light" data-accent="emerald">
+
+<!-- 전환 버튼 -->
+<button data-accent-btn="blue">Blue</button>
+<button data-accent-btn="violet">Violet</button>
+<button data-accent-btn="emerald">Emerald</button>
+```
+
+```js
+PocketKit.theme.applyAccent('rose');
+```
+
+두 속성은 독립적으로 동작하므로 `dark` + `emerald`, `light` + `violet` 등 조합이 자유롭습니다.
 
 ## 사용법
 
@@ -110,6 +146,9 @@ PocketKit.theme.applyScheme('dark');
 <!-- 필수 -->
 <link rel="stylesheet" href="lib/fonts/remixicon/remixicon.css">
 <link rel="stylesheet" href="common.css">
+
+<!-- 액센트 테마 (옵션 — 여러 테마 전환이 필요할 때만 포함) -->
+<link rel="stylesheet" href="themes.css">
 
 <!-- 필요한 컴포넌트만 선택하여 포함 -->
 <link rel="stylesheet" href="components/css/buttons.css">
